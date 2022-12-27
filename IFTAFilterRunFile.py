@@ -10,6 +10,9 @@ import pandas as pd
 import streamlit as st
 
 def run():
+    
+    mcheck = 0
+    
     filename = 'FilteredVins.csv'
     
     filteredVins = pd.read_csv(filename)
