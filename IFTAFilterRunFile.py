@@ -31,6 +31,7 @@ def run():
     
     if mcheck == 1:
         filteredDailyVins = dailyVins[dailyVins['vin'].isin(fvins)]
+        filteredDailyVins = filteredDailyVins.iloc[:, 1:6]
         
         CSV = filteredDailyVins.to_csv().encode('utf-8')
         
