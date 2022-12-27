@@ -32,7 +32,7 @@ def run():
     if mcheck == 1:
         filteredDailyVins = dailyVins[dailyVins['vin'].isin(fvins)]
         filteredDailyVins.reset_index(inplace=True)
-        filteredDailyVins.index += 1 
+        
         
         CSV = filteredDailyVins.to_csv().encode('utf-8')
         
