@@ -25,7 +25,6 @@ def run():
     
     fvins = filteredVins['VIN']
     
-    filteredDailyVins = dailyVins[dailyVins['vin'].isin(fvins)]
     
     if mcheck == 1:
         
