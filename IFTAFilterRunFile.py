@@ -31,8 +31,8 @@ def run():
     
     if mcheck == 1:
         filteredDailyVins = dailyVins[dailyVins['vin'].isin(fvins)]
-        filteredDailyVins = filteredDailyVins.set_index('index')
-        filteredDailyVins = filteredDailyVins.reset_index(inplace=True)
+        filteredDailyVins.set_index('index')
+        filteredDailyVins.reset_index(inplace=True)
         
         CSV = filteredDailyVins.to_csv().encode('utf-8')
         
