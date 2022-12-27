@@ -7,17 +7,18 @@ Created on Tue Dec 27 14:06:35 2022
 
 import numpy as np
 import pandas as pd
+import streamlit as st
 
 def run():
     filename = 'FilteredVins.csv'
     
     filteredVins = pd.read_csv(filename)
     
-    uploaded_filem = st.file_uploader("Upload Unfiltered Daily IFTA report")
-    if uploaded_filem is not None:
+    uploaded_file = st.file_uploader("Upload Unfiltered Daily IFTA report")
+    if uploaded_file is not None:
         mcheck = 1
         #read xls or xlsx
-        dailyVins=pd.read_csv(uploaded_filem)
+        dailyVins=pd.read_csv(uploaded_file)
         
     else:
         st.warning("Unfiltered Daily IFTA report")
