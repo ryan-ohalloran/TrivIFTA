@@ -39,7 +39,7 @@ def run():
         st.dataframe(printabledf)
         st.download_button(label='Download Filtered Dataset',
                                     data=CSV,
-                                    file_name= 'Daily_Filtered_IFTA_Report')
+                                    file_name= 'Daily_Filtered_IFTA_Report.csv')
     
 if __name__ == '__main__':
     run()
