@@ -29,7 +29,8 @@ def run():
     
     if mcheck == 1:
         
-        st.dataframe(temp)
+        filteredDailyVins = dailyVins[dailyVins['vin'].isin(fvins)]
+        st.dataframe(filteredDailyVins)
         st.download_button(label='Download Filtered Dataset',
                                     data=filteredDailyVins,
                                     file_name= 'Daily_Filtered_IFTA_Report')
