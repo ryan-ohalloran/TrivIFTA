@@ -30,11 +30,13 @@ def run():
     
     
     if mcheck == 1:
-        
         filteredDailyVins = dailyVins[dailyVins['vin'].isin(fvins)]
+        
+        CSV = filteredDailyVins.to_csv().encode('utf-8')
+        
         st.dataframe(filteredDailyVins)
         st.download_button(label='Download Filtered Dataset',
-                                    data=filteredDailyVins,
+                                    data=CSV,
                                     file_name= 'Daily_Filtered_IFTA_Report')
     
 if __name__ == '__main__':
