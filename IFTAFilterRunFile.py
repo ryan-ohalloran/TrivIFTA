@@ -31,12 +31,12 @@ def run():
     
     if mcheck == 1:
         filteredDailyVins = dailyVins[dailyVins['vin'].isin(fvins)]
-        #filteredDailyVins.set_index('index')
-        filteredDailyVins.reset_index(inplace=True)
+        filteredDailyVins = filteredDailyVins.reset_index()
+        printabledf = filteredDailyVins.iloc[:, 1:6]
         
-        CSV = filteredDailyVins.to_csv().encode('utf-8')
+        CSV = printabledf.to_csv().encode('utf-8')
         
-        st.dataframe(filteredDailyVins)
+        st.dataframe(printabledf)
         st.download_button(label='Download Filtered Dataset',
                                     data=CSV,
                                     file_name= 'Daily_Filtered_IFTA_Report')
