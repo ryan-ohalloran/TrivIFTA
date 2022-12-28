@@ -28,19 +28,19 @@ def run():
         st.warning("Unfiltered Daily IFTA report")
 
     
-    # dt = datetime.now() 
+    dt = datetime.now() 
 
-    # year = dt.year
-    # month = dt.month
-    # day = dt.day
+    year = dt.year
+    month = dt.month
+    day = dt.day
 
-    # daystring = ''
-    # daystring += str(year)
-    # daystring += '_'
-    # daystring += str(month)
-    # daystring += '_'
-    # daystring += str(day)
-    # daystring += '.csv'
+    daystring = 'Ohalloran_'
+    daystring += str(year)
+    daystring += '_'
+    daystring += str(month)
+    daystring += '_'
+    daystring += str(day)
+    daystring += '.csv'
 
     # dailyvinstring = 'https://storage.cloud.google.com/ifta/Ohalloran/'
     # dailyvinstring += daystring
@@ -60,7 +60,7 @@ def run():
         st.dataframe(printabledf)
         st.download_button(label='Download Filtered Dataset',
                                     data=CSV,
-                                    file_name= 'Daily_Filtered_IFTA_Report.csv')
+                                    file_name= daystring)
     
 if __name__ == '__main__':
     run()
