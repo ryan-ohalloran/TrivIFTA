@@ -51,7 +51,7 @@ def run():
     
     
     if mcheck == 1:
-        filteredDailyVins = dailyVins[dailyVins['vin'].isin(fvins)]
+        filteredDailyVins = dailyVins[dailyVins['VIN'].isin(fvins)]
         filteredDailyVins = filteredDailyVins.reset_index()
         printabledf = filteredDailyVins.iloc[:, 1:6]
         
