@@ -33,6 +33,7 @@ def run():
     year = dt.year
     month = dt.month
     day = dt.day
+    day -= 1
 
     daystring = 'Ohalloran_'
     daystring += str(year)
@@ -54,6 +55,9 @@ def run():
         filteredDailyVins = dailyVins[dailyVins['VIN'].isin(fvins)]
         filteredDailyVins = filteredDailyVins.reset_index()
         printabledf = filteredDailyVins.iloc[:, 1:6]
+        cols = printabledf.columns.tolist()
+        cols = cols[0:1] + cols[3:5] + cols[1:3]
+        printabledf = printabledf[cols]
         
         CSV = printabledf.to_csv().encode('utf-8')
         
@@ -61,6 +65,7 @@ def run():
         st.download_button(label='Download Filtered Dataset',
                                     data=CSV,
                                     file_name= daystring)
+        
     
 if __name__ == '__main__':
     run()
