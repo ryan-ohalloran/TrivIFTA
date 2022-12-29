@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 import streamlit as st
+import gcsfs
 
 def run():
     
@@ -123,7 +124,10 @@ def run():
     if x == 0: 
         mcheck = 2
         #read xls or xlsx
-        dailyVinsauto=pd.read_csv('https://storage.cloud.google.com/ifta/Ohalloran/2022_12_27.csv')
+        fs = gcsfs.GCSFileSystem(project='my-project')
+        with fs.open('ifta/Ohalloran/2022_12_27.csv') as f:
+            dailyVinsauto = pd.read_csv(f)
+        
         
         
     if mcheck == 2:
