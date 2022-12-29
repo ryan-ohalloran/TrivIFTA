@@ -34,6 +34,50 @@ def run():
     month = dt.month
     day = dt.day
     day -= 1
+    
+    if day == 0:
+        if month == 1:
+            year -= 1
+            month = 12
+            day = 31
+        elif month == 2:
+            month -= 1
+            day = 31
+        elif month == 3:
+            month -= 1
+            if year % 4 == 0:
+                day = 29
+            else:
+                day = 28
+        elif month == 4:
+            month -= 1
+            day = 31
+        elif month == 5:
+            month -= 1
+            day = 30
+        elif month == 6:
+            month -= 1
+            day = 31
+        elif month == 7:
+            month -= 1
+            day = 30
+        elif month == 8:
+            month -= 1
+            day = 31
+        elif month == 9:
+            month -= 1
+            day = 31
+        elif month == 10:
+            month -= 1
+            day = 30
+        elif month == 11:
+            month -= 1
+            day = 31
+        elif month == 12:
+            month -= 1
+            day = 30
+        
+        
 
     daystring = 'Ohalloran_'
     daystring += str(year)
