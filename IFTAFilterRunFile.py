@@ -95,7 +95,7 @@ def run():
     fvins = filteredVins['VIN']
     
     
-    if mcheck == 1:
+    if mcheck > 1:
         filteredDailyVins = dailyVins[dailyVins['VIN'].isin(fvins)]
         filteredDailyVins = filteredDailyVins.reset_index()
         printabledf = filteredDailyVins.iloc[:, 1:6]
@@ -109,6 +109,41 @@ def run():
         st.dataframe(printabledf)
         st.download_button(label='Download Filtered Dataset',
                                     data=CSV,
+                                    file_name= daystring)
+        
+        
+        CSV1 = printabledf.to_csv().encode('utf-8')
+        
+        st.dataframe(printabledf)
+        st.download_button(label='Download Filtered Dataset',
+                                    data=CSV1,
+                                    file_name= daystring)
+        
+        
+        
+    uploaded_file = st.file_uploader("Upload Unfiltered Daily IFTA report")
+    if uploaded_file is not None:
+        mcheck = 2
+        #read xls or xlsx
+        dailyVinsauto=pd.read_csv('https://storage.cloud.google.com/ifta/Ohalloran/2022_12_27.csv')
+        
+    else:
+        st.warning("Unfiltered Daily IFTA report")
+        
+    if mcheck == 2:
+        filteredDailyVinsauto = dailyVinsauto[dailyVinsauto['VIN'].isin(fvins)]
+        filteredDailyVinsauto = filteredDailyVinsauto.reset_index()
+        printabledfauto = filteredDailyVinsauto.iloc[:, 1:6]
+        cols = printabledfauto.columns.tolist()
+        cols = cols[0:1] + cols[3:5] + cols[1:3]
+        printabledfauto = printabledfauto[cols]
+        printabledfauto.set_index('VIN', inplace=True)
+        
+        CSV1 = printabledfauto.to_csv().encode('utf-8')
+        
+        st.dataframe(printabledf)
+        st.download_button(label='Download Filtered Dataset',
+                                    data=CSV1,
                                     file_name= daystring)
         
     
