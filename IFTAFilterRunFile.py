@@ -141,7 +141,7 @@ def run():
         
         CSV1 = printabledfauto.to_csv().encode('utf-8')
         
-        st.dataframe(printabledf)
+        st.dataframe(printabledfauto)
         st.download_button(label='Download Filtered Dataset',
                                     data=CSV1,
                                     file_name= daystring)
