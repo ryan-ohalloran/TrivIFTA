@@ -119,16 +119,12 @@ def run():
                                     data=CSV1,
                                     file_name= daystring)
         
-        
-        
-    uploaded_file = st.file_uploader("Upload Unfiltered Daily IFTA report")
-    if uploaded_file is not None:
+    x = 0 
+    if x == 0: 
         mcheck = 2
         #read xls or xlsx
         dailyVinsauto=pd.read_csv('https://storage.cloud.google.com/ifta/Ohalloran/2022_12_27.csv')
         
-    else:
-        st.warning("Unfiltered Daily IFTA report")
         
     if mcheck == 2:
         filteredDailyVinsauto = dailyVinsauto[dailyVinsauto['VIN'].isin(fvins)]
