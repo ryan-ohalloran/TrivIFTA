@@ -11,8 +11,8 @@ from datetime import datetime
 import streamlit as st
 import gcsfs
 from ftplib import FTP
-from StringIO import StringIO
-import io
+#from StringIO import StringIO
+#import io
 
 ftp = FTP("12.19.168.100")
 ftp.login("geotab","46s8hD_tf#A6886R")
