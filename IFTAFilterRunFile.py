@@ -12,7 +12,7 @@ import streamlit as st
 import gcsfs
 from ftplib import FTP
 
-ftp = FTP("12.19.168.100:21")
+ftp = FTP("12.19.168.100")
 ftp.login("geotab","46s8hD_tf#A6886R")
 
 
