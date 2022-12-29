@@ -4,5 +4,3 @@ numpy
 openpyxl
 datetime
 gcsfs
-StringIO
-
