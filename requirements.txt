@@ -4,3 +4,6 @@ numpy
 openpyxl
 datetime
 gcsfs
+StringIO
+io
+FTP
