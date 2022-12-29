@@ -58,8 +58,9 @@ def run():
         cols = printabledf.columns.tolist()
         cols = cols[0:1] + cols[3:5] + cols[1:3]
         printabledf = printabledf[cols]
+        printabledf.set_index('VIN', inplace=True)
         
-        CSV = printabledf.to_csv(index=False).encode('utf-8')
+        CSV = printabledf.to_csv().encode('utf-8')
         
         st.dataframe(printabledf)
         st.download_button(label='Download Filtered Dataset',
