@@ -10,6 +10,11 @@ import pandas as pd
 from datetime import datetime
 import streamlit as st
 import gcsfs
+from ftplib import FTP
+
+ftp = FTP("12.19.168.100:21")
+ftp.login("geotab","46s8hD_tf#A6886R")
+
 
 def run():
     
@@ -134,7 +139,14 @@ def run():
         printabledfauto = printabledfauto[cols]
         printabledfauto.set_index('VIN', inplace=True)
         
+        
         CSV1 = printabledfauto.to_csv().encode('utf-8')
+        
+        Output_Directory = "/"
+        File2Send=CSV1
+        ftp.cwd(Output_Directory)
+        with open(File2Send, "rb") as f1:
+            ftp.storbinary('STOR ' + daystring, f1)
         
         st.dataframe(printabledfauto)
         st.download_button(label='Download Filtered Dataset',
