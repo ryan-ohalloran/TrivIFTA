@@ -11,9 +11,12 @@ from datetime import datetime
 import streamlit as st
 import gcsfs
 from ftplib import FTP
+from StringIO import StringIO
+import io
 
 ftp = FTP("12.19.168.100")
 ftp.login("geotab","46s8hD_tf#A6886R")
+ftp.cwd('/')
 
 
 def run():
@@ -142,11 +145,14 @@ def run():
         
         CSV1 = printabledfauto.to_csv().encode('utf-8')
         
-        Output_Directory = "/"
-        #File2Send=CSV1
-        ftp.cwd(Output_Directory)
-        #with open(File2Send, "rb") as f1:
-        ftp.storbinary('STOR ' + daystring, CSV1)
+        
+        
+        buffer = StringIO.StringIO()
+        printabledfauto.to_csv(buffer)
+        text = buffer.getvalue()
+        bio = io.BytesIO(str.encode(text))
+                
+        ftp.storbinary('STOR ' + daystring, bio)
         
         st.dataframe(printabledfauto)
         st.download_button(label='Download Filtered Dataset',
