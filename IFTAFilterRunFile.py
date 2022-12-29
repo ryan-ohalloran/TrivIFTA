@@ -143,10 +143,10 @@ def run():
         CSV1 = printabledfauto.to_csv().encode('utf-8')
         
         Output_Directory = "/"
-        File2Send=CSV1
+        #File2Send=CSV1
         ftp.cwd(Output_Directory)
-        with open(File2Send, "rb") as f1:
-            ftp.storbinary('STOR ' + daystring, f1)
+        #with open(File2Send, "rb") as f1:
+        ftp.storbinary('STOR ' + daystring, CSV1)
         
         st.dataframe(printabledfauto)
         st.download_button(label='Download Filtered Dataset',
