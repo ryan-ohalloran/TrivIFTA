@@ -154,9 +154,9 @@ def run():
         buffer.seek(0)
         
                 
-        #ftp.storbinary('STOR ' + daystring, bio)
+        ftp.storbinary('STOR ' + daystring, buffer)
         #ftp.storbinary('STOR ' + daystring, CSV1)
-        ftp.storlines("STOR " + daystring, buffer)
+        #ftp.storlines("STOR " + daystring, buffer)
         
         st.dataframe(printabledfauto)
         st.download_button(label='Download Filtered Dataset',
