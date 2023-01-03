@@ -105,7 +105,7 @@ def run():
     daystring += '12'
     daystring += '_'
     #daystring += str(day)
-    daystring += '30'
+    daystring += '29'
     daystring += '.csv'
     
     fvins = filteredVins['VIN']
@@ -141,7 +141,7 @@ def run():
         autodaystring += '12'
         autodaystring += '_'
         #autodaystring += str(day)
-        autodaystring += '30'
+        autodaystring += '29'
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
             dailyVinsauto = pd.read_csv(f)
