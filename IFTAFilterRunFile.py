@@ -152,10 +152,14 @@ def run():
         #buffer = io.BytesIO()
         #printabledfauto.to_excel(buffer)
         #buffer.seek(0)
+        buffer = io.BytesIO()
+        printabledfauto.to_csv(buffer)
+        text = buffer.getvalue()
+        bio = io.BytesIO(str.encode(text))
                 
-        #ftp.storbinary('STOR ' + daystring, buffer)
+        ftp.storbinary('STOR ' + daystring, bio)
         #ftp.storbinary('STOR ' + daystring, CSV1)
-        ftp.storlines("STOR " + daystring, CSV1)
+        #ftp.storlines("STOR " + daystring, CSV1)
         
         st.dataframe(printabledfauto)
         st.download_button(label='Download Filtered Dataset',
