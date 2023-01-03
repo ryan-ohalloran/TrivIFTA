@@ -150,7 +150,7 @@ def run():
         
         
         buffer = io.BytesIO()
-        printabledfauto.to_excel(buffer)
+        printabledfauto.to_csv(buffer)
         buffer.seek(0)
         
                 
