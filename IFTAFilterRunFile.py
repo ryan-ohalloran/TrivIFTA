@@ -98,14 +98,14 @@ def run():
         day = tempstringd
 
     daystring = 'Ohalloran_'
-    #daystring += str(year)
-    daystring += '2022'
+    daystring += str(year)
+    
     daystring += '_'
-    #daystring += str(month)
-    daystring += '12'
+    daystring += str(month)
+    
     daystring += '_'
-    #daystring += str(day)
-    daystring += '29'
+    daystring += str(day)
+    
     daystring += '.csv'
     
     fvins = filteredVins['VIN']
@@ -134,14 +134,14 @@ def run():
         #read xls or xlsx
         fs = gcsfs.GCSFileSystem(project='my-project')
         autodaystring = 'ifta/Ohalloran/'
-        #autodaystring += str(year)
-        autodaystring += '2022'
+        autodaystring += str(year)
+        
         autodaystring += '_'
-        #autodaystring += str(month)
-        autodaystring += '12'
+        autodaystring += str(month)
+        
         autodaystring += '_'
-        #autodaystring += str(day)
-        autodaystring += '29'
+        autodaystring += str(day)
+        
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
             dailyVinsauto = pd.read_csv(f)
