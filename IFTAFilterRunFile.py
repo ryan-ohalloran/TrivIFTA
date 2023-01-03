@@ -167,7 +167,7 @@ def run():
         buffer.seek(0)
         
                 
-        #ftp.storbinary('STOR ' + daystring, buffer)
+        ftp.storbinary('STOR ' + daystring, buffer)
         #ftp.storbinary('STOR ' + daystring, CSV1)
         #ftp.storlines("STOR " + daystring, buffer)
         
