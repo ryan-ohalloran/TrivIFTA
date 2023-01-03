@@ -125,10 +125,10 @@ def run():
         autodaystring += '2023'
         autodaystring += '_'
         #autodaystring += str(month)
-        autodaystring += '1'
+        autodaystring += '01'
         autodaystring += '_'
         #autodaystring += str(day)
-        autodaystring += '1'
+        autodaystring += '01'
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
             dailyVinsauto = pd.read_csv(f)
