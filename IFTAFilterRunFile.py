@@ -121,14 +121,14 @@ def run():
         #read xls or xlsx
         fs = gcsfs.GCSFileSystem(project='my-project')
         autodaystring = 'ifta/Ohalloran/'
-        #autodaystring += str(year)
-        autodaystring += '2022'
+        autodaystring += str(year)
+        
         autodaystring += '_'
-        #autodaystring += str(month)
-        autodaystring += '12'
+        autodaystring += str(month)
+        
         autodaystring += '_'
-        #autodaystring += str(day)
-        autodaystring += '27'
+        autodaystring += str(day)
+        
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
             dailyVinsauto = pd.read_csv(f)
