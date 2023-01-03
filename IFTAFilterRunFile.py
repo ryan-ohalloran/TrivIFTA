@@ -85,7 +85,17 @@ def run():
             month -= 1
             day = 30
         
+    if month < 10:
+        tempstringm = '0'
+        tempmonth = str(month)
+        tempstringm += tempmonth
+        month = tempstringm
         
+    if day < 10:
+        tempstringd = '0'
+        tempday = str(day)
+        tempstringd += tempday
+        day = tempstringd
 
     daystring = 'Ohalloran_'
     daystring += str(year)
@@ -121,14 +131,14 @@ def run():
         #read xls or xlsx
         fs = gcsfs.GCSFileSystem(project='my-project')
         autodaystring = 'ifta/Ohalloran/'
-        #autodaystring += str(year)
-        autodaystring += '2023'
+        autodaystring += str(year)
+        #autodaystring += '2023'
         autodaystring += '_'
-        #autodaystring += str(month)
-        autodaystring += '01'
+        autodaystring += str(month)
+        #autodaystring += '01'
         autodaystring += '_'
-        #autodaystring += str(day)
-        autodaystring += '01'
+        autodaystring += str(day)
+        #autodaystring += '01'
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
             dailyVinsauto = pd.read_csv(f)
