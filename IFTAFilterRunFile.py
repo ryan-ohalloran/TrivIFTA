@@ -26,16 +26,6 @@ def run():
     
     filteredVins = pd.read_csv(filename)
     
-    # uploaded_file = st.file_uploader("Upload Unfiltered Daily IFTA report")
-    # if uploaded_file is not None:
-    #     mcheck = 1
-    #     #read xls or xlsx
-    #     dailyVins=pd.read_csv(uploaded_file)
-        
-    # else:
-    #     st.warning("Unfiltered Daily IFTA report")
-
-    
     dt = datetime.now() 
 
     year = dt.year
@@ -98,34 +88,26 @@ def run():
         day = tempstringd
 
     daystring = 'Ohalloran_'
-    daystring += str(year)
+    #daystring += str(year)
+    
+    daystring += '2022'
     
     daystring += '_'
-    daystring += str(month)
+    #daystring += str(month)
+    
+    daystring += '10'
     
     daystring += '_'
-    daystring += str(day)
+    #daystring += str(day)
+    
+    daystring += '19'
     
     daystring += '.csv'
     
     fvins = filteredVins['VIN']
     
     
-    # if mcheck > 1:
-    #     filteredDailyVins = dailyVins[dailyVins['VIN'].isin(fvins)]
-    #     filteredDailyVins = filteredDailyVins.reset_index()
-    #     printabledf = filteredDailyVins.iloc[:, 1:6]
-    #     cols = printabledf.columns.tolist()
-    #     cols = cols[0:1] + cols[3:5] + cols[1:3]
-    #     printabledf = printabledf[cols]
-    #     printabledf.set_index('VIN', inplace=True)
-        
-    #     CSV = printabledf.to_csv().encode('utf-8')
-        
-    #     st.dataframe(printabledf)
-    #     st.download_button(label='Download Filtered Dataset',
-    #                                 data=CSV,
-    #                                 file_name= daystring)
+
         
         
     x = 0 
@@ -134,13 +116,19 @@ def run():
         #read xls or xlsx
         fs = gcsfs.GCSFileSystem(project='my-project')
         autodaystring = 'ifta/Ohalloran/'
-        autodaystring += str(year)
+        #autodaystring += str(year)
+        
+        autodaystring += '2022'
         
         autodaystring += '_'
-        autodaystring += str(month)
+        #autodaystring += str(month)
+        
+        autodaystring += '10'
         
         autodaystring += '_'
-        autodaystring += str(day)
+        #autodaystring += str(day)
+        
+        autodaystring += '19'
         
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
