@@ -100,7 +100,7 @@ def run():
     daystring += '_'
     #daystring += str(day)
     
-    daystring += '21'
+    daystring += '20'
     
     daystring += '.csv'
     
@@ -128,7 +128,7 @@ def run():
         autodaystring += '_'
         #autodaystring += str(day)
         
-        autodaystring += '21'
+        autodaystring += '20'
         
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
