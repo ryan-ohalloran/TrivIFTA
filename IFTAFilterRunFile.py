@@ -88,19 +88,19 @@ def run():
         day = tempstringd
 
     daystring = 'Ohalloran_'
-    daystring += str(year)
+    #daystring += str(year)
     
-    #daystring += '2023'
-    
-    daystring += '_'
-    daystring += str(month)
-    
-    #daystring += '01'
+    daystring += '2023'
     
     daystring += '_'
-    daystring += str(day)
+    #daystring += str(month)
     
-    #daystring += '20'
+    daystring += '01'
+    
+    daystring += '_'
+    #daystring += str(day)
+    
+    daystring += '28'
     
     daystring += '.csv'
     
@@ -116,19 +116,19 @@ def run():
         #read xls or xlsx
         fs = gcsfs.GCSFileSystem(project='my-project')
         autodaystring = 'ifta/Ohalloran/'
-        autodaystring += str(year)
+        #autodaystring += str(year)
         
-        #autodaystring += '2023'
-        
-        autodaystring += '_'
-        autodaystring += str(month)
-        
-        #autodaystring += '01'
+        autodaystring += '2023'
         
         autodaystring += '_'
-        autodaystring += str(day)
+        #autodaystring += str(month)
         
-        #autodaystring += '20'
+        autodaystring += '01'
+        
+        autodaystring += '_'
+        #autodaystring += str(day)
+        
+        autodaystring += '28'
         
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
