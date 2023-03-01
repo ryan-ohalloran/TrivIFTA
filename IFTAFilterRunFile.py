@@ -118,17 +118,17 @@ def run():
         autodaystring = 'ifta/Ohalloran/'
         #autodaystring += str(year)
         
-        #autodaystring += '2023'
+        autodaystring += '2023'
         
         autodaystring += '_'
         #autodaystring += str(month)
         
-        #autodaystring += '02'
+        autodaystring += '02'
         
         autodaystring += '_'
         #autodaystring += str(day)
         
-        #autodaystring += '17'
+        autodaystring += '17'
         
         autodaystring += '.csv'
         with fs.open(autodaystring) as f:
