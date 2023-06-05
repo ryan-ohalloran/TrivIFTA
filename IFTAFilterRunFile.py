@@ -131,6 +131,7 @@ def run():
         #autodaystring += '22'
         
         autodaystring += '.csv'
+        st.write(autodaystring)
         with fs.open(autodaystring) as f:
             dailyVinsauto = pd.read_csv(f)
         
