@@ -19,6 +19,7 @@ def main():
     if not input_file:
         st.warning('Please upload an Excel file.')
         return
+    input_file = input_file.read()
     
     # Process input file as bytes
     vin_data_collection = process_data(input_file, data_type='bytes')
