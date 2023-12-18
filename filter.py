@@ -114,7 +114,9 @@ def reduce_df(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def split_date_time(df: pd.DataFrame) -> pd.DataFrame:
-    """extract date and time from FuelTaxEnterTime and split into separate columns"""
+    """
+    Extract date and time from FuelTaxEnterTime and split into separate columns
+    """
 
     df['FuelTaxEnterTime'] = pd.to_datetime(df['FuelTaxEnterTime']).dt.floor('S')
     df['FuelTaxExitTime'] = pd.to_datetime(df['FuelTaxExitTime']).dt.floor('S')
