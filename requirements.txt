@@ -3,4 +3,4 @@ streamlit
 numpy
 openpyxl
 datetime
-gcsfs
+ftplib
