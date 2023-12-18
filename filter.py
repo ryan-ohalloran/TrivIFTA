@@ -181,8 +181,3 @@ def process_data(input_file: any, data_type: str = 'path') -> VinDataCollection:
             vin_data.add_entry(enter_reading_date, exit_reading_time, exit_odometer, jurisdiction)
 
     return vin_data_collection
-
-# Test output on file
-test_file = 'Default Fuel Tax Report_20231217_200915.xlsx'
-test_data = process_data(test_file)
-test_data.export_data('test.csv')
