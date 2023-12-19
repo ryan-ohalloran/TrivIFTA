@@ -19,6 +19,7 @@ class MyGeotabAPI(mygeotab.API):
         return self.get('FuelTaxDetail', fromDate=from_date, toDate=to_date, includeHourlyData=False, includeBoundaries=False)
 
     def get_devices(self, from_date: datetime, to_date: datetime) -> List[Dict[str, Any]]:
+        # Return all devices in the group 'Ifta Group'
         return self.get('Device', fromDate=from_date, toDate=to_date)
 
     def get_vin_map(self, from_date: datetime, to_date: datetime) -> Dict[str, str]:

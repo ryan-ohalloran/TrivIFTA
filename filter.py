@@ -5,14 +5,14 @@ import numpy as np
 import pandas as pd
 from datetime import date, time
 from openpyxl import load_workbook
-from typing import Dict
+from typing import Dict, Any
 import io
 
 class VinData:
-    '''
+    """
     Class to hold data for each unique VIN
-    '''
-    def __init__(self, vin: str):
+    """
+    def __init__(self, vin: str) -> None:
         self.vin = vin
         self.data = []
     
@@ -25,9 +25,9 @@ class VinData:
         } )
 
 class VinDataCollection(Dict[str, VinData]):
-    '''
+    """
     Class to hold data for all VINs -- behaves like Dict[str, VinData]
-    '''
+    """
     def add_vin_data(self, vin: str) -> None:
         if vin not in self:
             self[vin] = VinData(vin)
@@ -72,113 +72,138 @@ class VinDataCollection(Dict[str, VinData]):
         df = self.to_dataframe()
         df.to_csv(output_file, index=False, encoding='utf-8')
 
-        
-def find_header_row(input_data: bytes, header: str) -> int:
+class FleetDataFrame(pd.DataFrame):
     """
-    Find the row number of the header row in an Excel file
-    input_data: the contents of the input file
-    header: the header row to use to find the data
-    rtype: int
+    Class to encapsulate operations on a DataFrame for fleet data
     """
-    wb = load_workbook(filename=io.BytesIO(input_data), read_only=True)
-    sheet = wb['Data']  # Change 'Data' to your actual sheet name
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
-    for row_index, row in enumerate(sheet.iter_rows(values_only=True)):
-        if header in row:
-            return row_index
-    return None
-
-def read_data(input_data: bytes, header: str) -> pd.DataFrame:
-    """
-    Read data from an Excel file and return a Pandas DataFrame
-    input_data: the contents of the input file
-    header: the header row to use to find the data
-    rtype: Pandas DataFrame
-    """
-    header_row = find_header_row(input_data, header)
-    if header_row is None:
-        raise ValueError(f"Header '{header}' not found in data")
-
-    df = pd.read_excel(io.BytesIO(input_data), sheet_name='Data', skiprows=header_row)
-    return df
-
-def reduce_df(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Reduce dataframe to only columns:
-        'FuelTaxVin', 'FuelTaxEnterTime', 'FuelTaxExitTime', 'FuelTaxJurisdiction', 'FuelTaxEnterOdometer', 'FuelTaxExitOdometer'
-    df: Pandas DataFrame
-    rtype: Pandas DataFrame
-    """
-    df = df[['FuelTaxVin', 'FuelTaxEnterTime', 'FuelTaxExitTime', 'FuelTaxJurisdiction', 'FuelTaxEnterOdometer', 'FuelTaxExitOdometer']]
-
-    return df
-
-def split_date_time(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Extract date and time from FuelTaxEnterTime and split into separate columns
-    """
-    df['FuelTaxEnterTime'] = pd.to_datetime(df['FuelTaxEnterTime']).dt.floor('S')
-    df['FuelTaxExitTime'] = pd.to_datetime(df['FuelTaxExitTime']).dt.floor('S')
-    df['EnterReadingDate'] = df['FuelTaxEnterTime'].dt.date
-    df['EnterReadingTime'] = df['FuelTaxEnterTime'].dt.time
-    df['ExitReadingTime'] = df['FuelTaxExitTime'].dt.time
-    df = df.drop(columns=['FuelTaxEnterTime', 'FuelTaxExitTime'])
-    return df
-
-
-def process_data(input_file: any, data_type: str = 'path') -> VinDataCollection:
-    """
-    Read data from an Excel file and return a VinDataCollection object
-    input_file: path to the input file or the contents of the input file
-    data_type: 'path' if input_file is a path, 'bytes' if input_file is the contents of the file
-    rtype: VinDataCollection
-    """
+    def reduce_df(self) -> None:
+        """
+        Reduce the DataFrame to specific columns
+        """
+        columns_to_keep = ['FuelTaxVin', 'FuelTaxEnterTime', 'FuelTaxExitTime', 'FuelTaxJurisdiction', 'FuelTaxEnterOdometer', 'FuelTaxExitOdometer']
+        self[self.columns.intersection(columns_to_keep)]
     
-    # If the input file is a path, read the data from the file
-    if data_type == 'path':
-        with open(input_file, 'rb') as f:
-            input_file = f.read()
-    elif data_type != 'bytes':
-        raise ValueError(f"Unknown data_type: {data_type}")
-    
-    # Read the data from the input file
-    df = read_data(input_file, 'DeviceName')
+    def split_date_time(self) -> None:
+        """
+        Extract date and time from FuelTaxEnterTime and split into separate columns
+        """
+        self['FuelTaxEnterTime'] = pd.to_datetime(self['FuelTaxEnterTime']).dt.floor('S')
+        self['FuelTaxExitTime'] = pd.to_datetime(self['FuelTaxExitTime']).dt.floor('S')
+        self['EnterReadingDate'] = self['FuelTaxEnterTime'].dt.date
+        self['EnterReadingTime'] = self['FuelTaxEnterTime'].dt.time
+        self['ExitReadingTime'] = self['FuelTaxExitTime'].dt.time
+        self.drop(columns=['FuelTaxEnterTime', 'FuelTaxExitTime'])
 
-    # Reduce and split the dataframe
-    df = reduce_df(df)
-    df = split_date_time(df)
+class FileManager:
+    """
+    Class for handling file-related operations
+    """
+    @staticmethod
+    def find_header_row(input_data: bytes, header: str) -> int:
+        """
+        Find the row number of the header row in an Excel file
+        input_data: the contents of the input file
+        header: the header row to use to find the data
+        rtype: int
+        """
+        wb = load_workbook(filename=io.BytesIO(input_data), read_only=True)
+        sheet = wb['Data']  # Change 'Data' to your actual sheet name
 
-    # Create a dictionary to hold the VinData objects
-    vin_data_collection = VinDataCollection()
+        for row_index, row in enumerate(sheet.iter_rows(values_only=True)):
+            if header in row:
+                return row_index
+        return None
 
-    # Iterate over the rows in the dataframe
-    for _, row in df.iterrows():
-        vin = str(row['FuelTaxVin'])
-        # skip rows with potentially empty VINs
-        if vin in ('nan', 'None', ''):
-            continue
-        enter_reading_date = row['EnterReadingDate']
-        enter_reading_time = row['EnterReadingTime']
-        exit_reading_time = row['ExitReadingTime']
-        enter_odometer = int(row['FuelTaxEnterOdometer'])
-        exit_odometer = int(row['FuelTaxExitOdometer'])
-        jurisdiction = row['FuelTaxJurisdiction']
+    @staticmethod
+    def read_file(input_file: Any, data_type: str = 'path') -> pd.DataFrame:
+        """
+        Read data from an Excel file and return a Pandas DataFrame
+        input_file: path to the input file or the contents of the input file
+        data_type: 'path' if input_file is a path, 'bytes' if input_file is the contents of the file
+        rtype: Pandas DataFrame
+        """
+        # If the input file is a path, read the data from the file
+        if data_type == 'path':
+            with open(input_file, 'rb') as f:
+                input_file = f.read()
+        elif data_type != 'bytes':
+            raise ValueError(f"Unknown data_type: {data_type}")
 
-        # Add this VIN to the VinDataCollection if it doesn't already exist
-        vin_data_collection.add_vin_data(vin)
+        # Rest of the logic for finding the header row and reading data
+        header_row = FileManager.find_header_row(input_file, 'DeviceName')
+        if header_row is None:
+            raise ValueError(f"Header 'DeviceName' not found in data")
 
-        # Get the VinData object for this VIN
-        vin_data = vin_data_collection.get_vin_data(vin)
+        df = pd.read_excel(io.BytesIO(input_file), sheet_name='Data', skiprows=header_row)
+        return df
 
-        # Add vin entry for enter time using enter odometer reading
-        vin_data.add_entry(enter_reading_date, enter_reading_time, enter_odometer, jurisdiction)
 
-        # Only add exit time if it is the last entry for this VIN on this day
-        #   (i.e. if the exit time is 00:00, then it is the last entry for the day)
-        if exit_reading_time == time(0, 0):
-            # Change time to 23:59 to suit IFTA requirements
-            exit_reading_time = time(23, 59)
-            # In this case, use exit_reading_time and exit_odometer
-            vin_data.add_entry(enter_reading_date, exit_reading_time, exit_odometer, jurisdiction)
+class FuelTaxProcessor:
+    """
+    Class to coordinate operations of reading data, processing it, and exporting the results
+    """
+    def __init__(self, input_file: Any, data_type='path') -> None:
+        self.file_manager = FileManager()
+        self.fleet_dataframe = FleetDataFrame()
+        self.input_file = input_file
+        self.data_type = data_type
 
-    return vin_data_collection
+    def process_data(self) -> VinDataCollection:
+        """
+        Process data using FleetDataFrame and FileManager
+        """
+        # Read data from the file using FileManager
+        df = self.file_manager.read_file(self.input_file, self.data_type)
+
+        # Initialize FleetDataFrame with the read data
+        self.fleet_dataframe = FleetDataFrame(df)
+
+        # Reduce and split the FleetDataFrame
+        self.fleet_dataframe.reduce_df()
+        self.fleet_dataframe.split_date_time()
+
+        # Create a dictionary to hold the VinData objects
+        vin_data_collection = VinDataCollection()
+
+        # Iterate over the rows in the FleetDataFrame
+        for _, row in self.fleet_dataframe.iterrows():
+            vin = str(row['FuelTaxVin'])
+            # skip rows with potentially empty VINs
+            if vin in ('nan', 'None', ''):
+                continue
+            enter_reading_date = row['EnterReadingDate']
+            enter_reading_time = row['EnterReadingTime']
+            exit_reading_time = row['ExitReadingTime']
+            enter_odometer = int(row['FuelTaxEnterOdometer'])
+            exit_odometer = int(row['FuelTaxExitOdometer'])
+            jurisdiction = row['FuelTaxJurisdiction']
+
+            # Add this VIN to the VinDataCollection if it doesn't already exist
+            vin_data_collection.add_vin_data(vin)
+
+            # Get the VinData object for this VIN
+            vin_data = vin_data_collection.get_vin_data(vin)
+
+            # Add vin entry for enter time using enter odometer reading
+            vin_data.add_entry(enter_reading_date, enter_reading_time, enter_odometer, jurisdiction)
+
+            # Only add exit time if it is the last entry for this VIN on this day
+            #   (i.e. if the exit time is 00:00, then it is the last entry for the day)
+            if exit_reading_time == time(0, 0):
+                # Change time to 23:59 to suit IFTA requirements
+                exit_reading_time = time(23, 59)
+                # In this case, use exit_reading_time and exit_odometer
+                vin_data.add_entry(enter_reading_date, exit_reading_time, exit_odometer, jurisdiction)
+
+        return vin_data_collection
+
+# test out the code by processing sample data from 'Default Fuel Tax Report_20231217_200915.xlsx'
+if __name__ == '__main__':
+    input_file = 'Default Fuel Tax Report_20231217_200915.xlsx'
+    fuel_tax_processor = FuelTaxProcessor(input_file)
+    vin_data_collection = fuel_tax_processor.process_data()
+    vin_data_collection.export_data('test.csv')
+    print('Done')
