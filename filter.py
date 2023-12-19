@@ -5,11 +5,13 @@ import numpy as np
 import pandas as pd
 from datetime import date, time
 from openpyxl import load_workbook
+from typing import Dict
 import io
 
-# Class to hold data for each unique VIN
 class VinData:
-
+    '''
+    Class to hold data for each unique VIN
+    '''
     def __init__(self, vin: str):
         self.vin = vin
         self.data = []
@@ -22,18 +24,16 @@ class VinData:
             'Jurisdiction': jurisdiction
         } )
 
-# Class to hold data for all VINs
-class VinDataCollection:
-    
-    def __init__(self):
-        self.data = {}
-    
+class VinDataCollection(Dict[str, VinData]):
+    '''
+    Class to hold data for all VINs -- behaves like Dict[str, VinData]
+    '''
     def add_vin_data(self, vin: str) -> None:
-        if vin not in self.data:
-            self.data[vin] = VinData(vin)
+        if vin not in self:
+            self[vin] = VinData(vin)
     
     def get_vin_data(self, vin: str) -> VinData:
-        vin_data = self.data.get(vin, None)
+        vin_data = self.get(vin, None)
         if not vin_data:
             raise Exception(f'VinData not found for VIN: {vin}')
         return vin_data
@@ -46,7 +46,7 @@ class VinDataCollection:
         all_entries = []
 
         # Iterate over VINs in the collection
-        for vin, vin_data in self.data.items():
+        for vin, vin_data in self.items():
             for entry in vin_data.data:
                 all_entries.append({
                     'VIN': vin,
@@ -117,7 +117,6 @@ def split_date_time(df: pd.DataFrame) -> pd.DataFrame:
     """
     Extract date and time from FuelTaxEnterTime and split into separate columns
     """
-
     df['FuelTaxEnterTime'] = pd.to_datetime(df['FuelTaxEnterTime']).dt.floor('S')
     df['FuelTaxExitTime'] = pd.to_datetime(df['FuelTaxExitTime']).dt.floor('S')
     df['EnterReadingDate'] = df['FuelTaxEnterTime'].dt.date
