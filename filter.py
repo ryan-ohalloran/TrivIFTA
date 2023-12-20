@@ -151,25 +151,15 @@ class FuelTaxProcessor:
         self.input_file = input_file
         self.data_type = data_type
 
-    def process_data(self) -> VinDataCollection:
+    @staticmethod
+    def to_vin_data_collection(df: pd.DataFrame) -> VinDataCollection:
         """
-        Process data using FleetDataFrame and FileManager
+        Transform data from the input file into the desired output format
         """
-        # Read data from the file using FileManager
-        df = self.file_manager.read_file(self.input_file, self.data_type)
-
-        # Initialize FleetDataFrame with the read data
-        self.fleet_dataframe = FleetDataFrame(df)
-
-        # Reduce and split the FleetDataFrame
-        self.fleet_dataframe.reduce_df()
-        self.fleet_dataframe.split_date_time()
-
         # Create a dictionary to hold the VinData objects
         vin_data_collection = VinDataCollection()
 
-        # Iterate over the rows in the FleetDataFrame
-        for _, row in self.fleet_dataframe.iterrows():
+        for _, row in df.iterrows():
             vin = str(row['FuelTaxVin'])
             # skip rows with potentially empty VINs
             if vin in ('nan', 'None', ''):
@@ -197,6 +187,25 @@ class FuelTaxProcessor:
                 exit_reading_time = time(23, 59)
                 # In this case, use exit_reading_time and exit_odometer
                 vin_data.add_entry(enter_reading_date, exit_reading_time, exit_odometer, jurisdiction)
+
+        return vin_data_collection
+
+    def process_data(self) -> VinDataCollection:
+        """
+        Process data using FleetDataFrame and FileManager
+        """
+        # Read data from the file using FileManager
+        df = self.file_manager.read_file(self.input_file, self.data_type)
+
+        # Initialize FleetDataFrame with the read data
+        self.fleet_dataframe = FleetDataFrame(df)
+
+        # Reduce and split the FleetDataFrame
+        self.fleet_dataframe.reduce_df()
+        self.fleet_dataframe.split_date_time()
+
+        # Transform FleetDataFrame into VinDataCollection
+        vin_data_collection = self.transform_data(self.fleet_dataframe)
 
         return vin_data_collection
 

@@ -20,9 +20,10 @@ def main():
         st.warning('Please upload an Excel file.')
         return
     input_file = input_file.read()
-    
+
     # Process input file as bytes
-    vin_data_collection = process_data(input_file, data_type='bytes')
+    fuel_tax_processor = FuelTaxProcessor(input_file, data_type='bytes')
+    vin_data_collection = fuel_tax_processor.process_data()
 
     # Get dataframe object from VinDataCollection object
     df = vin_data_collection.to_dataframe()
