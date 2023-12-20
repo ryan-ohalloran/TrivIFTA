@@ -15,11 +15,11 @@ def main():
         st.warning('Please upload at least one Excel file.')
         return
 
-    for input_file in input_files:
+    for i, input_file in enumerate(input_files):
         st.write(f"### File: {input_file.name}")
 
         # Display date selector for each file
-        file_date = st.date_input('Select a date for this file')
+        file_date = st.date_input(f'Select a date for file {i + 1}', key=f'date_{i}')
         
         # Process input file as bytes
         fuel_tax_processor = FuelTaxProcessor(input_file.read(), data_type='bytes')
