@@ -91,9 +91,8 @@ class MyGeotabAPI(mygeotab.API):
         
 
 # my_geotab_api = MyGeotabAPI()
-
-# from_date = datetime(2023, 12, 14, 0, 0, 0)
-# to_date = datetime(2023, 12, 15, 0, 0, 0)
+# from_date = datetime(2023, 12, 17, 0, 0, 0)
+# to_date = datetime(2023, 12, 18, 0, 0, 0)
 
 # vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
-# vin_data_collection.export_data('geotab_test.csv')
+# vin_data_collection.export_data('geotab_test_1217.csv')
