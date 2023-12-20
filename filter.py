@@ -205,7 +205,7 @@ class FuelTaxProcessor:
         self.fleet_dataframe.split_date_time()
 
         # Transform FleetDataFrame into VinDataCollection
-        vin_data_collection = self.transform_data(self.fleet_dataframe)
+        vin_data_collection = self.to_vin_data_collection(self.fleet_dataframe)
 
         return vin_data_collection
 
