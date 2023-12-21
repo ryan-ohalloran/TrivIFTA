@@ -213,11 +213,3 @@ class FuelTaxProcessor:
         vin_data_collection = self.to_vin_data_collection(self.fleet_dataframe)
 
         return vin_data_collection
-
-# test out the code by processing sample data from 'Default Fuel Tax Report_20231217_200915.xlsx'
-if __name__ == '__main__':
-    input_file = 'Default Fuel Tax Report_20231217_200915.xlsx'
-    fuel_tax_processor = FuelTaxProcessor(input_file)
-    vin_data_collection = fuel_tax_processor.process_data()
-    vin_data_collection.export_data('test.csv')
-    print('Done')
