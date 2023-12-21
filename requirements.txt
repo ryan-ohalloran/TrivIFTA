@@ -3,4 +3,3 @@ streamlit
 numpy
 openpyxl
 datetime
-ftplib
