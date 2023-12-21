@@ -13,16 +13,17 @@ class VinData:
     Class to hold data for each unique VIN
     """
     def __init__(self, vin: str) -> None:
+
         self.vin = vin
         self.data = []
     
     def add_entry(self, reading_date: date, reading_time: time, odometer: int, jurisdiction: str) -> None:
-        self.data.append( {
+        self.data.append({
             'ReadingDate': reading_date,
             'ReadingTime': reading_time,
             'Odometer': odometer,
             'Jurisdiction': jurisdiction
-        } )
+        })
 
 class VinDataCollection(Dict[str, VinData]):
     """
@@ -170,6 +171,10 @@ class FuelTaxProcessor:
             enter_odometer = int(row['FuelTaxEnterOdometer'])
             exit_odometer = int(row['FuelTaxExitOdometer'])
             jurisdiction = row['FuelTaxJurisdiction']
+
+            # if jurisdiction is empty, skip this row
+            if jurisdiction in ('nan', None, '', ' '):
+                continue
 
             # Add this VIN to the VinDataCollection if it doesn't already exist
             vin_data_collection.add_vin_data(vin)

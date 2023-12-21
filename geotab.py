@@ -5,8 +5,10 @@ from pprint import pprint
 import pandas as pd
 from typing import Dict, Any, List
 from datetime import datetime, time
+from events import NoFuelTaxDataException
 from filter import FuelTaxProcessor, VinDataCollection
 
+KILO_TO_MILES = 0.621371
 
 class MyGeotabAPI(mygeotab.API):
     def __init__(self, username: str, password: str, database: str) -> None:
@@ -20,24 +22,29 @@ class MyGeotabAPI(mygeotab.API):
         self.detail_map = {}
 
     def get_fuel_tax_details(self, from_date: datetime, to_date: datetime) -> List[Dict[str, Any]]:
-        return self.get('FuelTaxDetail', fromDate=from_date, toDate=to_date, includeHourlyData=False, includeBoundaries=False)
+        fuel_tax_details = self.get('FuelTaxDetail', fromDate=from_date, toDate=to_date, includeHourlyData=False, includeBoundaries=False)
+
+        if not fuel_tax_details:
+            raise NoFuelTaxDataException('No data returned from FuelTaxDetails endpoint.')
+        
+        return fuel_tax_details
 
     def get_devices(self, from_date: datetime, to_date: datetime) -> List[Dict[str, Any]]:
         # Return all devices in the group 'Ifta Group'
         return self.get('Device', fromDate=from_date, toDate=to_date)
 
-    def get_vin_map(self, from_date: datetime, to_date: datetime) -> Dict[str, str]:
+    def get_device_to_vin(self, from_date: datetime, to_date: datetime) -> Dict[str, str]:
         device_list = self.get_devices(from_date, to_date)
         return {device['id']: device['vehicleIdentificationNumber'] for device in device_list if device.get('vehicleIdentificationNumber', None) and device.get('id', None)}
 
     def get_vin(self, device_id: str) -> str:
-        return self.get_vin_map()[device_id]
+        return self.get_device_to_vin()[device_id]
 
     def init_detail_map(self, from_date: datetime, to_date: datetime) -> None:
 
         fuel_tax_details = self.get_fuel_tax_details(from_date, to_date)
-        vin_map = self.get_vin_map(from_date, to_date)
-
+        device_to_vin = self.get_device_to_vin(from_date, to_date)
+        
         for detail in fuel_tax_details:
             if detail['device']['id'] not in self.detail_map:
                 self.detail_map[detail['device']['id']] = [detail]
@@ -45,9 +52,9 @@ class MyGeotabAPI(mygeotab.API):
                 self.detail_map[detail['device']['id']].append(detail)
 
         for device_id in list(self.detail_map):
-            if device_id in vin_map:
+            if device_id in device_to_vin:
                 for detail in self.detail_map[device_id]:
-                    detail['vehicleIdentificationNumber'] = vin_map[device_id]
+                    detail['vehicleIdentificationNumber'] = device_to_vin[device_id]
             else:
                 for detail in self.detail_map[device_id]:
                     detail['vehicleIdentificationNumber'] = None
@@ -59,7 +66,7 @@ class MyGeotabAPI(mygeotab.API):
         Creates a dataframe object using the data in the detail_map
         '''
         reduced_detail_map = []
-        for device_id, details in sorted(self.detail_map.items(), key=lambda x: x[0]):
+        for _, details in sorted(self.detail_map.items(), key=lambda x: x[0]):
             for detail in details:
                 vin = detail['vehicleIdentificationNumber']
                 reduced_detail_map.append({
@@ -67,8 +74,8 @@ class MyGeotabAPI(mygeotab.API):
                     'EnterReadingDate': detail['enterTime'].date() if detail.get('enterTime', None) else None,  
                     'EnterReadingTime': detail['enterTime'].replace(microsecond=0).time() if detail.get('enterTime', None) else None,
                     'ExitReadingTime': detail['exitTime'].replace(microsecond=0).time() if detail.get('exitTime', None) else None,
-                    'FuelTaxEnterOdometer': detail.get('enterOdometer', None),
-                    'FuelTaxExitOdometer': detail.get('exitOdometer', None),
+                    'FuelTaxEnterOdometer': (detail['enterOdometer'] * KILO_TO_MILES) if detail.get('enterOdometer', None) else None,
+                    'FuelTaxExitOdometer': (detail['exitOdometer'] * KILO_TO_MILES) if detail.get('exitOdometer', None) else None,
                     'FuelTaxJurisdiction': detail.get('jurisdiction', None),
                 })
             # change the last detail in the list to have an exit time of 00:00:00
@@ -89,10 +96,3 @@ class MyGeotabAPI(mygeotab.API):
         # return the VinDataCollection object from the dataframe
         return FuelTaxProcessor.to_vin_data_collection(df)
         
-
-# my_geotab_api = MyGeotabAPI()
-# from_date = datetime(2023, 12, 17, 0, 0, 0)
-# to_date = datetime(2023, 12, 18, 0, 0, 0)
-
-# vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
-# vin_data_collection.export_data('geotab_test_1217.csv')
