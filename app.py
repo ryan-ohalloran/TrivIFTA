@@ -42,7 +42,10 @@ def process_geotab_api_data():
                                 database=st.secrets.MYGEOTAB_DATABASE)
     
     date_picker_range = st.date_input("Select date range", value=(datetime.now().date(), datetime.now().date()), key="date_range")
-    if len(date_picker_range) == 2:
+
+    go_button = st.button("Go")
+
+    if go_button and len(date_picker_range) == 2:
         for single_date in daterange(date_picker_range[0], date_picker_range[1]):
             from_date = datetime.combine(single_date, datetime.min.time())
             to_date = datetime.combine(single_date + timedelta(days=1), datetime.min.time())
@@ -52,6 +55,8 @@ def process_geotab_api_data():
             st.download_button(label=f'Download Filtered Dataset ({to_date.date()})', 
                             data=df.to_csv(), 
                             file_name=f"Geotab_{to_date.year}_{to_date.month:02d}_{to_date.day:02d}.csv")
+    elif go_button:
+        st.warning("Please select a valid date range.")
         
 
 def daterange(start_date, end_date):
