@@ -42,15 +42,16 @@ def process_geotab_api_data():
                                 database=st.secrets.MYGEOTAB_DATABASE)
     
     date_picker_range = st.date_input("Select date range", value=(datetime.now().date(), datetime.now().date()), key="date_range")
-    for single_date in daterange(date_picker_range[0], date_picker_range[1]):
-        from_date = datetime.combine(single_date, datetime.min.time())
-        to_date = datetime.combine(single_date + timedelta(days=1), datetime.min.time())
-        geotab_vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
-        df = geotab_vin_data_collection.to_dataframe()
-        st.dataframe(df)
-        st.download_button(label=f'Download Filtered Dataset ({to_date.date()})', 
-                           data=df.to_csv(), 
-                           file_name=f"Geotab_{to_date.year}_{to_date.month:02d}_{to_date.day:02d}.csv")
+    if len(date_picker_range) == 2:
+        for single_date in daterange(date_picker_range[0], date_picker_range[1]):
+            from_date = datetime.combine(single_date, datetime.min.time())
+            to_date = datetime.combine(single_date + timedelta(days=1), datetime.min.time())
+            geotab_vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
+            df = geotab_vin_data_collection.to_dataframe()
+            st.dataframe(df)
+            st.download_button(label=f'Download Filtered Dataset ({to_date.date()})', 
+                            data=df.to_csv(), 
+                            file_name=f"Geotab_{to_date.year}_{to_date.month:02d}_{to_date.day:02d}.csv")
         
 
 def daterange(start_date, end_date):
