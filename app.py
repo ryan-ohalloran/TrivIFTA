@@ -53,7 +53,7 @@ def process_geotab_api_data():
             st.warning("Please select a valid date range.")
             return
         
-        for single_date in daterange(date_picker_range[0], date_picker_range[1] + timedelta(days=1)):
+        for single_date in daterange(date_picker_range[0], date_picker_range[1]):
             my_geotab_api = MyGeotabAPI(username=st.secrets.MYGEOTAB_USERNAME, 
                                         password=st.secrets.MYGEOTAB_PASSWORD, 
                                         database=st.secrets.MYGEOTAB_DATABASE)
