@@ -60,6 +60,7 @@ class MyGeotabAPI(mygeotab.API):
             else:
                 self.detail_map[detail['device']['id']].append(detail)
 
+        skipped_devices = []
         for device_id in list(self.detail_map):
             # Skip devices that are not in IFTA group (or do  not have a VIN)
             if device_id in device_to_vin:
@@ -68,7 +69,10 @@ class MyGeotabAPI(mygeotab.API):
             else:
                 for detail in self.detail_map[device_id]:
                     detail['vehicleIdentificationNumber'] = None
-                print('Skipping: ' + device_id + ' (not in IFTA group)')
+                skipped_devices.append(device_id)
+        
+        print(f'Skipped devices: {skipped_devices}')
+                
 
 
     def to_dataframe(self) -> pd.DataFrame:
