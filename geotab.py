@@ -53,28 +53,23 @@ class MyGeotabAPI(mygeotab.API):
 
         fuel_tax_details = self.get_fuel_tax_details(from_date, to_date)
         device_to_vin = self.get_device_to_vin(from_date, to_date)
-        
+
+        skipped_devices = set()
         for detail in fuel_tax_details:
+            # Skip devices that are not in the IFTA group
+            if detail['device']['id'] not in device_to_vin:
+                skipped_devices.add(detail['device']['id'])
+                continue
+            # Add details to the detail map
             if detail['device']['id'] not in self.detail_map:
                 self.detail_map[detail['device']['id']] = [detail]
+                self.detail_map[detail['device']['id']][0]['vehicleIdentificationNumber'] = device_to_vin[detail['device']['id']]
             else:
                 self.detail_map[detail['device']['id']].append(detail)
+                self.detail_map[detail['device']['id']][-1]['vehicleIdentificationNumber'] = device_to_vin[detail['device']['id']]
 
-        skipped_devices = []
-        for device_id in list(self.detail_map):
-            # Skip devices that are not in IFTA group (or do  not have a VIN)
-            if device_id in device_to_vin:
-                for detail in self.detail_map[device_id]:
-                    detail['vehicleIdentificationNumber'] = device_to_vin[device_id]
-            else:
-                for detail in self.detail_map[device_id]:
-                    detail['vehicleIdentificationNumber'] = None
-                skipped_devices.append(device_id)
-        
         print(f'Skipped devices: {skipped_devices}')
                 
-
-
     def to_dataframe(self) -> pd.DataFrame:
         '''
         Creates a dataframe object using the data in the detail_map
