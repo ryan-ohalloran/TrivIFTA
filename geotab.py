@@ -35,7 +35,7 @@ class MyGeotabAPI(mygeotab.API):
         
         return fuel_tax_details
 
-    def get_devices(self, from_date: datetime, to_date: datetime) -> List[Dict[str, Any]]:
+    def get_ifta_devices(self, from_date: datetime, to_date: datetime) -> List[Dict[str, Any]]:
         # Return all unique devices in the group 'Ifta Group'
         return self.get('Device', 
                         fromDate=from_date, 
@@ -53,7 +53,6 @@ class MyGeotabAPI(mygeotab.API):
 
         fuel_tax_details = self.get_fuel_tax_details(from_date, to_date)
         device_to_vin = self.get_device_to_vin(from_date, to_date)
-        ifta_devices = self.get_ifta_devices(from_date, to_date)
         
         for detail in fuel_tax_details:
             if detail['device']['id'] not in self.detail_map:
