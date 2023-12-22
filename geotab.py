@@ -35,7 +35,7 @@ class MyGeotabAPI(mygeotab.API):
         
         return fuel_tax_details
 
-    def get_ifta_devices(self, from_date: datetime, to_date: datetime) -> Set(str):
+    def get_ifta_devices(self, from_date: datetime, to_date: datetime) -> Set[str]:
         # Return all unique devices in the group 'Ifta Group'
         devices_in_group = self.get('Device', 
                                     fromDate=from_date, 
