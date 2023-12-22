@@ -43,9 +43,6 @@ def process_manual_upload():
 
 def process_geotab_api_data():
     # Code for Geotab API data retrieval
-    my_geotab_api = MyGeotabAPI(username=st.secrets.MYGEOTAB_USERNAME, 
-                                password=st.secrets.MYGEOTAB_PASSWORD, 
-                                database=st.secrets.MYGEOTAB_DATABASE)
     
     date_picker_range = st.date_input("Select date range", value=(datetime.now().date(), datetime.now().date()), key="date_range")
 
@@ -56,22 +53,23 @@ def process_geotab_api_data():
             st.warning("Please select a valid date range.")
             return
         
-        dataframes, df_index = [], 0  # list to store the dataframes
         for single_date in daterange(date_picker_range[0], date_picker_range[1] + timedelta(days=1)):
+            my_geotab_api = MyGeotabAPI(username=st.secrets.MYGEOTAB_USERNAME, 
+                                        password=st.secrets.MYGEOTAB_PASSWORD, 
+                                        database=st.secrets.MYGEOTAB_DATABASE)
             from_date = datetime.combine(single_date, datetime.min.time())
             to_date = datetime.combine(single_date + timedelta(days=1), datetime.min.time())
             geotab_vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
-            dataframes.append(geotab_vin_data_collection.to_dataframe())
-            st.dataframe(dataframes[df_index])
+            df = geotab_vin_data_collection.to_dataframe()
+            st.dataframe(df)
             file_name = f"Ohalloran_{to_date.year}_{to_date.month:02d}_{to_date.day:02d}.csv"
             # add a streamlit button to send the data to the FTP server
             send_to_ftp_button = st.button(f"Send ({file_name}) to FTP")
             if send_to_ftp_button:
-                send_to_ftp(dataframes[df_index], file_name)
+                send_to_ftp(df, file_name)
             st.download_button(label=f'Alternatively, download this dataset: ({file_name})', 
-                data=dataframes[df_index].to_csv(), 
+                data=df.to_csv(), 
                 file_name=f"{file_name}")
-            df_index += 1
             
     elif go_button:
         st.warning("Please select a valid date range.")
