@@ -74,7 +74,9 @@ class MyGeotabAPI(mygeotab.API):
         reduced_detail_map = []
         for _, details in sorted(self.detail_map.items(), key=lambda x: x[0]):
             for detail in details:
-                vin = detail['vehicleIdentificationNumber']
+                vin = detail.get('vehicleIdentificationNumber', None)
+                if not vin:
+                    continue
                 reduced_detail_map.append({
                     'FuelTaxVin': vin,
                     'EnterReadingDate': detail['enterTime'].date() if detail.get('enterTime', None) else None,  
