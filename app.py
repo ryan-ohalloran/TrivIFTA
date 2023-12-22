@@ -61,6 +61,7 @@ def process_geotab_api_data():
             to_date = datetime.combine(single_date + timedelta(days=1), datetime.min.time())
             geotab_vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
             df = geotab_vin_data_collection.to_dataframe()
+            st.write(f"### Date: {from_date.date()} 00:00:00 - {to_date.date()} 00:00:00")
             st.dataframe(df)
             file_name = f"Ohalloran_{to_date.year}_{to_date.month:02d}_{to_date.day:02d}.csv"
             # add a streamlit button to send the data to the FTP server

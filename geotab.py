@@ -95,9 +95,6 @@ class MyGeotabAPI(mygeotab.API):
             # change the last detail in the list to have an exit time of 00:00:00
             if reduced_detail_map:
                 reduced_detail_map[-1]['ExitReadingTime'] = time(0, 0)
-        # iterate through the reduced_detail_map, count the number of unique vins, and print to the terminal
-        unique_vins = set([detail['FuelTaxVin'] for detail in reduced_detail_map])
-        print(f'Number of unique VINs: {len(unique_vins)}')
 
 
         return pd.DataFrame(reduced_detail_map)

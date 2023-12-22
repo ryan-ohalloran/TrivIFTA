@@ -168,8 +168,14 @@ class FuelTaxProcessor:
             enter_reading_date = row['EnterReadingDate']
             enter_reading_time = row['EnterReadingTime']
             exit_reading_time = row['ExitReadingTime']
-            enter_odometer = round(row['FuelTaxEnterOdometer']) # round to nearest whole number
-            exit_odometer = round(row['FuelTaxExitOdometer'])
+            try:
+                enter_odometer = round(row['FuelTaxEnterOdometer'])  # round to nearest whole number
+            except ValueError:
+                enter_odometer = None  # or some other default value
+            try:
+                exit_odometer = round(row['FuelTaxExitOdometer'])
+            except ValueError:
+                exit_odometer = None
             jurisdiction = row['FuelTaxJurisdiction']
 
             # if jurisdiction is empty, skip this row
