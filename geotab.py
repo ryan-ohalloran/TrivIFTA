@@ -89,7 +89,8 @@ class MyGeotabAPI(mygeotab.API):
                     'FuelTaxJurisdiction': detail.get('jurisdiction', None),
                 })
             # change the last detail in the list to have an exit time of 00:00:00
-            reduced_detail_map[-1]['ExitReadingTime'] = time(0, 0)
+            if reduced_detail_map:
+                reduced_detail_map[-1]['ExitReadingTime'] = time(0, 0)
         
         return pd.DataFrame(reduced_detail_map)
 
