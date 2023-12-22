@@ -45,7 +45,7 @@ class MyGeotabAPI(mygeotab.API):
         return set([device['id'] for device in devices_in_group])
 
     def get_device_to_vin(self, from_date: datetime, to_date: datetime) -> Dict[str, str]:
-        device_list = self.get_devices(from_date, to_date)
+        device_list = self.get_ifta_devices(from_date, to_date)
         return {device['id']: device['vehicleIdentificationNumber'] for device in device_list if device.get('vehicleIdentificationNumber', None) and device.get('id', None)}
 
     def get_vin(self, device_id: str) -> str:
