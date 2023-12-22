@@ -3,15 +3,15 @@
 import mygeotab
 from pprint import pprint
 import pandas as pd
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Set
 from datetime import datetime, time
 from ftplib import FTP
 import io
 from events import NoFuelTaxDataException
 from ifta import FuelTaxProcessor, VinDataCollection
 
-KILO_TO_MILES = 0.621371
-GEOTAB_GROUPS = ['b2757'] # if more groups need to be added in the future, add them to this list
+KILO_TO_MILES = 0.62137119
+IFTA_GROUP = [{'id': 'b279F'}] # if more groups need to be added in the future, add them to this list
 
 class MyGeotabAPI(mygeotab.API):
     def __init__(self, username: str, password: str, database: str) -> None:
@@ -29,17 +29,20 @@ class MyGeotabAPI(mygeotab.API):
                                     fromDate=from_date, 
                                     toDate=to_date, 
                                     includeHourlyData=False, 
-                                    includeBoundaries=False,
-                                    groups=GEOTAB_GROUPS)
-
+                                    includeBoundaries=False)
         if not fuel_tax_details:
             raise NoFuelTaxDataException('No data returned from FuelTaxDetails endpoint.')
         
         return fuel_tax_details
 
-    def get_devices(self, from_date: datetime, to_date: datetime) -> List[Dict[str, Any]]:
-        # Return all devices in the group 'Ifta Group'
-        return self.get('Device', fromDate=from_date, toDate=to_date)
+    def get_ifta_devices(self, from_date: datetime, to_date: datetime) -> Set(str):
+        # Return all unique devices in the group 'Ifta Group'
+        devices_in_group = self.get('Device', 
+                                    fromDate=from_date, 
+                                    toDate=to_date, 
+                                    search={'groups': IFTA_GROUP})
+        # get all unique device ids from the devices in the group
+        return set([device['id'] for device in devices_in_group])
 
     def get_device_to_vin(self, from_date: datetime, to_date: datetime) -> Dict[str, str]:
         device_list = self.get_devices(from_date, to_date)
@@ -48,12 +51,16 @@ class MyGeotabAPI(mygeotab.API):
     def get_vin(self, device_id: str) -> str:
         return self.get_device_to_vin()[device_id]
 
-    def init_detail_map(self, from_date: datetime, to_date: datetime) -> None:
+    def init_detail_map(self, from_date: datetime, to_date: datetime, ifta_only: bool = True) -> None:
 
         fuel_tax_details = self.get_fuel_tax_details(from_date, to_date)
         device_to_vin = self.get_device_to_vin(from_date, to_date)
+        ifta_devices = self.get_ifta_devices(from_date, to_date)
         
         for detail in fuel_tax_details:
+            # Skip any devices not in the IFTA group
+            if ifta_only and detail['device']['id'] not in ifta_devices:
+                continue
             if detail['device']['id'] not in self.detail_map:
                 self.detail_map[detail['device']['id']] = [detail]
             else:

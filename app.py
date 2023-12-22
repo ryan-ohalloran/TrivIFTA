@@ -6,17 +6,21 @@ from geotab import MyGeotabAPI, GeotabFTP
 import pandas as pd
 import io
 
-def main():
-    st.title("IFTA Webapp")
-    st.write("Transform GeoTab data into IFTA-compliant data.")
+def daterange(start_date, end_date):
+    for n in range(int((end_date - start_date).days + 1)):
+        yield start_date + timedelta(n)
 
-    tab1, tab2 = st.tabs(["Manual Document Upload", "Geotab API Data Retrieval"])
-
-    with tab1:
-        process_manual_upload()
-
-    with tab2:
-        process_geotab_api_data()
+def send_to_ftp(data: pd.DataFrame, filename: str) -> None:
+    ftp = GeotabFTP(host=st.secrets.FTP_HOST)
+    ftp.login(username=st.secrets.FTP_USERNAME, password=st.secrets.FTP_KEY)
+    data_csv = data.to_csv(index=False).encode('utf-8')
+    try:
+        ftp.storbinary(f'STOR {filename}', io.BytesIO(data_csv))
+    except Exception as e:
+        st.error(e)
+    # if successfull, show a success message
+    else:
+        st.success(f"Successfully sent {filename} to FTP server🔥")
 
 def process_manual_upload():
     # functionality for manual document upload
@@ -51,8 +55,9 @@ def process_geotab_api_data():
         if date_picker_range[0] > date_picker_range[1]:
             st.warning("Please select a valid date range.")
             return
-
-        for single_date in daterange(date_picker_range[0], date_picker_range[1]):
+        
+        # TODO: Figure out why day two on a two day range includes the data from day one and day two
+        for single_date in daterange(date_picker_range[0], date_picker_range[1] + timedelta(days=1)):
             from_date = datetime.combine(single_date, datetime.min.time())
             to_date = datetime.combine(single_date + timedelta(days=1), datetime.min.time())
             geotab_vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
@@ -63,26 +68,24 @@ def process_geotab_api_data():
             send_to_ftp_button = st.button(f"Send ({file_name}) to FTP")
             if send_to_ftp_button:
                 send_to_ftp(df, file_name)
+            st.download_button(label=f'Alternatively, download this dataset: ({file_name})', 
+                data=df.to_csv(), 
+                file_name=f"{file_name}")
             
     elif go_button:
         st.warning("Please select a valid date range.")
         
+def main():
+    st.title("IFTA Webapp")
+    st.write("Transform GeoTab data into IFTA-compliant data.")
 
-def daterange(start_date, end_date):
-    for n in range(int((end_date - start_date).days + 1)):
-        yield start_date + timedelta(n)
+    tab1, tab2 = st.tabs(["Manual Document Upload", "Geotab API Data Retrieval"])
 
-def send_to_ftp(data: pd.DataFrame, filename: str) -> None:
-    ftp = GeotabFTP(host=st.secrets.FTP_HOST)
-    ftp.login(username=st.secrets.FTP_USERNAME, password=st.secrets.FTP_KEY)
-    data_csv = data.to_csv(index=False).encode('utf-8')
-    try:
-        ftp.storbinary(f'STOR {filename}', io.BytesIO(data_csv))
-    except Exception as e:
-        st.error(e)
-    # if successfull, show a success message
-    else:
-        st.success(f"Successfully sent {filename} to FTP server🔥")
+    with tab1:
+        process_manual_upload()
+
+    with tab2:
+        process_geotab_api_data()
 
 if __name__ == '__main__':
     main()
