@@ -68,7 +68,7 @@ class MyGeotabAPI(mygeotab.API):
             else:
                 for detail in self.detail_map[device_id]:
                     detail['vehicleIdentificationNumber'] = None
-                print('VIN not found for device id: ' + device_id)
+                print('Skipping: ' + device_id + ' (not in IFTA group)')
 
 
     def to_dataframe(self) -> pd.DataFrame:
@@ -91,7 +91,11 @@ class MyGeotabAPI(mygeotab.API):
             # change the last detail in the list to have an exit time of 00:00:00
             if reduced_detail_map:
                 reduced_detail_map[-1]['ExitReadingTime'] = time(0, 0)
-        
+        # iterate through the reduced_detail_map, count the number of unique vins, and print to the terminal
+        unique_vins = set([detail['FuelTaxVin'] for detail in reduced_detail_map])
+        print(f'Number of unique VINs: {len(unique_vins)}')
+
+
         return pd.DataFrame(reduced_detail_map)
 
     def to_vin_data_collection(self, fromDate: datetime, toDate: datetime) -> VinDataCollection:
