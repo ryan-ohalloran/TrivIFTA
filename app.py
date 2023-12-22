@@ -44,10 +44,12 @@ def process_manual_upload():
 def process_geotab_api_data():
     # Code for Geotab API data retrieval
     
-    date_picker_range = st.date_input("Select date range", value=(datetime.now().date(), datetime.now().date()), key="date_range")
+    date_picker_range = st.date_input("Select one day or multiple days", value=(datetime.now().date(), datetime.now().date()), key="date_range")
 
     go_button = st.button("Go")
 
+    # TODO: API calls rate limiting -- maybe limit to only a few days at a time?
+    # TODO: if download one file, all the rest go away
     if go_button and len(date_picker_range) == 2:
         if date_picker_range[0] > date_picker_range[1]:
             st.warning("Please select a valid date range.")
@@ -63,7 +65,7 @@ def process_geotab_api_data():
             df = geotab_vin_data_collection.to_dataframe()
             st.write(f"Date: {from_date.date()} 12:00 AM - {from_date.date()} 11:59 PM")
             st.dataframe(df)
-            file_name = f"Ohalloran_{to_date.year}_{to_date.month:02d}_{to_date.day:02d}.csv"
+            file_name = f"Ohalloran_{from_date.year}_{from_date.month:02d}_{from_date.day:02d}.csv"
             # add a streamlit button to send the data to the FTP server
             send_to_ftp_button = st.button(f"Send ({file_name}) to FTP")
             if send_to_ftp_button:
@@ -79,7 +81,7 @@ def main():
     st.title("IFTA Webapp")
     st.write("Transform GeoTab data into IFTA-compliant data.")
 
-    tab1, tab2 = st.tabs(["Manual Document Upload", "Geotab API Data Retrieval"])
+    tab1, tab2 = st.tabs(["Manual Document Upload", "Automatic Process"])
 
     with tab1:
         process_manual_upload()
