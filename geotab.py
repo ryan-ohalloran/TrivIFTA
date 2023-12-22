@@ -3,7 +3,7 @@
 import mygeotab
 from pprint import pprint
 import pandas as pd
-from typing import Dict, Any, List, Set
+from typing import Dict, Any, List
 from datetime import datetime, time
 from ftplib import FTP
 import io
@@ -35,14 +35,12 @@ class MyGeotabAPI(mygeotab.API):
         
         return fuel_tax_details
 
-    def get_ifta_devices(self, from_date: datetime, to_date: datetime) -> Set[str]:
+    def get_devices(self, from_date: datetime, to_date: datetime) -> List[Dict[str, Any]]:
         # Return all unique devices in the group 'Ifta Group'
-        devices_in_group = self.get('Device', 
-                                    fromDate=from_date, 
-                                    toDate=to_date, 
-                                    search={'groups': IFTA_GROUP})
-        # get all unique device ids from the devices in the group
-        return set([device['id'] for device in devices_in_group])
+        return self.get('Device', 
+                        fromDate=from_date, 
+                        toDate=to_date, 
+                        search={'groups': IFTA_GROUP})
 
     def get_device_to_vin(self, from_date: datetime, to_date: datetime) -> Dict[str, str]:
         device_list = self.get_ifta_devices(from_date, to_date)
@@ -51,29 +49,23 @@ class MyGeotabAPI(mygeotab.API):
     def get_vin(self, device_id: str) -> str:
         return self.get_device_to_vin()[device_id]
 
-    def init_detail_map(self, from_date: datetime, to_date: datetime, ifta_only: bool = True) -> None:
+    def init_detail_map(self, from_date: datetime, to_date: datetime) -> None:
 
         fuel_tax_details = self.get_fuel_tax_details(from_date, to_date)
         device_to_vin = self.get_device_to_vin(from_date, to_date)
         ifta_devices = self.get_ifta_devices(from_date, to_date)
         
         for detail in fuel_tax_details:
-            # Skip any devices not in the IFTA group
-            if ifta_only and detail['device']['id'] not in ifta_devices:
-                continue
             if detail['device']['id'] not in self.detail_map:
                 self.detail_map[detail['device']['id']] = [detail]
             else:
                 self.detail_map[detail['device']['id']].append(detail)
 
         for device_id in list(self.detail_map):
+            # Skip devices that are not in IFTA group (or do  not have a VIN)
             if device_id in device_to_vin:
                 for detail in self.detail_map[device_id]:
                     detail['vehicleIdentificationNumber'] = device_to_vin[device_id]
-            else:
-                for detail in self.detail_map[device_id]:
-                    detail['vehicleIdentificationNumber'] = None
-                print('VIN not found for device id: ' + device_id)
 
 
     def to_dataframe(self) -> pd.DataFrame:
