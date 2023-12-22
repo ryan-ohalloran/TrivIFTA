@@ -65,6 +65,10 @@ class MyGeotabAPI(mygeotab.API):
             if device_id in device_to_vin:
                 for detail in self.detail_map[device_id]:
                     detail['vehicleIdentificationNumber'] = device_to_vin[device_id]
+            else:
+                for detail in self.detail_map[device_id]:
+                    detail['vehicleIdentificationNumber'] = None
+                print('VIN not found for device id: ' + device_id)
 
 
     def to_dataframe(self) -> pd.DataFrame:
@@ -75,8 +79,6 @@ class MyGeotabAPI(mygeotab.API):
         for _, details in sorted(self.detail_map.items(), key=lambda x: x[0]):
             for detail in details:
                 vin = detail.get('vehicleIdentificationNumber', None)
-                if not vin:
-                    continue
                 reduced_detail_map.append({
                     'FuelTaxVin': vin,
                     'EnterReadingDate': detail['enterTime'].date() if detail.get('enterTime', None) else None,  
