@@ -5,10 +5,13 @@ from pprint import pprint
 import pandas as pd
 from typing import Dict, Any, List
 from datetime import datetime, time
+from ftplib import FTP
+import io
 from events import NoFuelTaxDataException
-from filter import FuelTaxProcessor, VinDataCollection
+from ifta import FuelTaxProcessor, VinDataCollection
 
 KILO_TO_MILES = 0.621371
+GEOTAB_GROUPS = ['b2757'] # if more groups need to be added in the future, add them to this list
 
 class MyGeotabAPI(mygeotab.API):
     def __init__(self, username: str, password: str, database: str) -> None:
@@ -22,7 +25,12 @@ class MyGeotabAPI(mygeotab.API):
         self.detail_map = {}
 
     def get_fuel_tax_details(self, from_date: datetime, to_date: datetime) -> List[Dict[str, Any]]:
-        fuel_tax_details = self.get('FuelTaxDetail', fromDate=from_date, toDate=to_date, includeHourlyData=False, includeBoundaries=False)
+        fuel_tax_details = self.get('FuelTaxDetail', 
+                                    fromDate=from_date, 
+                                    toDate=to_date, 
+                                    includeHourlyData=False, 
+                                    includeBoundaries=False,
+                                    groups=GEOTAB_GROUPS)
 
         if not fuel_tax_details:
             raise NoFuelTaxDataException('No data returned from FuelTaxDetails endpoint.')
@@ -95,4 +103,19 @@ class MyGeotabAPI(mygeotab.API):
 
         # return the VinDataCollection object from the dataframe
         return FuelTaxProcessor.to_vin_data_collection(df)
+
+class GeotabFTP(FTP):
+    def __init__(self, host: str):
+        super().__init__(host)
+    
+    def login(self, username: str = 'geotab', password: str = '') -> None:
+        super().login(username, password)
+
+        # check for success
+        if not self.getwelcome():
+            raise Exception('Failed to login to FTP server.')
         
+        self.cwd('/')
+    
+    def storbinary(self, command: str, file: io.BytesIO) -> None:
+        super().storbinary(command, file)

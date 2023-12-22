@@ -146,7 +146,7 @@ class FuelTaxProcessor:
     """
     Class to coordinate operations of reading data, processing it, and exporting the results
     """
-    def __init__(self, input_file: Any, data_type='path') -> None:
+    def __init__(self, input_file: Any, data_type: str = 'path') -> None:
         self.file_manager = FileManager()
         self.fleet_dataframe = FleetDataFrame()
         self.input_file = input_file
@@ -168,8 +168,8 @@ class FuelTaxProcessor:
             enter_reading_date = row['EnterReadingDate']
             enter_reading_time = row['EnterReadingTime']
             exit_reading_time = row['ExitReadingTime']
-            enter_odometer = int(row['FuelTaxEnterOdometer'])
-            exit_odometer = int(row['FuelTaxExitOdometer'])
+            enter_odometer = round(row['FuelTaxEnterOdometer']) # round to nearest whole number
+            exit_odometer = round(row['FuelTaxExitOdometer'])
             jurisdiction = row['FuelTaxJurisdiction']
 
             # if jurisdiction is empty, skip this row
