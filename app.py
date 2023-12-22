@@ -51,9 +51,6 @@ def process_geotab_api_data():
         if date_picker_range[0] > date_picker_range[1]:
             st.warning("Please select a valid date range.")
             return
-        # if only selecting one day, add one day to the end date to capture that full day
-        elif date_picker_range[0] == date_picker_range[1]:
-            date_picker_range[1] = date_picker_range[0] + timedelta(days=1)
 
         for single_date in daterange(date_picker_range[0], date_picker_range[1]):
             from_date = datetime.combine(single_date, datetime.min.time())
@@ -72,7 +69,7 @@ def process_geotab_api_data():
         
 
 def daterange(start_date, end_date):
-    for n in range(int((end_date - start_date).days)):
+    for n in range(int((end_date - start_date).days + 1)):
         yield start_date + timedelta(n)
 
 def send_to_ftp(data: pd.DataFrame, filename: str) -> None:
