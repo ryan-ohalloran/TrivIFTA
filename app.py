@@ -18,7 +18,7 @@ def send_to_ftp(data: pd.DataFrame, filename: str) -> None:
         ftp.storbinary(f'STOR {filename}', io.BytesIO(data_csv))
     except Exception as e:
         st.error(e)
-    # if successfull, show a success message
+    # if successful, show a success message
     else:
         st.success(f"Successfully sent {filename} to FTP server🔥")
 
@@ -44,7 +44,7 @@ def process_manual_upload():
 def process_geotab_api_data():
     # Code for Geotab API data retrieval
     
-    date_picker_range = st.date_input("Select one day or multiple days", value=(datetime.now().date(), datetime.now().date()), key="date_range")
+    date_picker_range = st.date_input("Select one day or multiple days (up to 4 days at a time)", value=(datetime.now().date(), datetime.now().date()), key="date_range")
 
     go_button = st.button("Go")
 
@@ -54,15 +54,23 @@ def process_geotab_api_data():
         if date_picker_range[0] > date_picker_range[1]:
             st.warning("Please select a valid date range.")
             return
+        # check if the date range is longer than 4 days (if it is, warn the user and don't continue until's it is 4 days or less)
+        if (date_picker_range[1] - date_picker_range[0]).days > 4:
+            st.warning("Please select a date range of 4 days or less.")
+            return
         
         for single_date in daterange(date_picker_range[0], date_picker_range[1]):
+
             my_geotab_api = MyGeotabAPI(username=st.secrets.MYGEOTAB_USERNAME, 
                                         password=st.secrets.MYGEOTAB_PASSWORD, 
                                         database=st.secrets.MYGEOTAB_DATABASE)
+            
             from_date = datetime.combine(single_date, datetime.min.time())
             to_date = datetime.combine(single_date + timedelta(days=1), datetime.min.time())
+
             geotab_vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
             df = geotab_vin_data_collection.to_dataframe()
+
             st.write(f"Date: {from_date.date()} 12:00 AM - {from_date.date()} 11:59 PM")
             st.dataframe(df, hide_index=True)
             file_name = f"Ohalloran_{from_date.year}_{from_date.month:02d}_{from_date.day:02d}.csv"
