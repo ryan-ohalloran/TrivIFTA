@@ -36,9 +36,9 @@ def process_manual_upload():
         fuel_tax_processor = FuelTaxProcessor(input_file.read(), data_type='bytes')
         vin_data_collection = fuel_tax_processor.process_data()
         df = vin_data_collection.to_dataframe()
-        st.dataframe(df)
+        st.dataframe(df, hide_index=True)
         st.download_button(label=f'Download Filtered Dataset ({input_file.name})', 
-                           data=df.to_csv(), 
+                           data=df.to_csv(index=False), 
                            file_name=f"Ohalloran_{file_date.year}_{file_date.month:02d}_{file_date.day:02d}.csv")
 
 def process_geotab_api_data():
@@ -64,14 +64,14 @@ def process_geotab_api_data():
             geotab_vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
             df = geotab_vin_data_collection.to_dataframe()
             st.write(f"Date: {from_date.date()} 12:00 AM - {from_date.date()} 11:59 PM")
-            st.dataframe(df)
+            st.dataframe(df, hide_index=True)
             file_name = f"Ohalloran_{from_date.year}_{from_date.month:02d}_{from_date.day:02d}.csv"
             # add a streamlit button to send the data to the FTP server
             send_to_ftp_button = st.button(f"Send ({file_name}) to FTP")
             if send_to_ftp_button:
                 send_to_ftp(df, file_name)
             st.download_button(label=f'Alternatively, download this dataset: ({file_name})', 
-                data=df.to_csv(), 
+                data=df.to_csv(index=False), 
                 file_name=f"{file_name}")
             
     elif go_button:
