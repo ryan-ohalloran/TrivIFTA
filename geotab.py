@@ -8,7 +8,7 @@ from datetime import datetime, time
 from ftplib import FTP
 import io
 from events import NoFuelTaxDataException
-from ifta import FuelTaxProcessor, VinDataCollection
+from ifta import FuelTaxProcessor, IftaDataCollection
 
 KILO_TO_MILES = 0.62137119
 IFTA_GROUP = [{'id': 'b279F'}] # if more groups need to be added in the future, add them to this list
@@ -94,9 +94,9 @@ class MyGeotabAPI(mygeotab.API):
 
         return pd.DataFrame(reduced_detail_map)
 
-    def to_vin_data_collection(self, fromDate: datetime, toDate: datetime) -> VinDataCollection:
+    def to_ifta_data_collection(self, fromDate: datetime, toDate: datetime) -> IftaDataCollection:
         '''
-        Creates a VinDataCollection object using the data from Geotab
+        Creates a IftaDataCollection object using the data from Geotab
         '''
         # initialize the device detail map
         self.init_detail_map(fromDate, toDate)
@@ -104,8 +104,8 @@ class MyGeotabAPI(mygeotab.API):
         # create a dataframe object from the device detail map
         df = self.to_dataframe()
 
-        # return the VinDataCollection object from the dataframe
-        return FuelTaxProcessor.to_vin_data_collection(df)
+        # return the IftaDataCollection object from the dataframe
+        return FuelTaxProcessor.to_ifta_data_collection(df)
 
 class GeotabFTP(FTP):
     def __init__(self, host: str):

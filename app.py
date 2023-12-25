@@ -34,8 +34,8 @@ def process_manual_upload():
         st.write(f"### File: {input_file.name}")
         file_date = st.date_input(f'Select a date for file {i + 1}', key=f'date_{i}')
         fuel_tax_processor = FuelTaxProcessor(input_file.read(), data_type='bytes')
-        vin_data_collection = fuel_tax_processor.process_data()
-        df = vin_data_collection.to_dataframe()
+        ifta_data_collection = fuel_tax_processor.process_data()
+        df = ifta_data_collection.to_dataframe()
         st.dataframe(df, hide_index=True)
         st.download_button(label=f'Download Filtered Dataset ({input_file.name})', 
                            data=df.to_csv(index=False), 
@@ -68,8 +68,8 @@ def process_geotab_api_data():
             from_date = datetime.combine(single_date, datetime.min.time())
             to_date = datetime.combine(single_date + timedelta(days=1), datetime.min.time())
 
-            geotab_vin_data_collection = my_geotab_api.to_vin_data_collection(from_date, to_date)
-            df = geotab_vin_data_collection.to_dataframe()
+            geotab_ifta_data_collection = my_geotab_api.to_ifta_data_collection(from_date, to_date)
+            df = geotab_ifta_data_collection.to_dataframe()
 
             st.write(f"Date: {from_date.date()} 12:00 AM - {from_date.date()} 11:59 PM")
             st.dataframe(df, hide_index=True)
@@ -87,7 +87,7 @@ def process_geotab_api_data():
         
 def main():
     st.title("IFTA Webapp")
-    st.write("Transform GeoTab data into IFTA-compliant data.")
+    st.write("Transform Geotab data into IFTA-compliant data.")
 
     tab1, tab2 = st.tabs(["Manual Document Upload", "Automatic Process"])
 

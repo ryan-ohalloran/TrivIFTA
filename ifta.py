@@ -8,9 +8,9 @@ from openpyxl import load_workbook
 from typing import Dict, Any
 import io
 
-class VinData:
+class IftaData:
     """
-    Class to hold data for each unique VIN
+    Class to hold relevant IFTA data for each unique VIN
     """
     def __init__(self, vin: str) -> None:
 
@@ -25,19 +25,19 @@ class VinData:
             'Jurisdiction': jurisdiction
         })
 
-class VinDataCollection(Dict[str, VinData]):
+class IftaDataCollection(Dict[str, IftaData]):
     """
-    Class to hold data for all VINs -- behaves like Dict[str, VinData]
+    Class to hold data for all VINs for which IFTA reporting is needed -- behaves like Dict[str, IftaData]
     """
-    def add_vin_data(self, vin: str) -> None:
+    def add_ifta_data(self, vin: str) -> None:
         if vin not in self:
-            self[vin] = VinData(vin)
+            self[vin] = IftaData(vin)
     
-    def get_vin_data(self, vin: str) -> VinData:
-        vin_data = self.get(vin, None)
-        if not vin_data:
-            raise Exception(f'VinData not found for VIN: {vin}')
-        return vin_data
+    def get_ifta_data(self, vin: str) -> IftaData:
+        ifta_data = self.get(vin, None)
+        if not ifta_data:
+            raise Exception(f'IftaData not found for VIN: {vin}')
+        return ifta_data
 
     def to_dataframe(self) -> pd.DataFrame:
         """
@@ -47,8 +47,8 @@ class VinDataCollection(Dict[str, VinData]):
         all_entries = []
 
         # Iterate over VINs in the collection
-        for vin, vin_data in self.items():
-            for entry in vin_data.data:
+        for vin, ifta_data in self.items():
+            for entry in ifta_data.data:
                 all_entries.append({
                     'VIN': vin,
                     'ReadingDate': entry['ReadingDate'],
@@ -111,7 +111,7 @@ class FileManager:
         rtype: int
         """
         wb = load_workbook(filename=io.BytesIO(input_data), read_only=True)
-        sheet = wb['Data']  # Change 'Data' to your actual sheet name
+        sheet = wb['Data']
 
         for row_index, row in enumerate(sheet.iter_rows(values_only=True)):
             if header in row:
@@ -153,12 +153,12 @@ class FuelTaxProcessor:
         self.data_type = data_type
 
     @staticmethod
-    def to_vin_data_collection(df: pd.DataFrame) -> VinDataCollection:
+    def to_ifta_data_collection(df: pd.DataFrame) -> IftaDataCollection:
         """
         Transform data from the input file into the desired output format
         """
-        # Create a dictionary to hold the VinData objects
-        vin_data_collection = VinDataCollection()
+        # Create a dictionary to hold the IftaData objects
+        ifta_data_collection = IftaDataCollection()
 
         for _, row in df.iterrows():
             vin = str(row['FuelTaxVin'])
@@ -182,14 +182,14 @@ class FuelTaxProcessor:
             if jurisdiction in ('nan', None, '', ' '):
                 continue
 
-            # Add this VIN to the VinDataCollection if it doesn't already exist
-            vin_data_collection.add_vin_data(vin)
+            # Add this VIN to the IftaDataCollection if it doesn't already exist
+            ifta_data_collection.add_ifta_data(vin)
 
-            # Get the VinData object for this VIN
-            vin_data = vin_data_collection.get_vin_data(vin)
+            # Get the IftaData object for this VIN
+            ifta_data = ifta_data_collection.get_ifta_data(vin)
 
             # Add vin entry for enter time using enter odometer reading
-            vin_data.add_entry(enter_reading_date, enter_reading_time, enter_odometer, jurisdiction)
+            ifta_data.add_entry(enter_reading_date, enter_reading_time, enter_odometer, jurisdiction)
 
             # Only add exit time if it is the last entry for this VIN on this day
             #   (i.e. if the exit time is 00:00, then it is the last entry for the day)
@@ -197,11 +197,11 @@ class FuelTaxProcessor:
                 # Change time to 23:59 to suit IFTA requirements
                 exit_reading_time = time(23, 59)
                 # In this case, use exit_reading_time and exit_odometer
-                vin_data.add_entry(enter_reading_date, exit_reading_time, exit_odometer, jurisdiction)
+                ifta_data.add_entry(enter_reading_date, exit_reading_time, exit_odometer, jurisdiction)
 
-        return vin_data_collection
+        return ifta_data_collection
 
-    def process_data(self) -> VinDataCollection:
+    def process_data(self) -> IftaDataCollection:
         """
         Process data using FleetDataFrame and FileManager
         """
@@ -215,7 +215,7 @@ class FuelTaxProcessor:
         self.fleet_dataframe.reduce_df()
         self.fleet_dataframe.split_date_time()
 
-        # Transform FleetDataFrame into VinDataCollection
-        vin_data_collection = self.to_vin_data_collection(self.fleet_dataframe)
+        # Transform FleetDataFrame into IftaDataCollection
+        ifta_data_collection = self.to_ifta_data_collection(self.fleet_dataframe)
 
-        return vin_data_collection
+        return ifta_data_collection
