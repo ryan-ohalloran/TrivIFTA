@@ -8,7 +8,7 @@ from geotab import MyGeotabAPI
 
 def main():
     if not load_dotenv():
-        print('Failed to load .env file')
+        print('Failed to load any environment variables file')
         return
 
     username = os.getenv('MYGEOTAB_USERNAME')
