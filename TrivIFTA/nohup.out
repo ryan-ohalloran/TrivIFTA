@@ -1,0 +1,235 @@
+ 
+ -------------- celery@Ryans-MacBook-Pro.local v5.3.6 (emerald-rush)
+--- ***** ----- 
+-- ******* ---- macOS-12.2.1-x86_64-i386-64bit 2023-12-28 06:18:45
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         TrivIFTA:0x104ecb4d0
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     disabled://
+- *** --- * --- .> concurrency: 8 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . daily_compliance_job.tasks.run_daily_job_task
+
+[2023-12-28 06:18:46,115: WARNING/MainProcess] /usr/local/lib/python3.11/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-12-28 06:18:46,124: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 2.00 seconds... (1/100)
+
+[2023-12-28 06:18:48,137: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 4.00 seconds... (2/100)
+
+[2023-12-28 06:18:52,196: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 6.00 seconds... (3/100)
+
+[2023-12-28 06:18:58,221: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 8.00 seconds... (4/100)
+
+[2023-12-28 06:18:58,918: INFO/MainProcess] beat: Starting...
+[2023-12-28 06:19:06,288: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 10.00 seconds... (5/100)
+
+[2023-12-28 06:19:16,320: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 12.00 seconds... (6/100)
+
+[2023-12-28 06:19:28,461: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 14.00 seconds... (7/100)
+
+[2023-12-28 06:19:42,513: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 16.00 seconds... (8/100)
+
+[2023-12-28 06:19:58,564: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 18.00 seconds... (9/100)
+
+[2023-12-28 06:20:16,634: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 20.00 seconds... (10/100)
+
+[2023-12-28 06:20:36,688: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 22.00 seconds... (11/100)
+
+[2023-12-28 06:20:58,756: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 24.00 seconds... (12/100)
+
+[2023-12-28 06:21:22,837: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 26.00 seconds... (13/100)
+
+[2023-12-28 06:21:49,035: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 28.00 seconds... (14/100)
+
+[2023-12-28 06:22:17,120: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 30.00 seconds... (15/100)
+
+ 
+ -------------- celery@Ryans-MacBook-Pro.local v5.3.6 (emerald-rush)
+--- ***** ----- 
+-- ******* ---- macOS-12.2.1-x86_64-i386-64bit 2023-12-28 06:24:27
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         TrivIFTA:0x10b409e50
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     disabled://
+- *** --- * --- .> concurrency: 3 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . daily_compliance_job.tasks.run_daily_job_task
+
+[2023-12-28 06:24:27,858: WARNING/MainProcess] /usr/local/lib/python3.11/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-12-28 06:24:27,867: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 2.00 seconds... (1/100)
+
+[2023-12-28 06:24:29,875: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 4.00 seconds... (2/100)
+
+[2023-12-28 06:24:31,934: INFO/MainProcess] beat: Starting...
+[2023-12-28 06:24:33,895: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 6.00 seconds... (3/100)
+
+[2023-12-28 06:24:39,917: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 8.00 seconds... (4/100)
+
+[2023-12-28 06:24:47,951: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 10.00 seconds... (5/100)
+
+[2023-12-28 06:24:57,991: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 12.00 seconds... (6/100)
+
+[2023-12-28 06:25:10,033: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 14.00 seconds... (7/100)
+
+[2023-12-28 06:25:24,076: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 16.00 seconds... (8/100)
+
+[2023-12-28 06:25:40,118: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 18.00 seconds... (9/100)
+
+[2023-12-28 06:25:58,169: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 20.00 seconds... (10/100)
+
+[2023-12-28 06:26:18,232: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 22.00 seconds... (11/100)
+
+[2023-12-28 06:26:40,306: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 24.00 seconds... (12/100)
+
+[2023-12-28 06:27:04,374: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 26.00 seconds... (13/100)
+
+[2023-12-28 06:27:30,450: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 28.00 seconds... (14/100)
+
+[2023-12-28 06:27:58,531: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 30.00 seconds... (15/100)
+
+[2023-12-28 06:28:28,631: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 32.00 seconds... (16/100)
+
+[2023-12-28 06:29:00,749: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 32.00 seconds... (16/100)
+
+[2023-12-28 06:29:32,857: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 32.00 seconds... (16/100)
+
+[2023-12-28 06:30:04,976: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 32.00 seconds... (16/100)
+
+[2023-12-28 06:30:37,077: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 32.00 seconds... (16/100)
+
+[2023-12-28 06:31:09,300: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2023-12-28 06:31:09,311: WARNING/MainProcess] /usr/local/lib/python3.11/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-12-28 06:31:09,368: INFO/MainProcess] mingle: searching for neighbors
+[2023-12-28 06:31:10,426: INFO/MainProcess] mingle: all alone
+[2023-12-28 06:31:10,542: INFO/MainProcess] celery@Ryans-MacBook-Pro.local ready.
+ 
+ -------------- celery@Ryans-MacBook-Pro.local v5.3.6 (emerald-rush)
+--- ***** ----- 
+-- ******* ---- macOS-12.2.1-x86_64-i386-64bit 2023-12-28 06:33:01
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         TrivIFTA:0x10c20a490
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     disabled://
+- *** --- * --- .> concurrency: 3 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . daily_compliance_job.tasks.run_daily_job_task
+
+[2023-12-28 06:33:01,324: WARNING/MainProcess] /usr/local/lib/python3.11/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-12-28 06:33:01,378: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2023-12-28 06:33:01,380: WARNING/MainProcess] /usr/local/lib/python3.11/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-12-28 06:33:01,427: INFO/MainProcess] mingle: searching for neighbors
+[2023-12-28 06:33:02,480: INFO/MainProcess] mingle: all alone
+[2023-12-28 06:33:02,584: INFO/MainProcess] celery@Ryans-MacBook-Pro.local ready.
+[2023-12-28 06:33:40,587: INFO/MainProcess] beat: Starting...
+[2023-12-28 10:01:16,718: INFO/MainProcess] Scheduler: Sending due task celery.backend_cleanup (celery.backend_cleanup)
+[2023-12-28 10:01:16,961: INFO/MainProcess] Task celery.backend_cleanup[cd5df35f-ba94-4917-b874-8e7d049654af] received
+[2023-12-28 10:01:17,127: INFO/ForkPoolWorker-2] Task celery.backend_cleanup[cd5df35f-ba94-4917-b874-8e7d049654af] succeeded in 0.04201183281838894s: None
+[2023-12-28 12:13:14,872: INFO/MainProcess] Scheduler: Sending due task run_daily_job (daily_compliance_job.tasks.run_daily_job_task)
+[2023-12-28 12:13:14,995: INFO/MainProcess] Task daily_compliance_job.tasks.run_daily_job_task[115cfa42-283e-4bf1-ba93-807946ec81ca] received
+[2023-12-28 12:13:17,445: ERROR/ForkPoolWorker-2] Task daily_compliance_job.tasks.run_daily_job_task[115cfa42-283e-4bf1-ba93-807946ec81ca] raised unexpected: NoFuelTaxDataException('No data returned from FuelTaxDetails endpoint.')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/celery/app/trace.py", line 477, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/celery/app/trace.py", line 760, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/tasks.py", line 13, in run_daily_job_task
+    call_command('run_daily_job', yesterday_str, '--remove-unchanged')
+  File "/usr/local/lib/python3.11/site-packages/django/core/management/__init__.py", line 194, in call_command
+    return command.execute(*args, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/management/base.py", line 458, in execute
+    output = self.handle(*args, **options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/management/commands/run_daily_job.py", line 54, in handle
+    geotab_ifta_data_collection = my_geotab_api.to_ifta_data_collection(from_date, to_date)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/services/geotab.py", line 103, in to_ifta_data_collection
+    self.init_detail_map(fromDate, toDate)
+  File "/Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/services/geotab.py", line 60, in init_detail_map
+    fuel_tax_details = self.get_fuel_tax_details(from_date, to_date)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/services/geotab.py", line 38, in get_fuel_tax_details
+    raise NoFuelTaxDataException('No data returned from FuelTaxDetails endpoint.')
+daily_compliance_job.services.events.NoFuelTaxDataException: No data returned from FuelTaxDetails endpoint.

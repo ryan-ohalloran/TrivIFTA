@@ -1,0 +1,880 @@
+INFO 2023-12-27 07:53:22,091 run_daily_job 52941 4390774272                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+65  1HTEUMMN0KH550927  2023-12-11    00:00:00    245467           OH
+66  1HTEUMMN0KH550927  2023-12-11    09:27:45    245467           OH
+67  1HTEUMMN0KH550927  2023-12-11    18:01:01    245639           OH
+68  1HTEUMMN0KH550927  2023-12-11    23:59:00    245639           OH
+75  1HTMSTAR8KH422406  2023-12-11    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+56  3HSLGAPR5MN539804  2023-12-11    15:37:54    466328           OK
+57  3HSLGAPR5MN539804  2023-12-11    16:31:06    466382           TX
+58  3HSLGAPR5MN539804  2023-12-11    21:08:28    466551           OK
+59  3HSLGAPR5MN539804  2023-12-11    21:47:07    466587           KS
+60  3HSLGAPR5MN539804  2023-12-11    23:59:00    466722           KS
+
+[199 rows x 5 columns]
+INFO 2023-12-27 07:53:22,091 run_daily_job 52941 4390774272                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+65  1HTEUMMN0KH550927  2023-12-11    00:00:00    245467           OH
+66  1HTEUMMN0KH550927  2023-12-11    09:27:45    245467           OH
+67  1HTEUMMN0KH550927  2023-12-11    18:01:01    245639           OH
+68  1HTEUMMN0KH550927  2023-12-11    23:59:00    245639           OH
+75  1HTMSTAR8KH422406  2023-12-11    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+56  3HSLGAPR5MN539804  2023-12-11    15:37:54    466328           OK
+57  3HSLGAPR5MN539804  2023-12-11    16:31:06    466382           TX
+58  3HSLGAPR5MN539804  2023-12-11    21:08:28    466551           OK
+59  3HSLGAPR5MN539804  2023-12-11    21:47:07    466587           KS
+60  3HSLGAPR5MN539804  2023-12-11    23:59:00    466722           KS
+
+[199 rows x 5 columns]
+INFO 2023-12-27 07:53:35,616 run_daily_job 52959 4390741504                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+65  1HTEUMMN0KH550927  2023-12-11    00:00:00    245467           OH
+66  1HTEUMMN0KH550927  2023-12-11    09:27:45    245467           OH
+67  1HTEUMMN0KH550927  2023-12-11    18:01:01    245639           OH
+68  1HTEUMMN0KH550927  2023-12-11    23:59:00    245639           OH
+75  1HTMSTAR8KH422406  2023-12-11    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+56  3HSLGAPR5MN539804  2023-12-11    15:37:54    466328           OK
+57  3HSLGAPR5MN539804  2023-12-11    16:31:06    466382           TX
+58  3HSLGAPR5MN539804  2023-12-11    21:08:28    466551           OK
+59  3HSLGAPR5MN539804  2023-12-11    21:47:07    466587           KS
+60  3HSLGAPR5MN539804  2023-12-11    23:59:00    466722           KS
+
+[199 rows x 5 columns]
+ERROR 2023-12-27 08:00:32,628 run_daily_job 53053 4382066176 Invalid date format in command: time data '34' does not match format '%Y-%m-%d'
+INFO 2023-12-27 08:01:04,914 run_daily_job 53094 4736493056                    VIN ReadingDate ReadingTime  Odometer Jurisdiction
+52   1HTEUMMN0KH550927  2023-09-09    00:00:00    234714           OH
+53   1HTEUMMN0KH550927  2023-09-09    23:59:00    234714           OH
+60   1HTMSTAR8KH422406  2023-09-09    00:00:00    119418           OH
+61   1HTMSTAR8KH422406  2023-09-09    23:59:00    119418           OH
+101  3HAEUMML4LL395437  2023-09-09    00:00:00    203465           IA
+..                 ...         ...         ...       ...          ...
+104  3HSDZTZRXLN623493  2023-09-09    23:59:00    219850           IA
+50   3HSLGAPR1PN649186  2023-09-09    00:00:00      3581           KS
+51   3HSLGAPR1PN649186  2023-09-09    23:59:00      3581           KS
+45   3HSLGAPR5MN539804  2023-09-09    00:00:00    436250           KS
+46   3HSLGAPR5MN539804  2023-09-09    23:59:00    436404           KS
+
+[137 rows x 5 columns]
+INFO 2023-12-27 21:55:30,582 autoreload 62288 4742329856 Watching for file changes with StatReloader
+INFO 2023-12-27 21:55:30,582 autoreload 62288 4742329856 Watching for file changes with StatReloader
+INFO 2023-12-27 21:55:59,403 basehttp 62288 123145456910336 "GET /admin HTTP/1.1" 301 0
+INFO 2023-12-27 21:55:59,403 basehttp 62288 123145456910336 "GET /admin HTTP/1.1" 301 0
+INFO 2023-12-27 21:55:59,424 basehttp 62288 123145473699840 "GET /admin/ HTTP/1.1" 302 0
+INFO 2023-12-27 21:55:59,424 basehttp 62288 123145473699840 "GET /admin/ HTTP/1.1" 302 0
+INFO 2023-12-27 21:55:59,460 basehttp 62288 123145473699840 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+INFO 2023-12-27 21:55:59,460 basehttp 62288 123145473699840 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+INFO 2023-12-27 21:55:59,533 basehttp 62288 123145473699840 "GET /static/admin/css/base.css HTTP/1.1" 200 21544
+INFO 2023-12-27 21:55:59,533 basehttp 62288 123145473699840 "GET /static/admin/css/base.css HTTP/1.1" 200 21544
+INFO 2023-12-27 21:55:59,559 basehttp 62288 123145473699840 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2682
+INFO 2023-12-27 21:55:59,559 basehttp 62288 123145473699840 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2682
+INFO 2023-12-27 21:55:59,655 basehttp 62288 123145524068352 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2023-12-27 21:55:59,655 basehttp 62288 123145524068352 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2023-12-27 21:55:59,657 basehttp 62288 123145456910336 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2023-12-27 21:55:59,658 basehttp 62288 123145473699840 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2023-12-27 21:55:59,658 basehttp 62288 123145490489344 "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2023-12-27 21:55:59,657 basehttp 62288 123145456910336 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2023-12-27 21:55:59,660 basehttp 62288 123145507278848 "GET /static/admin/css/responsive.css HTTP/1.1" 200 17905
+INFO 2023-12-27 21:55:59,658 basehttp 62288 123145473699840 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2023-12-27 21:55:59,658 basehttp 62288 123145490489344 "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2023-12-27 21:55:59,660 basehttp 62288 123145507278848 "GET /static/admin/css/responsive.css HTTP/1.1" 200 17905
+WARNING 2023-12-27 21:55:59,820 log 62288 123145507278848 Not Found: /favicon.ico
+WARNING 2023-12-27 21:55:59,820 log 62288 123145507278848 Not Found: /favicon.ico
+WARNING 2023-12-27 21:55:59,821 basehttp 62288 123145507278848 "GET /favicon.ico HTTP/1.1" 404 2112
+WARNING 2023-12-27 21:55:59,821 basehttp 62288 123145507278848 "GET /favicon.ico HTTP/1.1" 404 2112
+INFO 2023-12-27 21:56:42,184 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4328
+INFO 2023-12-27 21:56:42,184 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4328
+INFO 2023-12-27 21:56:50,676 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4328
+INFO 2023-12-27 21:56:50,676 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4328
+INFO 2023-12-27 21:56:56,345 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4329
+INFO 2023-12-27 21:56:56,345 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4329
+INFO 2023-12-27 21:57:28,989 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4329
+INFO 2023-12-27 21:57:28,989 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4329
+INFO 2023-12-27 21:59:47,705 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2023-12-27 21:59:47,705 basehttp 62288 123145507278848 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2023-12-27 21:59:47,726 basehttp 62288 123145507278848 "GET /admin/ HTTP/1.1" 200 6812
+INFO 2023-12-27 21:59:47,726 basehttp 62288 123145507278848 "GET /admin/ HTTP/1.1" 200 6812
+INFO 2023-12-27 21:59:47,764 basehttp 62288 123145507278848 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2023-12-27 21:59:47,764 basehttp 62288 123145507278848 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2023-12-27 21:59:47,773 basehttp 62288 123145473699840 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2023-12-27 21:59:47,773 basehttp 62288 123145473699840 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2023-12-27 21:59:47,774 basehttp 62288 123145507278848 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2023-12-27 21:59:47,774 basehttp 62288 123145507278848 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2023-12-27 22:00:01,745 basehttp 62288 123145507278848 "GET /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 200 9421
+INFO 2023-12-27 22:00:01,745 basehttp 62288 123145507278848 "GET /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 200 9421
+INFO 2023-12-27 22:00:01,765 basehttp 62288 123145507278848 "GET /static/admin/css/forms.css HTTP/1.1" 200 9048
+INFO 2023-12-27 22:00:01,765 basehttp 62288 123145507278848 "GET /static/admin/css/forms.css HTTP/1.1" 200 9048
+INFO 2023-12-27 22:00:01,776 basehttp 62288 123145473699840 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:00:01,776 basehttp 62288 123145473699840 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:00:01,778 basehttp 62288 123145490489344 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2023-12-27 22:00:01,778 basehttp 62288 123145490489344 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2023-12-27 22:00:01,803 basehttp 62288 123145473699840 "GET /static/admin/js/actions.js HTTP/1.1" 200 8067
+INFO 2023-12-27 22:00:01,803 basehttp 62288 123145473699840 "GET /static/admin/js/actions.js HTTP/1.1" 200 8067
+INFO 2023-12-27 22:00:01,806 basehttp 62288 123145456910336 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2023-12-27 22:00:01,806 basehttp 62288 123145456910336 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2023-12-27 22:00:01,809 basehttp 62288 123145490489344 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2023-12-27 22:00:01,809 basehttp 62288 123145490489344 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2023-12-27 22:00:01,811 basehttp 62288 123145507278848 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9042
+INFO 2023-12-27 22:00:01,811 basehttp 62288 123145507278848 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9042
+INFO 2023-12-27 22:00:01,814 basehttp 62288 123145524068352 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2023-12-27 22:00:01,815 basehttp 62288 123145490489344 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2023-12-27 22:00:01,814 basehttp 62288 123145524068352 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2023-12-27 22:00:01,815 basehttp 62288 123145490489344 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2023-12-27 22:00:01,818 basehttp 62288 123145473699840 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2023-12-27 22:00:01,818 basehttp 62288 123145473699840 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2023-12-27 22:00:01,820 basehttp 62288 123145540857856 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11800
+INFO 2023-12-27 22:00:01,820 basehttp 62288 123145540857856 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11800
+INFO 2023-12-27 22:00:01,823 basehttp 62288 123145540857856 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2023-12-27 22:00:01,823 basehttp 62288 123145540857856 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2023-12-27 22:00:01,828 basehttp 62288 123145456910336 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2023-12-27 22:00:01,828 basehttp 62288 123145456910336 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2023-12-27 22:00:23,608 basehttp 62288 123145456910336 "POST /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 302 0
+INFO 2023-12-27 22:00:23,608 basehttp 62288 123145456910336 "POST /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 302 0
+INFO 2023-12-27 22:00:23,640 basehttp 62288 123145456910336 "GET /admin/daily_compliance_job/emailrecipient/ HTTP/1.1" 200 10078
+INFO 2023-12-27 22:00:23,640 basehttp 62288 123145456910336 "GET /admin/daily_compliance_job/emailrecipient/ HTTP/1.1" 200 10078
+INFO 2023-12-27 22:00:23,669 basehttp 62288 123145456910336 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6811
+INFO 2023-12-27 22:00:23,669 basehttp 62288 123145456910336 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6811
+INFO 2023-12-27 22:00:23,677 basehttp 62288 123145473699840 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2023-12-27 22:00:23,677 basehttp 62288 123145473699840 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2023-12-27 22:00:23,681 basehttp 62288 123145473699840 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2023-12-27 22:00:23,681 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:00:23,681 basehttp 62288 123145473699840 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2023-12-27 22:00:23,681 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:00:23,703 basehttp 62288 123145473699840 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2023-12-27 22:00:23,703 basehttp 62288 123145473699840 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2023-12-27 22:00:23,705 basehttp 62288 123145540857856 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2023-12-27 22:00:23,705 basehttp 62288 123145540857856 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2023-12-27 22:00:28,584 basehttp 62288 123145540857856 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11328
+INFO 2023-12-27 22:00:28,584 basehttp 62288 123145540857856 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11328
+INFO 2023-12-27 22:00:28,612 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:00:28,612 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:12,070 basehttp 62288 123145540857856 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8303
+INFO 2023-12-27 22:04:12,070 basehttp 62288 123145540857856 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8303
+INFO 2023-12-27 22:04:12,160 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:12,160 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:13,287 basehttp 62288 123145540857856 "GET /admin/daily_compliance_job/ HTTP/1.1" 200 5723
+INFO 2023-12-27 22:04:13,287 basehttp 62288 123145540857856 "GET /admin/daily_compliance_job/ HTTP/1.1" 200 5723
+INFO 2023-12-27 22:04:15,794 basehttp 62288 123145540857856 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:04:15,794 basehttp 62288 123145540857856 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:04:23,921 basehttp 62288 123145540857856 "GET /admin/daily_compliance_job/emailrecipient/ HTTP/1.1" 200 9836
+INFO 2023-12-27 22:04:23,921 basehttp 62288 123145540857856 "GET /admin/daily_compliance_job/emailrecipient/ HTTP/1.1" 200 9836
+INFO 2023-12-27 22:04:23,954 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:23,954 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:27,682 basehttp 62288 123145540857856 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:04:27,682 basehttp 62288 123145540857856 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:04:34,034 basehttp 62288 123145540857856 "GET /admin/auth/group/add/ HTTP/1.1" 200 12612
+INFO 2023-12-27 22:04:34,034 basehttp 62288 123145540857856 "GET /admin/auth/group/add/ HTTP/1.1" 200 12612
+INFO 2023-12-27 22:04:34,066 basehttp 62288 123145456910336 "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15492
+INFO 2023-12-27 22:04:34,066 basehttp 62288 123145473699840 "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+INFO 2023-12-27 22:04:34,066 basehttp 62288 123145473699840 "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+INFO 2023-12-27 22:04:34,067 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:34,066 basehttp 62288 123145456910336 "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15492
+INFO 2023-12-27 22:04:34,067 basehttp 62288 123145540857856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:34,149 basehttp 62288 123145540857856 "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+INFO 2023-12-27 22:04:34,149 basehttp 62288 123145540857856 "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+INFO 2023-12-27 22:04:34,154 basehttp 62288 123145456910336 "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+INFO 2023-12-27 22:04:34,160 basehttp 62288 123145473699840 "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+INFO 2023-12-27 22:04:34,154 basehttp 62288 123145456910336 "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+INFO 2023-12-27 22:04:34,160 basehttp 62288 123145473699840 "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+INFO 2023-12-27 22:04:43,987 basehttp 62288 123145473699840 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:04:43,987 basehttp 62288 123145473699840 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:04:45,932 basehttp 62288 123145473699840 "GET /admin/auth/user/add/ HTTP/1.1" 200 11112
+INFO 2023-12-27 22:04:45,932 basehttp 62288 123145473699840 "GET /admin/auth/user/add/ HTTP/1.1" 200 11112
+INFO 2023-12-27 22:04:45,954 basehttp 62288 123145473699840 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:45,954 basehttp 62288 123145473699840 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:04:54,828 basehttp 62288 123145473699840 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:04:54,828 basehttp 62288 123145473699840 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:13:03,209 autoreload 62288 4742329856 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-27 22:13:03,209 autoreload 62288 4742329856 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-27 22:13:03,987 autoreload 62787 4638795264 Watching for file changes with StatReloader
+INFO 2023-12-27 22:13:03,987 autoreload 62787 4638795264 Watching for file changes with StatReloader
+INFO 2023-12-27 22:13:12,320 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:13:12,320 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:44:19,152 basehttp 62787 123145566539776 "POST /admin/logout/ HTTP/1.1" 200 3553
+INFO 2023-12-27 22:44:19,152 basehttp 62787 123145566539776 "POST /admin/logout/ HTTP/1.1" 200 3553
+INFO 2023-12-27 22:44:24,039 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 302 0
+INFO 2023-12-27 22:44:24,039 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 302 0
+INFO 2023-12-27 22:44:24,077 basehttp 62787 123145566539776 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+INFO 2023-12-27 22:44:24,077 basehttp 62787 123145566539776 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+INFO 2023-12-27 22:45:43,597 basehttp 62787 123145566539776 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+INFO 2023-12-27 22:45:43,597 basehttp 62787 123145566539776 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+INFO 2023-12-27 22:46:41,974 basehttp 62787 123145566539776 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2023-12-27 22:46:41,974 basehttp 62787 123145566539776 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2023-12-27 22:46:41,991 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:46:41,991 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:46:50,940 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 200 9421
+INFO 2023-12-27 22:46:50,940 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 200 9421
+INFO 2023-12-27 22:46:50,992 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:46:50,992 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:46:54,047 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailrecipient/ HTTP/1.1" 200 9836
+INFO 2023-12-27 22:46:54,047 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailrecipient/ HTTP/1.1" 200 9836
+INFO 2023-12-27 22:46:54,088 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:46:54,088 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:47:02,495 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8303
+INFO 2023-12-27 22:47:02,495 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8303
+INFO 2023-12-27 22:47:02,530 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:47:02,530 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:47:04,955 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:47:04,955 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:47:06,626 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11328
+INFO 2023-12-27 22:47:06,626 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11328
+INFO 2023-12-27 22:47:06,669 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:47:06,669 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 22:47:40,358 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 22:47:40,358 basehttp 62787 123145566539776 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 23:07:17,064 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11328
+INFO 2023-12-27 23:07:17,064 basehttp 62787 123145566539776 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11328
+INFO 2023-12-27 23:07:17,143 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:07:17,143 basehttp 62787 123145566539776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:10:14,294 autoreload 62787 4638795264 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/admin.py changed, reloading.
+INFO 2023-12-27 23:10:14,294 autoreload 62787 4638795264 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/admin.py changed, reloading.
+INFO 2023-12-27 23:10:15,180 autoreload 63502 4526269952 Watching for file changes with StatReloader
+INFO 2023-12-27 23:10:15,180 autoreload 63502 4526269952 Watching for file changes with StatReloader
+INFO 2023-12-27 23:10:18,352 basehttp 63502 123145460068352 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 23:10:18,352 basehttp 63502 123145460068352 "GET /admin/ HTTP/1.1" 200 7233
+INFO 2023-12-27 23:10:26,540 autoreload 63502 4526269952 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/admin.py changed, reloading.
+INFO 2023-12-27 23:10:26,540 autoreload 63502 4526269952 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/admin.py changed, reloading.
+INFO 2023-12-27 23:10:27,013 autoreload 63516 4671768064 Watching for file changes with StatReloader
+INFO 2023-12-27 23:10:27,013 autoreload 63516 4671768064 Watching for file changes with StatReloader
+INFO 2023-12-27 23:10:45,947 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11976
+INFO 2023-12-27 23:10:45,947 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11976
+INFO 2023-12-27 23:10:45,993 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:10:45,993 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:14:16,125 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 302 0
+INFO 2023-12-27 23:14:16,125 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 302 0
+INFO 2023-12-27 23:14:16,158 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10639
+INFO 2023-12-27 23:14:16,158 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10639
+INFO 2023-12-27 23:14:16,197 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:14:16,197 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:14:28,062 basehttp 63516 123145367969792 "GET /admin/ HTTP/1.1" 200 7619
+INFO 2023-12-27 23:14:28,062 basehttp 63516 123145367969792 "GET /admin/ HTTP/1.1" 200 7619
+INFO 2023-12-27 23:14:29,891 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 200 9421
+INFO 2023-12-27 23:14:29,891 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 200 9421
+INFO 2023-12-27 23:14:29,914 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:14:29,914 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:14:39,422 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 302 0
+INFO 2023-12-27 23:14:39,422 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailrecipient/add/ HTTP/1.1" 302 0
+INFO 2023-12-27 23:14:39,444 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailrecipient/ HTTP/1.1" 200 10422
+INFO 2023-12-27 23:14:39,444 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailrecipient/ HTTP/1.1" 200 10422
+INFO 2023-12-27 23:14:39,484 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:14:39,484 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:24:50,119 run_daily_job 63865 4505662976 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:24:50,120 run_daily_job 63865 4505662976                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+INFO 2023-12-27 23:25:28,766 run_daily_job 63893 4533216768 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:25:28,767 run_daily_job 63893 4533216768                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+INFO 2023-12-27 23:26:03,088 run_daily_job 63918 4679325184 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:26:03,089 run_daily_job 63918 4679325184                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-27 23:26:03,853 email 63918 4679325184 Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials db7-20020a056e023d0700b0035fba8893a0sm3447431ilb.55 - gsmtp')
+INFO 2023-12-27 23:33:58,900 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10399
+INFO 2023-12-27 23:33:58,900 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10399
+INFO 2023-12-27 23:33:58,978 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:33:58,978 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:34:09,373 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8065
+INFO 2023-12-27 23:34:09,373 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8065
+INFO 2023-12-27 23:34:09,442 basehttp 63516 123145367969792 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2023-12-27 23:34:09,442 basehttp 63516 123145367969792 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2023-12-27 23:34:10,576 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailsender/ HTTP/1.1" 302 0
+INFO 2023-12-27 23:34:10,576 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailsender/ HTTP/1.1" 302 0
+INFO 2023-12-27 23:34:10,590 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8445
+INFO 2023-12-27 23:34:10,590 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8445
+INFO 2023-12-27 23:34:10,614 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:34:10,614 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:34:14,989 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11976
+INFO 2023-12-27 23:34:14,989 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11976
+INFO 2023-12-27 23:34:15,029 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:34:15,029 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:34:59,989 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 302 0
+INFO 2023-12-27 23:34:59,989 basehttp 63516 123145367969792 "POST /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 302 0
+INFO 2023-12-27 23:35:00,009 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10636
+INFO 2023-12-27 23:35:00,009 basehttp 63516 123145367969792 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10636
+INFO 2023-12-27 23:35:00,041 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:35:00,041 basehttp 63516 123145367969792 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2023-12-27 23:35:59,388 run_daily_job 64226 4639168000 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:35:59,388 run_daily_job 64226 4639168000                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-27 23:36:00,086 email 64226 4639168000 Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials bb34-20020a0566383b2200b0046b4e38a630sm3976781jab.109 - gsmtp')
+INFO 2023-12-27 23:50:20,165 autoreload 63516 4671768064 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:50:20,165 autoreload 63516 4671768064 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:50:21,071 autoreload 64471 4476458496 Watching for file changes with StatReloader
+INFO 2023-12-27 23:50:21,071 autoreload 64471 4476458496 Watching for file changes with StatReloader
+INFO 2023-12-27 23:50:26,208 run_daily_job 64482 4601906688 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:50:26,208 run_daily_job 64482 4601906688                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-27 23:50:26,787 email 64482 4601906688 Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials be7-20020a056e02304700b0035fe3f2f733sm3431644ilb.51 - gsmtp')
+INFO 2023-12-27 23:50:33,445 autoreload 64471 4476458496 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:50:33,445 autoreload 64471 4476458496 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:50:33,886 autoreload 64502 4484617728 Watching for file changes with StatReloader
+INFO 2023-12-27 23:50:33,886 autoreload 64502 4484617728 Watching for file changes with StatReloader
+INFO 2023-12-27 23:50:40,093 autoreload 64502 4484617728 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:50:40,093 autoreload 64502 4484617728 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:50:40,629 autoreload 64514 4766053888 Watching for file changes with StatReloader
+INFO 2023-12-27 23:50:40,629 autoreload 64514 4766053888 Watching for file changes with StatReloader
+INFO 2023-12-27 23:51:00,019 autoreload 64514 4766053888 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:51:00,019 autoreload 64514 4766053888 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:51:00,468 autoreload 64524 4640634368 Watching for file changes with StatReloader
+INFO 2023-12-27 23:51:00,468 autoreload 64524 4640634368 Watching for file changes with StatReloader
+INFO 2023-12-27 23:51:05,789 run_daily_job 64531 4634211840 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:51:05,789 run_daily_job 64531 4634211840                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-27 23:51:06,203 email 64531 4634211840 Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials bp25-20020a056638441900b0046d1ff8846bsm2212946jab.102 - gsmtp')
+INFO 2023-12-27 23:51:12,750 autoreload 64524 4640634368 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:51:12,750 autoreload 64524 4640634368 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/utils.py changed, reloading.
+INFO 2023-12-27 23:51:13,582 autoreload 64561 4427884032 Watching for file changes with StatReloader
+INFO 2023-12-27 23:51:13,582 autoreload 64561 4427884032 Watching for file changes with StatReloader
+INFO 2023-12-27 23:53:52,636 run_daily_job 64610 4688233984 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:53:52,636 run_daily_job 64610 4688233984                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-27 23:53:53,195 email 64610 4688233984 Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ct6-20020a056638488600b0046cffafe02bsm3156932jab.128 - gsmtp')
+INFO 2023-12-27 23:57:01,212 run_daily_job 64701 4487509504 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:57:01,212 run_daily_job 64701 4487509504                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-27 23:57:01,988 email 64701 4487509504 Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d4-20020a92d5c4000000b0035fac895f48sm4507488ilq.29 - gsmtp')
+INFO 2023-12-27 23:57:29,862 run_daily_job 64745 4365317632 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:57:29,862 run_daily_job 64745 4365317632                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-27 23:57:30,481 email 64745 4365317632 Error authenticating with SMTP server: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials e8-20020a02a788000000b004691dc8a3d5sm3779387jaj.58 - gsmtp')
+INFO 2023-12-27 23:59:53,257 run_daily_job 64789 4363052544 Test mode. Not sending to FTP server.
+INFO 2023-12-27 23:59:53,257 run_daily_job 64789 4363052544                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-27 23:59:53,926 email 64789 4363052544 Error authenticating with SMTP server: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials dn12-20020a056638090c00b0046678de2a62sm3939468jab.165 - gsmtp')
+INFO 2023-12-28 00:24:41,054 run_daily_job 65075 4636919296 Test mode. Not sending to FTP server.
+INFO 2023-12-28 00:24:41,055 run_daily_job 65075 4636919296                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-28 00:24:41,628 email 65075 4636919296 Error authenticating with SMTP server: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor f22-20020a5d8616000000b007baebfa5553sm1376606iol.44 - gsmtp')
+INFO 2023-12-28 00:25:22,660 run_daily_job 65128 4386665984 Test mode. Not sending to FTP server.
+INFO 2023-12-28 00:25:22,660 run_daily_job 65128 4386665984                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-28 00:25:23,580 email 65128 4386665984 Error authenticating with SMTP server: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials fm20-20020a0566382b1400b0046b6f405aafsm3889360jab.31 - gsmtp')
+INFO 2023-12-28 00:42:09,534 autoreload 64561 4427884032 /usr/local/lib/python3.11/site-packages/django/conf/locale/__init__.py changed, reloading.
+INFO 2023-12-28 00:42:09,534 autoreload 64561 4427884032 /usr/local/lib/python3.11/site-packages/django/conf/locale/__init__.py changed, reloading.
+INFO 2023-12-28 00:42:22,096 autoreload 65384 4456351232 Watching for file changes with StatReloader
+INFO 2023-12-28 00:42:22,096 autoreload 65384 4456351232 Watching for file changes with StatReloader
+INFO 2023-12-28 00:43:49,471 basehttp 65384 123145468051456 "GET /admin/ HTTP/1.1" 200 8437
+INFO 2023-12-28 00:43:49,471 basehttp 65384 123145468051456 "GET /admin/ HTTP/1.1" 200 8437
+INFO 2023-12-28 00:43:49,573 basehttp 65384 123145468051456 "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+INFO 2023-12-28 00:43:49,573 basehttp 65384 123145468051456 "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+INFO 2023-12-28 00:43:49,573 basehttp 65384 123145484840960 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2023-12-28 00:43:49,573 basehttp 65384 123145484840960 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2023-12-28 00:43:49,615 basehttp 65384 123145501630464 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2023-12-28 00:43:49,615 basehttp 65384 123145501630464 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2023-12-28 00:43:49,669 basehttp 65384 123145518419968 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2023-12-28 00:43:49,669 basehttp 65384 123145518419968 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2023-12-28 00:43:49,669 basehttp 65384 123145484840960 "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+INFO 2023-12-28 00:43:49,670 basehttp 65384 123145468051456 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2023-12-28 00:43:49,669 basehttp 65384 123145484840960 "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+INFO 2023-12-28 00:43:49,670 basehttp 65384 123145535209472 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2023-12-28 00:43:49,670 basehttp 65384 123145468051456 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2023-12-28 00:43:49,670 basehttp 65384 123145535209472 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2023-12-28 00:43:49,680 basehttp 65384 123145535209472 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2023-12-28 00:43:49,681 basehttp 65384 123145468051456 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2023-12-28 00:43:49,680 basehttp 65384 123145535209472 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2023-12-28 00:43:49,681 basehttp 65384 123145468051456 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2023-12-28 00:43:49,682 basehttp 65384 123145484840960 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2023-12-28 00:43:49,682 basehttp 65384 123145484840960 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2023-12-28 00:43:54,884 basehttp 65384 123145484840960 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10274
+INFO 2023-12-28 00:43:54,884 basehttp 65384 123145484840960 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10274
+INFO 2023-12-28 00:43:54,952 basehttp 65384 123145484840960 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2023-12-28 00:43:54,952 basehttp 65384 123145484840960 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2023-12-28 00:43:54,965 basehttp 65384 123145484840960 "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+INFO 2023-12-28 00:43:54,965 basehttp 65384 123145484840960 "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+INFO 2023-12-28 00:43:54,966 basehttp 65384 123145518419968 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2023-12-28 00:43:54,966 basehttp 65384 123145518419968 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2023-12-28 00:43:54,970 basehttp 65384 123145501630464 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+INFO 2023-12-28 00:43:54,970 basehttp 65384 123145501630464 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+INFO 2023-12-28 00:43:54,972 basehttp 65384 123145551998976 "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+INFO 2023-12-28 00:43:54,972 basehttp 65384 123145551998976 "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+INFO 2023-12-28 00:43:54,977 basehttp 65384 123145501630464 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2023-12-28 00:43:54,977 basehttp 65384 123145501630464 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2023-12-28 00:43:54,979 basehttp 65384 123145518419968 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2023-12-28 00:43:54,979 basehttp 65384 123145518419968 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2023-12-28 00:43:54,982 basehttp 65384 123145484840960 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2023-12-28 00:43:54,982 basehttp 65384 123145484840960 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2023-12-28 00:43:54,985 basehttp 65384 123145468051456 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2023-12-28 00:43:54,985 basehttp 65384 123145468051456 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2023-12-28 00:43:54,991 basehttp 65384 123145535209472 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+INFO 2023-12-28 00:43:54,991 basehttp 65384 123145535209472 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+INFO 2023-12-28 00:43:54,996 basehttp 65384 123145551998976 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+INFO 2023-12-28 00:43:54,996 basehttp 65384 123145551998976 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+INFO 2023-12-28 00:43:54,999 basehttp 65384 123145535209472 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2023-12-28 00:43:54,999 basehttp 65384 123145535209472 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2023-12-28 00:43:55,019 basehttp 65384 123145535209472 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2023-12-28 00:43:55,019 basehttp 65384 123145535209472 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2023-12-28 00:43:58,161 basehttp 65384 123145535209472 "POST /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8088
+INFO 2023-12-28 00:43:58,161 basehttp 65384 123145535209472 "POST /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8088
+INFO 2023-12-28 00:43:59,340 basehttp 65384 123145535209472 "POST /admin/daily_compliance_job/emailsender/ HTTP/1.1" 302 0
+INFO 2023-12-28 00:43:59,340 basehttp 65384 123145535209472 "POST /admin/daily_compliance_job/emailsender/ HTTP/1.1" 302 0
+INFO 2023-12-28 00:43:59,353 basehttp 65384 123145535209472 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8454
+INFO 2023-12-28 00:43:59,353 basehttp 65384 123145535209472 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 8454
+INFO 2023-12-28 00:43:59,384 basehttp 65384 123145535209472 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,384 basehttp 65384 123145535209472 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,392 basehttp 65384 123145484840960 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,392 basehttp 65384 123145484840960 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,393 basehttp 65384 123145468051456 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,393 basehttp 65384 123145468051456 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,395 basehttp 65384 123145551998976 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,395 basehttp 65384 123145551998976 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,400 basehttp 65384 123145535209472 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2023-12-28 00:43:59,400 basehttp 65384 123145551998976 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,400 basehttp 65384 123145535209472 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2023-12-28 00:43:59,400 basehttp 65384 123145551998976 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,403 basehttp 65384 123145551998976 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,403 basehttp 65384 123145551998976 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:43:59,416 basehttp 65384 123145551998976 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2023-12-28 00:43:59,416 basehttp 65384 123145551998976 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2023-12-28 00:44:00,808 basehttp 65384 123145551998976 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11999
+INFO 2023-12-28 00:44:00,808 basehttp 65384 123145551998976 "GET /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 200 11999
+INFO 2023-12-28 00:44:00,831 basehttp 65384 123145551998976 "GET /static/admin/css/forms.css HTTP/1.1" 200 9048
+INFO 2023-12-28 00:44:00,831 basehttp 65384 123145551998976 "GET /static/admin/css/forms.css HTTP/1.1" 200 9048
+INFO 2023-12-28 00:44:00,837 basehttp 65384 123145551998976 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2023-12-28 00:44:00,837 basehttp 65384 123145551998976 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2023-12-28 00:44:00,841 basehttp 65384 123145468051456 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+INFO 2023-12-28 00:44:00,841 basehttp 65384 123145468051456 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+INFO 2023-12-28 00:44:00,844 basehttp 65384 123145535209472 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2023-12-28 00:44:00,844 basehttp 65384 123145535209472 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2023-12-28 00:44:00,848 basehttp 65384 123145535209472 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2023-12-28 00:44:00,848 basehttp 65384 123145535209472 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2023-12-28 00:44:38,496 basehttp 65384 123145535209472 "POST /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 302 0
+INFO 2023-12-28 00:44:38,496 basehttp 65384 123145535209472 "POST /admin/daily_compliance_job/emailsender/add/ HTTP/1.1" 302 0
+INFO 2023-12-28 00:44:38,512 basehttp 65384 123145535209472 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10517
+INFO 2023-12-28 00:44:38,512 basehttp 65384 123145535209472 "GET /admin/daily_compliance_job/emailsender/ HTTP/1.1" 200 10517
+INFO 2023-12-28 00:44:38,540 basehttp 65384 123145535209472 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,547 basehttp 65384 123145518419968 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,548 basehttp 65384 123145551998976 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,548 basehttp 65384 123145468051456 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,551 basehttp 65384 123145484840960 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2023-12-28 00:44:38,540 basehttp 65384 123145535209472 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,547 basehttp 65384 123145518419968 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,548 basehttp 65384 123145551998976 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,548 basehttp 65384 123145468051456 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,551 basehttp 65384 123145484840960 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2023-12-28 00:44:38,567 basehttp 65384 123145535209472 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,567 basehttp 65384 123145535209472 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,568 basehttp 65384 123145468051456 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,568 basehttp 65384 123145468051456 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,569 basehttp 65384 123145501630464 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,569 basehttp 65384 123145501630464 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,568 basehttp 65384 123145551998976 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,570 basehttp 65384 123145518419968 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,568 basehttp 65384 123145551998976 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,570 basehttp 65384 123145518419968 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,577 basehttp 65384 123145535209472 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,578 basehttp 65384 123145501630464 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,578 basehttp 65384 123145551998976 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,579 basehttp 65384 123145484840960 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,577 basehttp 65384 123145535209472 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,578 basehttp 65384 123145501630464 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,578 basehttp 65384 123145551998976 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,581 basehttp 65384 123145518419968 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,579 basehttp 65384 123145484840960 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,581 basehttp 65384 123145518419968 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,588 basehttp 65384 123145518419968 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,588 basehttp 65384 123145518419968 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,591 basehttp 65384 123145501630464 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,591 basehttp 65384 123145501630464 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,592 basehttp 65384 123145551998976 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,592 basehttp 65384 123145551998976 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,594 basehttp 65384 123145484840960 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:44:38,594 basehttp 65384 123145484840960 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2023-12-28 00:45:40,276 run_daily_job 65468 4601873920 Test mode. Not sending to FTP server.
+INFO 2023-12-28 00:45:40,276 run_daily_job 65468 4601873920                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+ERROR 2023-12-28 00:45:43,084 email 65468 4601873920 Error sending email: (550, b'5.7.1 This message is not RFC 5322 compliant. There are multiple To headers.\n5.7.1 To reduce the amount of spam sent to Gmail, this message has been\n5.7.1 blocked. For more information, go to\n5.7.1  https://support.google.com/mail/?p=RfcMessageNonCompliant and review\n5.7.1 RFC 5322 specifications. r12-20020a056638100c00b0046d4a692621sm1473384jab.123 - gsmtp')
+INFO 2023-12-28 00:48:11,254 run_daily_job 65544 4775839232 Test mode. Not sending to FTP server.
+INFO 2023-12-28 00:48:11,254 run_daily_job 65544 4775839232                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+INFO 2023-12-28 00:48:13,034 email 65544 4775839232 Emails sent successfully.
+INFO 2023-12-28 01:37:57,888 autoreload 65384 4456351232 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:37:57,888 autoreload 65384 4456351232 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:38:00,244 autoreload 66171 4539938304 Watching for file changes with StatReloader
+INFO 2023-12-28 01:38:00,244 autoreload 66171 4539938304 Watching for file changes with StatReloader
+INFO 2023-12-28 01:38:51,499 autoreload 66171 4539938304 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:38:51,499 autoreload 66171 4539938304 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:38:52,569 autoreload 66197 4333225472 Watching for file changes with StatReloader
+INFO 2023-12-28 01:38:52,569 autoreload 66197 4333225472 Watching for file changes with StatReloader
+INFO 2023-12-28 01:40:12,456 autoreload 66197 4333225472 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:40:12,456 autoreload 66197 4333225472 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:40:13,008 autoreload 66213 4740703744 Watching for file changes with StatReloader
+INFO 2023-12-28 01:40:13,008 autoreload 66213 4740703744 Watching for file changes with StatReloader
+INFO 2023-12-28 01:40:40,403 autoreload 66213 4740703744 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:40:40,403 autoreload 66213 4740703744 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:40:41,093 autoreload 66230 4547139072 Watching for file changes with StatReloader
+INFO 2023-12-28 01:40:41,093 autoreload 66230 4547139072 Watching for file changes with StatReloader
+INFO 2023-12-28 01:41:06,490 autoreload 66230 4547139072 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:41:06,490 autoreload 66230 4547139072 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:41:08,111 autoreload 66264 4602422784 Watching for file changes with StatReloader
+INFO 2023-12-28 01:41:08,111 autoreload 66264 4602422784 Watching for file changes with StatReloader
+INFO 2023-12-28 01:42:41,820 autoreload 66264 4602422784 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:42:41,820 autoreload 66264 4602422784 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:42:42,734 autoreload 66287 4485318144 Watching for file changes with StatReloader
+INFO 2023-12-28 01:42:42,734 autoreload 66287 4485318144 Watching for file changes with StatReloader
+INFO 2023-12-28 01:42:47,000 autoreload 66287 4485318144 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:42:47,000 autoreload 66287 4485318144 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:42:48,148 autoreload 66294 4490057216 Watching for file changes with StatReloader
+INFO 2023-12-28 01:42:48,148 autoreload 66294 4490057216 Watching for file changes with StatReloader
+INFO 2023-12-28 01:44:57,556 autoreload 66294 4490057216 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:44:57,556 autoreload 66294 4490057216 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:44:58,616 autoreload 66326 4440319488 Watching for file changes with StatReloader
+INFO 2023-12-28 01:44:58,616 autoreload 66326 4440319488 Watching for file changes with StatReloader
+INFO 2023-12-28 01:54:42,748 autoreload 66326 4440319488 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:54:42,748 autoreload 66326 4440319488 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:54:44,384 autoreload 66476 4524385792 Watching for file changes with StatReloader
+INFO 2023-12-28 01:54:44,384 autoreload 66476 4524385792 Watching for file changes with StatReloader
+INFO 2023-12-28 01:55:31,361 autoreload 66476 4524385792 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:55:31,361 autoreload 66476 4524385792 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 01:55:32,340 autoreload 66492 4643980800 Watching for file changes with StatReloader
+INFO 2023-12-28 01:55:32,340 autoreload 66492 4643980800 Watching for file changes with StatReloader
+INFO 2023-12-28 04:49:23,920 autoreload 66492 4643980800 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 04:49:23,920 autoreload 66492 4643980800 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 04:49:24,972 autoreload 67461 4554593792 Watching for file changes with StatReloader
+INFO 2023-12-28 04:49:24,972 autoreload 67461 4554593792 Watching for file changes with StatReloader
+INFO 2023-12-28 04:49:35,213 autoreload 67461 4554593792 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 04:49:35,213 autoreload 67461 4554593792 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/daily_compliance_job/models.py changed, reloading.
+INFO 2023-12-28 04:49:36,292 autoreload 67475 4500194816 Watching for file changes with StatReloader
+INFO 2023-12-28 04:49:36,292 autoreload 67475 4500194816 Watching for file changes with StatReloader
+INFO 2023-12-28 05:18:07,394 run_daily_job 69642 4547573248 Test mode. Not sending to FTP server.
+INFO 2023-12-28 05:18:07,395 run_daily_job 69642 4547573248                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+INFO 2023-12-28 05:18:24,874 run_daily_job 69661 4472088064 Test mode. Not sending to FTP server.
+INFO 2023-12-28 05:18:24,874 run_daily_job 69661 4472088064                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+INFO 2023-12-28 05:18:24,897 run_daily_job 69661 4472088064                    VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63   1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+65   1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+73   1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+143  3HAEUMML4LL395437  2023-12-12    00:00:00    215764           IA
+144  3HAEUMML4LL395437  2023-12-12    23:59:00    215969           IA
+..                 ...         ...         ...       ...          ...
+52   3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53   3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54   3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55   3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56   3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[156 rows x 5 columns]
+INFO 2023-12-28 05:25:01,426 run_daily_job 69768 4609660416 Test mode. Not sending to FTP server.
+INFO 2023-12-28 05:25:01,426 run_daily_job 69768 4609660416                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+INFO 2023-12-28 05:25:01,454 run_daily_job 69768 4609660416                    VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63   1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64   1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65   1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66   1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+143  3HAEUMML4LL395437  2023-12-12    00:00:00    215764           IA
+..                 ...         ...         ...       ...          ...
+52   3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53   3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54   3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55   3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56   3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[164 rows x 5 columns]
+INFO 2023-12-28 05:28:28,948 basehttp 67475 123145352667136 "GET /admin/ HTTP/1.1" 200 9028
+INFO 2023-12-28 05:28:28,948 basehttp 67475 123145352667136 "GET /admin/ HTTP/1.1" 200 9028
+INFO 2023-12-28 05:28:28,982 basehttp 67475 123145352667136 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:28,982 basehttp 67475 123145352667136 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,061 basehttp 67475 123145386246144 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,061 basehttp 67475 123145386246144 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,066 basehttp 67475 123145369456640 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,066 basehttp 67475 123145369456640 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,069 basehttp 67475 123145352667136 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,069 basehttp 67475 123145352667136 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,095 basehttp 67475 123145419825152 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,095 basehttp 67475 123145386246144 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,095 basehttp 67475 123145419825152 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,095 basehttp 67475 123145386246144 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,117 basehttp 67475 123145419825152 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,117 basehttp 67475 123145419825152 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,122 basehttp 67475 123145403035648 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,122 basehttp 67475 123145403035648 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,146 basehttp 67475 123145403035648 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,146 basehttp 67475 123145403035648 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,125 basehttp 67475 123145386246144 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2023-12-28 05:28:29,125 basehttp 67475 123145386246144 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2023-12-28 05:30:12,777 run_daily_job 69886 4513306112 Test mode. Not sending to FTP server.
+INFO 2023-12-28 05:30:12,780 run_daily_job 69886 4513306112                   VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63  1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64  1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65  1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66  1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+73  1HTMSTAR8KH422406  2023-12-12    00:00:00    122540           OH
+..                ...         ...         ...       ...          ...
+52  3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53  3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54  3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55  3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56  3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[184 rows x 5 columns]
+INFO 2023-12-28 05:30:12,810 run_daily_job 69886 4513306112                    VIN ReadingDate ReadingTime  Odometer Jurisdiction
+63   1HTEUMMN0KH550927  2023-12-12    00:00:00    245639           OH
+64   1HTEUMMN0KH550927  2023-12-12    08:53:00    245639           OH
+65   1HTEUMMN0KH550927  2023-12-12    17:49:56    245771           OH
+66   1HTEUMMN0KH550927  2023-12-12    23:59:00    245771           OH
+143  3HAEUMML4LL395437  2023-12-12    00:00:00    215764           IA
+..                 ...         ...         ...       ...          ...
+52   3HSLGAPR5MN539804  2023-12-12    15:44:55    466890           OK
+53   3HSLGAPR5MN539804  2023-12-12    16:37:57    466944           TX
+54   3HSLGAPR5MN539804  2023-12-12    20:57:35    467114           OK
+55   3HSLGAPR5MN539804  2023-12-12    21:32:43    467150           KS
+56   3HSLGAPR5MN539804  2023-12-12    23:59:00    467280           KS
+
+[164 rows x 5 columns]
+INFO 2023-12-28 05:41:13,424 run_daily_job 70083 4443661824 Test mode. Not sending to FTP server.
+INFO 2023-12-28 05:41:13,424 run_daily_job 70083 4443661824 Generating CSV for Ohalloran_2023_12_11.csv...
+INFO 2023-12-28 05:41:13,434 run_daily_job 70083 4443661824                    VIN ReadingDate ReadingTime  Odometer Jurisdiction
+65   1HTEUMMN0KH550927  2023-12-11    00:00:00    245467           OH
+66   1HTEUMMN0KH550927  2023-12-11    09:27:45    245467           OH
+67   1HTEUMMN0KH550927  2023-12-11    18:01:01    245639           OH
+68   1HTEUMMN0KH550927  2023-12-11    23:59:00    245639           OH
+158  3HAEUMML4LL395437  2023-12-11    00:00:00    215578           IA
+..                 ...         ...         ...       ...          ...
+56   3HSLGAPR5MN539804  2023-12-11    15:37:54    466328           OK
+57   3HSLGAPR5MN539804  2023-12-11    16:31:06    466382           TX
+58   3HSLGAPR5MN539804  2023-12-11    21:08:28    466551           OK
+59   3HSLGAPR5MN539804  2023-12-11    21:47:07    466587           KS
+60   3HSLGAPR5MN539804  2023-12-11    23:59:00    466722           KS
+
+[173 rows x 5 columns]
+INFO 2023-12-28 05:41:15,446 email 70083 4443661824 Emails sent successfully.
+INFO 2023-12-28 06:02:50,495 autoreload 67475 4500194816 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/__init__.py changed, reloading.
+INFO 2023-12-28 06:02:50,495 autoreload 67475 4500194816 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/__init__.py changed, reloading.
+INFO 2023-12-28 06:02:52,603 autoreload 70487 4560881152 Watching for file changes with StatReloader
+INFO 2023-12-28 06:02:52,603 autoreload 70487 4560881152 Watching for file changes with StatReloader
+INFO 2023-12-28 06:06:14,400 autoreload 70487 4560881152 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:06:14,400 autoreload 70487 4560881152 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:06:16,240 autoreload 70528 4550682112 Watching for file changes with StatReloader
+INFO 2023-12-28 06:06:16,240 autoreload 70528 4550682112 Watching for file changes with StatReloader
+INFO 2023-12-28 06:09:19,754 autoreload 70528 4550682112 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:09:19,754 autoreload 70528 4550682112 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:09:21,117 autoreload 70585 4762359296 Watching for file changes with StatReloader
+INFO 2023-12-28 06:09:21,117 autoreload 70585 4762359296 Watching for file changes with StatReloader
+INFO 2023-12-28 06:11:57,620 autoreload 70585 4762359296 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:11:57,620 autoreload 70585 4762359296 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:11:58,767 autoreload 70654 4734191104 Watching for file changes with StatReloader
+INFO 2023-12-28 06:11:58,767 autoreload 70654 4734191104 Watching for file changes with StatReloader
+INFO 2023-12-28 06:16:49,835 autoreload 70654 4734191104 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:16:49,835 autoreload 70654 4734191104 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:16:51,102 autoreload 70741 4699559424 Watching for file changes with StatReloader
+INFO 2023-12-28 06:16:51,102 autoreload 70741 4699559424 Watching for file changes with StatReloader
+INFO 2023-12-28 06:17:05,681 autoreload 70741 4699559424 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:17:05,681 autoreload 70741 4699559424 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:17:07,002 autoreload 70754 4550960640 Watching for file changes with StatReloader
+INFO 2023-12-28 06:17:07,002 autoreload 70754 4550960640 Watching for file changes with StatReloader
+INFO 2023-12-28 06:24:06,781 autoreload 70754 4550960640 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:24:06,781 autoreload 70754 4550960640 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:24:08,796 autoreload 70994 4536088064 Watching for file changes with StatReloader
+INFO 2023-12-28 06:24:08,796 autoreload 70994 4536088064 Watching for file changes with StatReloader
+INFO 2023-12-28 06:25:32,683 autoreload 70994 4536088064 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:25:32,683 autoreload 70994 4536088064 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/settings.py changed, reloading.
+INFO 2023-12-28 06:25:34,631 autoreload 71061 4513900032 Watching for file changes with StatReloader
+INFO 2023-12-28 06:25:34,631 autoreload 71061 4513900032 Watching for file changes with StatReloader
+INFO 2023-12-28 06:25:48,211 autoreload 71061 4513900032 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/celery.py changed, reloading.
+INFO 2023-12-28 06:25:48,211 autoreload 71061 4513900032 /Users/ryanohalloran/Documents/Trivista/IFTAFilter/TrivIFTA/TrivIFTA/celery.py changed, reloading.
+INFO 2023-12-28 06:26:10,708 autoreload 71105 4491634176 Watching for file changes with StatReloader
+INFO 2023-12-28 06:26:10,708 autoreload 71105 4491634176 Watching for file changes with StatReloader
