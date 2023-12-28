@@ -1,0 +1,8 @@
+# .gitignore
+src/.env
+TrivIFTA/.env
+TrivIFTA/nohup.out
+TrivIFTA/django.log
+TrivIFTA/dump.rdb
+TrivIFTA/celerybeat-schedule.db
+TrivIFTA/db.sqlite3
