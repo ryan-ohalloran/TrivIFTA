@@ -1,4 +1,5 @@
 # .gitignore
+.DS_Store
 src/.env
 TrivIFTA/.env
 TrivIFTA/nohup.out
