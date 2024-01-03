@@ -44,7 +44,7 @@ class IftaEntry(models.Model):
         unique_together = (('vin', 'reading_date', 'reading_time'),)
 
     @staticmethod
-    def save_all_entries(self, entries: DataFrame) -> None:
+    def save_all_entries(entries: DataFrame) -> None:
         """
         Save all entries in the dataframe to the database
         """

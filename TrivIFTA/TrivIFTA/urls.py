@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from daily_compliance_job.views import run_job, get_entries_by_date
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('api/run-job/', run_job),
+    path('api/entries/<str:date>/', get_entries_by_date)
 ]

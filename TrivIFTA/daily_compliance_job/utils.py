@@ -1,5 +1,7 @@
 from cryptography.fernet import Fernet
 from django.conf import settings
+import csv
+import json
 
 def get_fernet():
     # Generate a key if it doesn't exist
@@ -14,3 +16,7 @@ def encrypt_data(data):
 def decrypt_data(data):
     f = get_fernet()
     return f.decrypt(data.encode()).decode()
+
+def convert_csv_to_json(csv_data: str) -> str:
+    # return the csv data as a json object of the form: {"text": csv_data}
+    return json.dumps({"text": csv_data})

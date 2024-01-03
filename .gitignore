@@ -7,3 +7,4 @@ TrivIFTA/django.log
 TrivIFTA/dump.rdb
 TrivIFTA/celerybeat-schedule.db
 TrivIFTA/db.sqlite3
+__pycache__/

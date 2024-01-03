@@ -38,7 +38,7 @@ class Command(BaseCommand):
             action='store_true',
             help='Send the report to the FTP server',)
 
-    def handle(self, *args, **options):
+    def handle(self, *args, **options) -> str:
         # Parsing the date arguments
         from_date_str = options['from_date']
 
@@ -70,7 +70,6 @@ class Command(BaseCommand):
         file_name = f'Ohalloran_{from_date.year}_{from_date.month:02d}_{from_date.day:02d}.csv'
 
         csv_data = full_csv_data
-
         # if the remove_unchanged argument was provided, create a reduced dataframe
         if options['remove_unchanged']:
             reduced_df = geotab_ifta_data_collection.to_dataframe(remove_nonmoving_vehicles=True)
@@ -80,26 +79,28 @@ class Command(BaseCommand):
         # if the test argument was provided, print the dataframe and return (and email if the email argument was provided)
         if options['test']:
             send_email = bool(options['send_email'])
-            test_mode(full_csv_data, file_name, geotab_ifta_data_collection, from_date, send_email=send_email)
+            test_mode(full_csv_data, file_name, from_date, send_email=send_email)
             return
 
         # send the CSV to the FTP server
         if options['send_to_ftp']:
             if not send_to_ftp(csv_data, file_name, from_date):
-                return
+                raise Exception('Failed to send data to FTP server')
 
         # send email to recipients
         if options['send_email']:
-            if not send_success_email(csv_data, file_name, from_date):
-                return
+            if not send_success_email(csv_data, file_name, bool(options['send_to_ftp']), from_date):
+                raise Exception('Failed to send success email')
             
         # save entries to database if save_to_db argument was provided
         #   Note: the full dataframe is always saved to the database
         if options['save_to_db']:
-            IftaEntry.save_all_entries(full_df)
+            IftaEntry.save_all_entries(entries=full_df)
             logger.info('Successfully saved entries to database.')
+        
+        return csv_data
 
-def test_mode(csv_data: str, file_name: str, geotab_ifta_data_collection: IftaDataCollection, date: datetime.date, send_email: bool = False) -> None:
+def test_mode(csv_data: str, file_name: str, date: datetime.date, send_email: bool = False) -> None:
     '''
     Run the command in test mode
     '''
@@ -141,18 +142,25 @@ def send_to_ftp(full_csv_data: str, file_name: str, date: datetime.date) -> bool
     logger.info(f'Successfully sent {file_name} to FTP server🔥')
     return True
 
-def send_success_email(full_csv_data: str, file_name: str, date: datetime.date) -> bool:
+def send_success_email(full_csv_data: str, file_name: str, sent_to_ftp: bool, date: datetime.date) -> bool:
     '''
-    Send an email to the recipients to notify them of a successful FTP job
+    Send an email to the recipients to notify them of a successful CSV generation
     
     Returns True if the email was sent successfully, False otherwise
     '''
     subject = f"IFTA Report Success {file_name} --- {date.month}/{date.day}/{date.year}"
-    body = f'''IFTA report for {date.month}/{date.day}/{date.year} sent successfully to FTP.
-            \n\nPlease see the attached file for the report.
-            \n\nThank you,
-            \nTrivista IFTA Compliance Team
-            '''
+    if not sent_to_ftp:
+        body = f'''IFTA report for {date.month}/{date.day}/{date.year} sucessfully generated.
+                \n\nPlease see the attached file for the report.
+                \n\nThank you,
+                \nTrivista IFTA Compliance Team
+                '''
+    elif sent_to_ftp:
+        body = f'''IFTA report for {date.month}/{date.day}/{date.year} sucessfully generated and sent to FTP.
+                \n\nPlease see the attached file for the report sent to the Idealease FTP server.
+                \n\nThank you,
+                \nTrivista IFTA Compliance Team
+                '''
 
     email_service = EmailService(subject, body, date=date, attachment=full_csv_data, attachment_name=file_name)
     if email_service.send():
