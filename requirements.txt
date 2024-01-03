@@ -1,6 +1,0 @@
-pandas
-streamlit
-numpy
-openpyxl
-datetime
-mygeotab
