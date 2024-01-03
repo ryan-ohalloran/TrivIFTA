@@ -1,2 +1,3 @@
-# IFTA
-Full-stop IFTA compliance workflow for Trivista Companies, Inc.
+# TrivIFTA
+
+#### Full-stop IFTA compliance workflow for Trivista Companies, Inc. 
