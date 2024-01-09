@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Papa from 'papaparse';
 import './RunJobForm.css';
+import ReactDOM from 'react-dom';
 
 function RunJobForm() {
   const [date, setDate] = useState(null);
@@ -24,7 +25,6 @@ function RunJobForm() {
   };
 
   const parseCSVData = (csvString) => {
-    console.log(typeof csvString);
     return new Promise((resolve, reject) => {
       Papa.parse(csvString, {
         header: true,
@@ -53,8 +53,6 @@ function RunJobForm() {
   
       if (csvString) {
         const parsedData = await parseCSVData(csvString);
-        console.log(typeof parsedData); // Log the type of parsedData
-        console.log("Parsed Data:", parsedData); // Log the parsed data
         setCsvData(parsedData);
       } else {
         throw new Error("CSV data is undefined or empty");
@@ -64,6 +62,13 @@ function RunJobForm() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const PopperContainer = ({ children }) => {
+    return ReactDOM.createPortal(
+      children,
+      document.body
+    );
   };
 
   const handleDownload = () => {
@@ -94,6 +99,7 @@ function RunJobForm() {
                   onChange={setDate} 
                   dateFormat="yyyy-MM-dd"
                   filterDate={isDateDisabled}
+                  popperContainer={PopperContainer}
                   className="date-picker"
                   />
               </label>

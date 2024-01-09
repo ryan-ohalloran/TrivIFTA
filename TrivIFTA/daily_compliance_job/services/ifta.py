@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from datetime import date, time
 from openpyxl import load_workbook
-from typing import Dict, Any
+from typing import Dict, Any, List
 import io
 
 class IftaData:
@@ -29,6 +29,11 @@ class IftaDataCollection(Dict[str, IftaData]):
     """
     Class to hold data for all VINs for which IFTA reporting is needed -- behaves like Dict[str, IftaData]
     """
+    def __init__(self) -> None:
+        super().__init__()
+        self.total_vehicles = 0
+        self.num_nonmoving_vehicles = 0
+
     def add_ifta_data(self, vin: str) -> None:
         if vin not in self:
             self[vin] = IftaData(vin)
@@ -63,6 +68,13 @@ class IftaDataCollection(Dict[str, IftaData]):
         # Sort the DataFrame by VIN, ReadingDate, and ReadingTime
         df.sort_values(by=['VIN', 'ReadingDate', 'ReadingTime'], inplace=True)
 
+        # Count number of total vehicles (i.e. number of unique vins)
+        self.total_vehicles = len(df['VIN'].unique())
+
+        # Retrieve list of nonmoving vehicles
+        nonmoving_vehicles = self.get_nonmoving_vehicles(df)
+        self.num_nonmoving_vehicles = len(nonmoving_vehicles)
+
         # Remove entries for vins where the odometer reading does not change
         if remove_nonmoving_vehicles:
             self.remove_unchanged(df)
@@ -70,10 +82,9 @@ class IftaDataCollection(Dict[str, IftaData]):
         # Return the dataframe
         return df
     
-    def remove_unchanged(self, df: pd.DataFrame) -> int:
+    def get_nonmoving_vehicles(self, df: pd.DataFrame) -> List[str]:
         """
-        Remove entries for vins where the odometer reading does not change
-        Returns the number of entries removed
+        Retrieve all entries where the odometer reading does not change
         """
         # Group the DataFrame by 'VIN'
         grouped = df.groupby('VIN')
@@ -81,11 +92,15 @@ class IftaDataCollection(Dict[str, IftaData]):
         # Find the vins that have exactly two entries and the odometer reading and jurisdiction are the same for both
         vins_to_remove = [vin for vin, group in grouped if len(group) == 2 and group['Odometer'].nunique() == 1 and group['Jurisdiction'].nunique() == 1]
 
+        return vins_to_remove
+
+    def remove_unchanged(self, df: pd.DataFrame, vins_to_remove: List[str]) -> None:
+        """
+        Remove entries for vins where the odometer reading does not change
+        Returns the number of entries removed
+        """
         # Remove the entries for these vins
         df.drop(df[df['VIN'].isin(vins_to_remove)].index, inplace=True)
-
-        return len(vins_to_remove)
-
 
     def export_data(self, output_file: str) -> None:
         """

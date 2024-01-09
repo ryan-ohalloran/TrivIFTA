@@ -1,7 +1,6 @@
 # .gitignore
 .DS_Store
-src/.env
-TrivIFTA/.env
+.env
 TrivIFTA/nohup.out
 TrivIFTA/django.log
 TrivIFTA/dump.rdb

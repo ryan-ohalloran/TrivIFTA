@@ -89,7 +89,7 @@ class Command(BaseCommand):
 
         # send email to recipients
         if options['send_email']:
-            if not send_success_email(csv_data, file_name, bool(options['send_to_ftp']), from_date):
+            if not send_success_email(csv_data, file_name, bool(options['send_to_ftp']), from_date, geotab_ifta_data_collection.total_vehicles, geotab_ifta_data_collection.num_nonmoving_vehicles):
                 raise Exception('Failed to send success email')
             
         # save entries to database if save_to_db argument was provided
@@ -142,7 +142,7 @@ def send_to_ftp(full_csv_data: str, file_name: str, date: datetime.date) -> bool
     logger.info(f'Successfully sent {file_name} to FTP server🔥')
     return True
 
-def send_success_email(full_csv_data: str, file_name: str, sent_to_ftp: bool, date: datetime.date) -> bool:
+def send_success_email(full_csv_data: str, file_name: str, sent_to_ftp: bool, date: datetime.date, total_vehhicles: int, num_nonmoving_vehicles: int) -> bool:
     '''
     Send an email to the recipients to notify them of a successful CSV generation
     
@@ -152,12 +152,18 @@ def send_success_email(full_csv_data: str, file_name: str, sent_to_ftp: bool, da
     if not sent_to_ftp:
         body = f'''IFTA report for {date.month}/{date.day}/{date.year} sucessfully generated.
                 \n\nPlease see the attached file for the report.
+                \n\nReport statistics:
+                \n\tTotal vehicles: {total_vehhicles}
+                \n\tNumber of non-moving vehicles: {num_nonmoving_vehicles}
                 \n\nThank you,
                 \nTrivista IFTA Compliance Team
                 '''
     elif sent_to_ftp:
         body = f'''IFTA report for {date.month}/{date.day}/{date.year} sucessfully generated and sent to FTP.
                 \n\nPlease see the attached file for the report sent to the Idealease FTP server.
+                \n\nReport statistics:
+                \n\tTotal vehicles: {total_vehhicles}
+                \n\tNumber of non-moving vehicles: {num_nonmoving_vehicles}
                 \n\nThank you,
                 \nTrivista IFTA Compliance Team
                 '''

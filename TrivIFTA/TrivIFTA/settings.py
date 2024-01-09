@@ -24,6 +24,7 @@ FTP_HOST          = os.environ.get('FTP_HOST')
 FTP_USERNAME      = os.environ.get('FTP_USERNAME')
 FTP_KEY           = os.environ.get('FTP_KEY')
 FERNET_KEY        = os.environ.get('FERNET_KEY')
+GEOTAB_GROUP      = 'b279F' # Geotab group id for IFTA devices
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -61,7 +62,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.100.2.186', 'localhost', '127.0.0.1']
 
 # Set timezone
 TIME_ZONE = 'America/Chicago'
@@ -84,6 +85,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware', # Whitenoise middleware
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -97,7 +99,8 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://192.168.4.32",
-    "http://127.0.0.1:8000"
+    "http://127.0.0.1:8000",
+    "http://10.100.2.186:3000",
 ]
 
 ROOT_URLCONF = "TrivIFTA.urls"
