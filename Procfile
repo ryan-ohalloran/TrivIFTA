@@ -1,3 +1,3 @@
-web: gunicorn TrivIFTA.wsgi
+web: gunicorn --pythonpath TrivIFTA TrivIFTA.wsgi
 worker: celery -A TrivIFTA worker --loglevel=info -c 3
 beat: celery -A TrivIFTA beat --loglevel=info
