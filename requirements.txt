@@ -68,7 +68,6 @@ numpy==1.26.2
 oauthlib==3.2.2
 openai==1.6.1
 openpyxl==3.1.2
-openvino==2023.2.0
 packaging==23.2
 pandas==2.1.4
 Pillow==10.1.0
