@@ -29,6 +29,9 @@ class EmailService:
 
         # get the email recipients
         recipients = [recipient.email for recipient in EmailRecipient.objects.all()]
+        if not recipients:
+            logger.error("No email recipients configured")
+            return False
 
         try:
             # Set up the SMTP server

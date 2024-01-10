@@ -1,4 +1,3 @@
 // config.js
-
-const API_BASE_URL = 'http://'; // Will replace with Heroku URL later
+let API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:8000';
 export default API_BASE_URL;

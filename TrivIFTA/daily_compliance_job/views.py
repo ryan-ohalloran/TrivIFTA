@@ -5,9 +5,15 @@ from .utils import convert_csv_to_json
 from django.http import JsonResponse, HttpResponseServerError
 from .models import IftaEntry
 import logging
+import os
 from .serializers import IftaEntrySerializer
 
 logger = logging.getLogger(__name__)
+
+@api_view(['GET'])
+def get_config(request) -> JsonResponse:
+    API_BASE_URL = os.environ.get('API_BASE_URL', 'http://localhost:8000')
+    return Response({'API_BASE_URL': API_BASE_URL}, content_type='application/json')
 
 @api_view(['POST'])
 def run_job(request) -> JsonResponse | HttpResponseServerError:

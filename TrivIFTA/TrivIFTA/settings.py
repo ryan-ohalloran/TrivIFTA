@@ -14,6 +14,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from celery.schedules import crontab
+import django_heroku
+import dj_database_url
 
 # Set Geotab API credentials from the .env file 
 load_dotenv()
@@ -60,9 +62,9 @@ CELERY_BEAT_SCHEDULE = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['10.100.2.186', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', 'trivifta-dff8d2c115e7.herokuapp.com', 'trivista.cloud']
 
 # Set timezone
 TIME_ZONE = 'America/Chicago'
@@ -98,9 +100,9 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://192.168.4.32",
-    "http://127.0.0.1:8000",
-    "http://10.100.2.186:3000",
+    "http://localhost:8000",
+    "https://trivifta-dff8d2c115e7.herokuapp.com",
+    "https://trivista.cloud",
 ]
 
 ROOT_URLCONF = "TrivIFTA.urls"
@@ -127,12 +129,30 @@ WSGI_APPLICATION = "TrivIFTA.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+POSTGRES_ENGINE = os.environ.get('POSTGRES_ENGINE', 'django.db.backends.postgresql_psycopg2')
+POSTGRES_NAME   = os.environ.get('POSTGRES_NAME')
+POSTGRES_USER   = os.environ.get('POSTGRES_USER')
+POSTGRES_PASS   = os.environ.get('POSTGRES_PASS')
+POSTGRES_HOST   = os.environ.get('POSTGRES_HOST')
+POSTGRES_PORT   = os.environ.get('POSTGRES_PORT')
+
+if DEBUG:
+    # DEVELOPMENT
+    DATABASES = {
+        "default": {
+            "ENGINE": POSTGRES_ENGINE,
+            "NAME": POSTGRES_NAME,
+            "USER": POSTGRES_USER,
+            "PASSWORD": POSTGRES_PASS,
+            "HOST": POSTGRES_HOST,
+            "PORT": POSTGRES_PORT,
+        }
     }
-}
+else:
+    # PRODUCTION
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    }
 
 
 # Password validation
@@ -169,7 +189,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    os.path.join(os.path.dirname(BASE_DIR), 'frontend', 'build', 'static'),
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -220,3 +245,5 @@ LOGGING = {
         },
     },
 }
+
+django_heroku.settings(locals())

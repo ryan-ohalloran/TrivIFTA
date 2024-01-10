@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import './RunJobForm.css';
+import API_BASE_URL from '../config';
 
 function QueryDatabaseForm() {
     const startYear = 2023;
@@ -42,10 +43,10 @@ function QueryDatabaseForm() {
     const handleDayClick = async (day) => {
         setDay(day);
         const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const response = await fetch(`http://127.0.0.1:8000/api/entries/${formattedDate}/`);
+        const response = await fetch(new URL(`api/entries/${formattedDate}/`, API_BASE_URL).toString());
         const jsonData = await response.json();
         setData(jsonData);
-        };
+    };
 
   const downloadCSV = () => {
         const header = Object.keys(data[0]).join(',');
