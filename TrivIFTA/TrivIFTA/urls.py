@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from daily_compliance_job.views import run_job, get_entries_by_date
+from daily_compliance_job.views import run_job, get_entries_by_date, get_config
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
+    path('api/config/', get_config),
     path("admin/", admin.site.urls),
     path('api/run-job/', run_job),
-    path('api/entries/<str:date>/', get_entries_by_date)
+    path('api/entries/<str:date>/', get_entries_by_date),
+    path('', TemplateView.as_view(template_name='index.html')),
 ]

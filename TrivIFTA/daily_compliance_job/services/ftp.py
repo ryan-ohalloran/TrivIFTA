@@ -8,16 +8,13 @@ class GeotabFTP(FTP):
         super().__init__(host)
         self.login(user=settings.FTP_USERNAME, passwd=settings.FTP_KEY)
 
-    def send_to_ftp(self, data: pd.DataFrame, filename: str) -> None:
+    def send_to_ftp(self, csv_data: str, filename: str) -> None:
         '''
         Sends the data to the FTP server
         '''
-        # convert the data to a csv string
-        data_csv = data.to_csv(index=False).encode('utf-8')
-
         try:
             # send the data to the FTP server
-            self.storbinary(f'STOR {filename}', io.BytesIO(data_csv))
+            self.storbinary(f'STOR {filename}', io.BytesIO(csv_data.encode('utf-8')))
         except Exception as e:
             # if unsuccessful, show an error message
             raise Exception(f'Failed to send {filename} to FTP server.\n\t{e}')

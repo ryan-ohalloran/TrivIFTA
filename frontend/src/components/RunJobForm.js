@@ -4,8 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Papa from 'papaparse';
 import './RunJobForm.css';
+import ReactDOM from 'react-dom';
+import API_BASE_URL from '../config';
 
 function RunJobForm() {
+
   const [date, setDate] = useState(null);
   const [options, setOptions] = useState({
     remove_unchanged: false,
@@ -24,7 +27,6 @@ function RunJobForm() {
   };
 
   const parseCSVData = (csvString) => {
-    console.log(typeof csvString);
     return new Promise((resolve, reject) => {
       Papa.parse(csvString, {
         header: true,
@@ -46,15 +48,15 @@ function RunJobForm() {
   
     try {
       const formattedDate = date.toISOString().split('T')[0];
-      const response = await axios.post('http://127.0.0.1:8000/api/run-job/', { date: formattedDate, ...options });
+      const runJobUrl = new URL('api/run-job/', API_BASE_URL).toString();
+      console.log(runJobUrl);
+      const response = await axios.post(runJobUrl, { date: formattedDate, ...options });
   
       const csvString = JSON.parse(response.data).text; // Extract CSV string from API response
       setCsvString(csvString);
   
       if (csvString) {
         const parsedData = await parseCSVData(csvString);
-        console.log(typeof parsedData); // Log the type of parsedData
-        console.log("Parsed Data:", parsedData); // Log the parsed data
         setCsvData(parsedData);
       } else {
         throw new Error("CSV data is undefined or empty");
@@ -64,6 +66,13 @@ function RunJobForm() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const PopperContainer = ({ children }) => {
+    return ReactDOM.createPortal(
+      children,
+      document.body
+    );
   };
 
   const handleDownload = () => {
@@ -94,6 +103,7 @@ function RunJobForm() {
                   onChange={setDate} 
                   dateFormat="yyyy-MM-dd"
                   filterDate={isDateDisabled}
+                  popperContainer={PopperContainer}
                   className="date-picker"
                   />
               </label>

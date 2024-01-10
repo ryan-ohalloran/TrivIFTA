@@ -11,7 +11,7 @@ from daily_compliance_job.services.ifta import IftaDataCollection, FuelTaxProces
 from django.conf import settings
 
 KILO_TO_MILES = 0.62137119
-IFTA_GROUP = [{'id': 'b279F'}] # if more groups need to be added in the future, add them to this list
+IFTA_GROUP = [{'id': settings.GEOTAB_GROUP}] # if more groups need to be added in the future, add them to this list
 
 class MyGeotabAPI(mygeotab.API):
     def __init__(self, username: str = '', password: str = '', database: str = '') -> None:
