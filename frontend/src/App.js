@@ -18,7 +18,7 @@ function App() {
             <li className={activeTab === 'query-database-form' ? 'nav-tab active' : 'nav-tab'} onClick={() => setActiveTab('query-database-form')}><a href="#query-database-form">View Report Database</a></li>
           </ul>
         </nav>
-        <a href={`${API_BASE_URL}/admin/`} className="admin-link">Admin</a>
+        <a href={`${API_BASE_URL}admin/`} className="admin-link">Admin</a>
       </header>
       {activeTab === 'run-job-form' && <RunJobForm />}
       {activeTab === 'query-database-form' && <QueryDatabaseForm />} {/* Display the new component when the second tab is active */}
