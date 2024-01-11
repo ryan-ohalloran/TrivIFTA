@@ -25,5 +25,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/run-job/', run_job),
     path('api/entries/<str:date>/', get_entries_by_date),
-    path('', TemplateView.as_view(template_name='index.html')),
+    path('.*', TemplateView.as_view(template_name='index.html')),
 ]
