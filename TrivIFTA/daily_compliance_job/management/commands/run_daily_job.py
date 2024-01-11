@@ -15,6 +15,8 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         # arugments for the date, test mode, and removing unchanged entries
         parser.add_argument('from_date', 
+            nargs='?',
+            default=None,
             type=str, 
             help='Date for which the report should be run (format YYYY-MM-DD)',)
         parser.add_argument(
@@ -44,9 +46,9 @@ class Command(BaseCommand):
 
         # Default to yesterday's date if no date was provided
         if from_date_str is None:
-            logger.info("No date provided. Defaulting to yesterday's date.")
-            from_date = datetime.datetime.now() - datetime.timedelta(days=1)
-            to_date = datetime.datetime.now()
+            DAYS_BACK = 4
+            from_date = datetime.datetime.now() - datetime.timedelta(days=DAYS_BACK)
+            to_date = datetime.datetime.now() - datetime.timedelta(days=DAYS_BACK - 1)
         else:
             try:
                 from_date = datetime.datetime.strptime(from_date_str, '%Y-%m-%d')
@@ -106,7 +108,7 @@ def test_mode(csv_data: str, file_name: str, date: datetime.date, send_email: bo
     '''
     logger.info('Test mode. Not sending to FTP server.')
     logger.info(f'Generating CSV for {file_name}...')
-
+    print(csv_data)
     # send the email if the email argument was provided
     if send_email:
         subject = "IFTA Report Test"

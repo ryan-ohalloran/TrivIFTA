@@ -5,6 +5,7 @@ TrivIFTA/django.log
 TrivIFTA/dump.rdb
 TrivIFTA/celerybeat-schedule.db
 TrivIFTA/db.sqlite3
+TrivIFTA/staticfiles
 __pycache__/
 .devcontainer/
 
@@ -159,3 +160,4 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
