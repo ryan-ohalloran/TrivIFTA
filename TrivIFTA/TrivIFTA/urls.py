@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from daily_compliance_job.views import run_job, get_entries_by_date, get_config
 from django.views.generic import TemplateView
 
@@ -25,5 +25,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/run-job/', run_job),
     path('api/entries/<str:date>/', get_entries_by_date),
-    path('.*', TemplateView.as_view(template_name='index.html')),
+    re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]
