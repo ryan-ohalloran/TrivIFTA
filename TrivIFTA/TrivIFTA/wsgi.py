@@ -17,4 +17,4 @@ BASE_DIR = settings.BASE_DIR
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "TrivIFTA.settings")
 
 application = get_wsgi_application()
-application = WhiteNoise(application, root=os.path.join(os.path.dirname(BASE_DIR), 'frontend', 'build', 'static'))
+application = WhiteNoise(application, root=settings.STATICFILES_DIRS[0])
