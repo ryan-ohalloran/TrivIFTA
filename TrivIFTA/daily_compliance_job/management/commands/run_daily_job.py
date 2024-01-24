@@ -171,6 +171,4 @@ def send_success_email(full_csv_data: str, file_name: str, sent_to_ftp: bool, da
                 '''
 
     email_service = EmailService(subject, body, date=date, attachment=full_csv_data, attachment_name=file_name)
-    if email_service.send():
-        return True
-    return False
+    return email_service.send()
