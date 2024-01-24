@@ -70,6 +70,8 @@ ALLOWED_HOSTS = ['localhost', 'trivifta-dff8d2c115e7.herokuapp.com', 'trivista.c
 TIME_ZONE = 'America/Chicago'
 USE_TZ = True
 
+# SSL settings
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -86,7 +88,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "sslify.middleware.SSLifyMiddleware", # SSLify middleware
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware", # Whitenoise middleware
     "django.contrib.sessions.middleware.SessionMiddleware",
