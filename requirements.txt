@@ -32,6 +32,7 @@ django-cors-headers==4.3.1
 django-cryptography==1.1
 django-fernet-fields==0.6
 django-heroku==0.3.1
+django-sslify==0.2.7
 django-timezone-field==6.1.0
 django-utils==0.0.2
 djangorestframework==3.14.0

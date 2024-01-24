@@ -86,8 +86,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "sslify.middleware.SSLifyMiddleware", # SSLify middleware
     "django.middleware.security.SecurityMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware', # Whitenoise middleware
+    "whitenoise.middleware.WhiteNoiseMiddleware", # Whitenoise middleware
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -103,6 +104,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "https://trivifta-dff8d2c115e7.herokuapp.com",
     "https://trivista.cloud",
+    "http://www.trivista.cloud/"
 ]
 
 ROOT_URLCONF = "TrivIFTA.urls"
