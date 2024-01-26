@@ -105,7 +105,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "https://trivifta-dff8d2c115e7.herokuapp.com",
     "https://trivista.cloud",
-    "https://www.trivista.cloud/"
+    "https://www.trivista.cloud/",
 ]
 
 ROOT_URLCONF = "TrivIFTA.urls"
