@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandParser
 from daily_compliance_job.models import IftaEntry
 from daily_compliance_job.services.geotab import MyGeotabAPI
 from daily_compliance_job.services.ftp import GeotabFTP
@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 class Command(BaseCommand):
     help = 'Run the daily compliance job to generate IFTA reports'
 
-    def add_arguments(self, parser):
+    def add_arguments(self, parser: CommandParser) -> None:
         # arugments for the date, test mode, and removing unchanged entries
         parser.add_argument('from_date', 
             nargs='?',

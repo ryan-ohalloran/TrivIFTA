@@ -22,6 +22,8 @@ load_dotenv()
 MYGEOTAB_USERNAME = os.environ.get('MYGEOTAB_USERNAME')
 MYGEOTAB_PASSWORD = os.environ.get('MYGEOTAB_PASSWORD')
 MYGEOTAB_DATABASE = os.environ.get('MYGEOTAB_DATABASE')
+MYADMIN_USERNAME  = os.environ.get('MYADMIN_USERNAME')
+MYADMIN_PASSWORD  = os.environ.get('MYADMIN_PASSWORD')
 FTP_HOST          = os.environ.get('FTP_HOST')
 FTP_USERNAME      = os.environ.get('FTP_USERNAME')
 FTP_KEY           = os.environ.get('FTP_KEY')
@@ -83,6 +85,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "daily_compliance_job",
+    "monthly_billing_job",
     'django_celery_beat',
     'rest_framework',
 ]
