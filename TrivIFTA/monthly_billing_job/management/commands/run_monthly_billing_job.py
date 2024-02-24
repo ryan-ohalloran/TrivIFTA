@@ -4,8 +4,8 @@ from monthly_billing_job.models import ContractBillEntry, OrderBillEntry
 from monthly_billing_job.services.myadmin import MyAdminPublicAPI
 import datetime
 import dataclasses
-import pprint
 import json
+import pprint
 
 class Command(BaseCommand):
     help = 'Run the monthly billing job'
@@ -49,9 +49,9 @@ class Command(BaseCommand):
 
         return export_company_contracts_as_json(api.company_contracts)
         
-def export_company_contracts_as_json(company_contracts: dict) -> dict:
+def export_company_contracts_as_json(company_contracts: dict) -> str:
     """
-    Replaces all dataclasses in the company_contracts dictionary with dictionaries and exports the result as a dict
+    Replaces all dataclasses in the company_contracts dictionary with dictionaries and exports the result as a JSON string
     """
     json_contracts = {}
 
@@ -62,4 +62,5 @@ def export_company_contracts_as_json(company_contracts: dict) -> dict:
         json_contract.orders = [dataclasses.asdict(o) for o in json_contract.orders]
         json_contracts[company] = dataclasses.asdict(json_contract)
     
+    pprint.pprint(json_contracts)
     return json.dumps(json_contracts)

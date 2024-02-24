@@ -1,56 +1,74 @@
 .App {
   text-align: center;
 }
-header {
-  background-color: #f8f9fa;
-  padding: 10px 0;
-}
 
-.nav-tabs {
-  display: flex;
-  list-style-type: none;
+/* Reset the padding and margin to handle browser inconsistencies */
+.App > * {
   padding: 0;
-  justify-content: space-around;
-  border: 1px solid #000;
-  border-radius: 5px;
+  margin: 0;
+  box-sizing: border-box; /* This ensures that padding doesn't affect the total width or height of elements */
 }
 
-.nav-tab {
-  flex: 1;
-  padding: 5px 20px;
-  transition: background-color 0.3s ease;
+/* Styling for the navigation bar itself */
+.App > nav {
+  background-color: #f8f9fa;
+  border: 1px solid #ccc; /* slight border around the nav bar */
+  border-radius: 5px; /* rounded corners */
+  margin: 10px auto; /* centered in the page with some margin */
+  padding: 10px 0;
+  width: 80%; /* you can adjust this as needed */
+  display: flex; /* use flexbox for alignment */
+  justify-content: center; /* center items horizontally */
+  align-items: center; /* center items vertically */
 }
 
-.nav-tab a {
-  text-decoration: none;
-  color: #333;
-  display: block; /* Make the link take up the full space of the tab */
+/* Styling for the list that contains the navigation links */
+.App > nav ul {
+  list-style-type: none; /* remove bullet points from the list */
+  display: flex; /* display list items inline */
+  align-items: center; /* align items vertically */
+  justify-content: center; /* align items horizontally */
+  width: 100%; /* make the ul take up the full width of the nav */
 }
 
-.nav-tab.active {
-  background-color: #088877; /* Move the background color to the tab */
+/* Styling for each list item */
+.App > nav ul li {
+  padding: 5px 20px; /* space out the links */
 }
 
-.nav-tab.active a {
-  color: #ffffff;
+/* Styling for each link */
+.App > nav ul li a {
+  display: block; /* make the whole area clickable */
+  color: black; /* text color */
+  text-decoration: none; /* remove underline */
+  padding: 14px 16px; /* add some padding */
 }
 
-.header-title {
+/* Hover state for each link */
+.App > nav ul li a:hover {
+  background-color: #767b8165; /* change color on hover */
+}
+
+/* Active state for the link */
+.App > .nav-tab.active {
+  background-color: #088877; /* change background color for active state */
+  border-radius: 5px; /* rounded corners for the active state */
+}
+
+.App > .nav-tab.active a {
+  color: #ffffff; /* text color for active state */
+}
+
+/* Other styles */
+.App > .header-title {
   text-align: center;
   font-size: 2em;
-  margin: 20px;
+  margin: 20px 0; /* added bottom margin for spacing */
 }
 
-.nav-bar {
-  border-radius: 5px;
-  padding: 10px;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.admin-link {
+.App > .admin-link {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px; /* give some space from the top */
+  right: 10px; /* give some space from the right */
   padding: 10px;
 }

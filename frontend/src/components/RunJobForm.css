@@ -133,3 +133,84 @@ border-bottom: 1px solid #ddd;
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.App {
+    text-align: center;
+  }
+  header {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+  }
+  
+  .nav-tabs {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    justify-content: space-around;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+  
+  .nav-tab {
+    flex: 1;
+    padding: 5px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-tab a {
+    text-decoration: none;
+    color: #333;
+    display: block; 
+  }
+  
+  .nav-tab.active {
+    background-color: #088877; 
+  }
+  
+  .nav-tab.active a {
+    color: #ffffff;
+  }
+  
+  .header-title {
+    text-align: center;
+    font-size: 2em;
+    margin: 20px;
+  }
+  
+  .nav-bar {
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .admin-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+  }
+  
+  
+  nav ul {
+    list-style-type: none; /* Remove default list styling */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  nav ul li {
+    float: center;
+  }
+  
+  nav ul li a {
+    display: block; /* Make the whole area clickable */
+    color: black; /* White text color */
+    text-align: center; /* Center the text */
+    padding: 14px 16px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */;
+  }
+  
+  nav ul li a:hover {
+    background-color: #767b8165; /* Darker blue on hover */
+  }
