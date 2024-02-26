@@ -31,6 +31,20 @@ function QueryBilling() {
             setDataLoaded(true);
         }
     }
+
+    const downloadCSV = (csv, filename) => {
+      let csvFile = new Blob([csv], {type: "text/csv"});
+      let downloadLink = document.createElement("a");
+      downloadLink.download = filename;
+      downloadLink.href = window.URL.createObjectURL(csvFile);
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+    }
+
+    const previewCSV = (csv) => {
+        return csv.split('\n').slice(0, 5).join('\n');
+    }
     
     return (
         <div>
@@ -54,8 +68,17 @@ function QueryBilling() {
             {dataLoaded && Object.keys(data).length > 0 && (
               <ul>
                 {Object.keys(data).map((key) => (
-                  <li key={key}>{data[key].company_name}: ${data[key].total_cost}</li>
-                ))}
+                            <li key={key}>
+                                {data[key].company_name}: ${data[key].total_cost}
+                                <details>
+                                    <summary>View Details</summary>
+                                    <pre>{previewCSV(data[key].orders_csv)}</pre>
+                                    <button onClick={() => downloadCSV(data[key].orders_csv, 'orders.csv')}>Download Orders CSV</button>
+                                    <pre>{previewCSV(data[key].contracts_csv)}</pre>
+                                    <button onClick={() => downloadCSV(data[key].contracts_csv, 'contracts.csv')}>Download Contracts CSV</button>
+                                </details>
+                            </li>
+                        ))}
               </ul>
             )}
           </div>

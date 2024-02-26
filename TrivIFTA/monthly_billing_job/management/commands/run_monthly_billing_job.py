@@ -1,11 +1,13 @@
-from typing import Any
+from typing import Any, List
 from django.core.management.base import BaseCommand, CommandParser
 from monthly_billing_job.models import ContractBillEntry, OrderBillEntry
-from monthly_billing_job.services.myadmin import MyAdminPublicAPI
+from monthly_billing_job.services.myadmin import MyAdminPublicAPI, CompanyContracts, CompanyOrders, DeviceContract
 import datetime
 import dataclasses
 import json
-import pprint
+import csv
+from io import StringIO
+from pprint import pprint
 
 class Command(BaseCommand):
     help = 'Run the monthly billing job'
@@ -49,18 +51,44 @@ class Command(BaseCommand):
 
         return export_company_contracts_as_json(api.company_contracts)
         
-def export_company_contracts_as_json(company_contracts: dict) -> str:
+def export_company_contracts_as_json(company_contracts: dict[str, CompanyContracts]) -> str:
     """
     Replaces all dataclasses in the company_contracts dictionary with dictionaries and exports the result as a JSON string
     """
     json_contracts = {}
 
     for company, contract in company_contracts.items():
-        json_contract = contract
-        json_contracts[company] = json_contract
-        json_contract.contracts = [dataclasses.asdict(c) for c in json_contract.contracts]
-        json_contract.orders = [dataclasses.asdict(o) for o in json_contract.orders]
-        json_contracts[company] = dataclasses.asdict(json_contract)
+        json_contracts[company] = transform_company_contracts(contract)
     
-    pprint.pprint(json_contracts)
+    pprint(json_contracts)
     return json.dumps(json_contracts)
+
+def orders_to_csv(orders: List[CompanyOrders]) -> str:
+    header = CompanyOrders.__annotations__.keys()
+    data = [dataclasses.asdict(order) for order in orders]
+
+    output = StringIO()
+    writer = csv.DictWriter(output, fieldnames=header)
+    writer.writeheader()
+    writer.writerows(data)
+
+    return output.getvalue()
+
+def contracts_to_csv(contracts: List[DeviceContract]) -> str:
+    header = DeviceContract.__annotations__.keys()
+    data = [dataclasses.asdict(contract) for contract in contracts]
+
+    output = StringIO()
+    writer = csv.DictWriter(output, fieldnames=header)
+    writer.writeheader()
+    writer.writerows(data)
+
+    return output.getvalue()
+
+def transform_company_contracts(company_contracts: CompanyContracts) -> dict:
+    return {
+        'company_name': company_contracts.company_name,
+        'total_cost': round(company_contracts.total_cost, 2),
+        'orders_csv': orders_to_csv(company_contracts.orders),
+        'contracts_csv': contracts_to_csv(company_contracts.contracts),
+    }
