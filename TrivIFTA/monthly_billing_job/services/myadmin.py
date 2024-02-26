@@ -31,6 +31,8 @@ class DeviceContract:
     bill_days: int
     billing_days: float
     total_cost: float
+    rate_plan_name: str
+    rate_plan_fee: float
     company_name: str
     display_name: str
     period_from: str
@@ -43,6 +45,7 @@ class CompanyContracts:
     contracts: List[DeviceContract] = field(default_factory=list)
     orders: List[CompanyOrders] = field(default_factory=list)
     total_cost: float = 0
+
 
 class MyAdminBaseAPI:
     def __init__(self):
@@ -109,6 +112,8 @@ class MyAdminBaseAPI:
                 "vin":          contract["latestDeviceDatabase"]["vin"] if "latestDeviceDatabase" in contract and "vin" in contract["latestDeviceDatabase"] else None,        
                 "company_name": contract["userContact"]["userCompany"]["name"] if "userContact" in contract and "userCompany" in contract["userContact"] and "name" in contract["userContact"]["userCompany"] else None,
                 "display_name": contract["userContact"]["displayName"] if "userContact" in contract and "displayName" in contract["userContact"] else None,
+                "ratePlanName": contract["activeRatePlans"][0]["ratePlan"]["ratePlanName"] if "activeRatePlans" in contract and contract["activeRatePlans"] else "No rate plan found",
+                "ratePlanFee":  contract["activeRatePlans"][0]["ratePlan"]["monthlyFee"] if "activeRatePlans" in contract and contract["activeRatePlans"] else None,
             }
             for contract in device_contracts if contract
         }
@@ -126,6 +131,7 @@ class MyAdminBaseAPI:
                 device_contract_info = self._device_contracts[contract["serialNo"]]
 
                 # one-off fix to account for missing company name in the database
+                # TODO: figure out if this is a good approach
                 if device_contract_info["company_name"] is None and device_contract_info["database"] == "o_halloran":
                     device_contract_info["company_name"] = "o_halloran"
 
@@ -137,6 +143,8 @@ class MyAdminBaseAPI:
                     bill_days=(parse(contract["periodTo"]) - parse(contract["periodFrom"])).days if "periodTo" in contract and "periodFrom" in contract else None,
                     billing_days=contract.get("quantityInDays"),
                     total_cost=contract.get("valueUsd"),
+                    rate_plan_name=device_contract_info["ratePlanName"],
+                    rate_plan_fee=device_contract_info["ratePlanFee"],
                     company_name=device_contract_info["company_name"],
                     display_name=device_contract_info["display_name"],
                     period_from=contract.get("periodFrom") if "periodFrom" in contract else None,
@@ -250,6 +258,7 @@ class MyAdminPublicAPI(MyAdminBaseAPI):
 
 # # Example usage
 # my_admin_api = MyAdminPublicAPI()
+
 # # contracts_by_company = my_admin_api._get_device_contracts_by_company(12, 2023)
 
 # # my_admin_api.export_device_contracts_by_company(12, 2023, "device_contracts.csv")
