@@ -1,12 +1,20 @@
 from rest_framework import serializers
-from .models import ContractBillEntry, OrderBillEntry
+from monthly_billing_job.models import Bill, ContractBillItem, OrderBillItem
 
-class ContractBillEntrySerializer(serializers.ModelSerializer):
+class ContractBillItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ContractBillEntry
-        fields = '__all__'
+        model = ContractBillItem
+        fields = ['contract', 'item_cost']
 
-class OrderBillEntrySerializer(serializers.ModelSerializer):
+class OrderBillItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = OrderBillEntry
-        fields = '__all__'
+        model = OrderBillItem
+        fields = ['order', 'item_cost']
+
+class BillSerializer(serializers.ModelSerializer):
+    contract_bill_items = ContractBillItemSerializer(many=True, read_only=True)
+    order_bill_items = OrderBillItemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Bill
+        fields = ['company', 'period_from', 'period_to', 'total_cost', 'contract_bill_items', 'order_bill_items']

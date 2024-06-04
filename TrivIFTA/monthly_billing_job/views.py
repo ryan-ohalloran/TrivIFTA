@@ -1,23 +1,20 @@
-from django.shortcuts import render
-from rest_framework.decorators import api_view
-from django.http import JsonResponse, HttpResponseServerError
+from rest_framework import generics
 from rest_framework.response import Response
-from .tasks import run_monthly_billing_job_task
-import logging
+from rest_framework.decorators import api_view
+from monthly_billing_job.models import Bill
+from monthly_billing_job.serializers import BillSerializer
+from datetime import datetime
+from .utils import last_day_of_month
 
-logger = logging.getLogger(__name__)
-
-@api_view(['POST'])
-def get_company_bills(request) -> JsonResponse | HttpResponseServerError:
+@api_view(['GET'])
+def get_company_bills(request, year, month):
     try:
-        month = request.data.get('month', None)
-        year = request.data.get('year', None)
+        period_from = datetime(year, month, 1).date()
+        period_to = datetime(year, month, last_day_of_month(year=year, month=month)).date()
 
-        # run the job and get the JSON data
-        json_data = run_monthly_billing_job_task(month, year)
-
-        return Response(json_data, content_type='application/json')
-    
+        bills = Bill.objects.filter(period_from=period_from, period_to=period_to)
+        
+        serializer = BillSerializer(bills, many=True)
+        return Response(serializer.data, content_type='application/json')
     except Exception as e:
-        logger.exception(e)
-        return HttpResponseServerError(e)
+        return Response({'error': str(e)}, status=400, content_type='application/json')

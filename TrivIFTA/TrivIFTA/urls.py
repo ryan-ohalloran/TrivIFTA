@@ -18,14 +18,14 @@ from django.contrib import admin
 from django.urls import path, re_path
 from daily_compliance_job.views import run_job, get_entries_by_date, get_config
 from django.views.generic import TemplateView
+from django.urls import include 
 from monthly_billing_job.views import get_company_bills
-
 
 urlpatterns = [
     path('api/config/', get_config),
     path("admin/", admin.site.urls),
     path('api/run-job/', run_job),
-    path('api/bills/', get_company_bills),
     path('api/entries/<str:date>/', get_entries_by_date),
+    path('billing/', include('monthly_billing_job.urls')),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]

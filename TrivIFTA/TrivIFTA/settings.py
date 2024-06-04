@@ -24,6 +24,7 @@ MYGEOTAB_PASSWORD = os.environ.get('MYGEOTAB_PASSWORD')
 MYGEOTAB_DATABASE = os.environ.get('MYGEOTAB_DATABASE')
 MYADMIN_USERNAME  = os.environ.get('MYADMIN_USERNAME')
 MYADMIN_PASSWORD  = os.environ.get('MYADMIN_PASSWORD')
+MYADMIN_ENDPOINT  = os.environ.get('MYADMIN_ENDPOINT')
 FTP_HOST          = os.environ.get('FTP_HOST')
 FTP_USERNAME      = os.environ.get('FTP_USERNAME')
 FTP_KEY           = os.environ.get('FTP_KEY')
@@ -66,14 +67,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', 'trivifta-dff8d2c115e7.herokuapp.com', 'trivista.cloud']
+ALLOWED_HOSTS = ['localhost', 'trivifta-dff8d2c115e7.herokuapp.com', 'trivista.cloud', '127.0.0.1']
 
 # Set timezone
 TIME_ZONE = 'America/Chicago'
 USE_TZ = True
 
 # SSL settings
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -84,10 +85,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "daily_compliance_job",
-    "monthly_billing_job",
     'django_celery_beat',
     'rest_framework',
+    "rest_framework.authtoken",
+    "daily_compliance_job",
+    "monthly_billing_job",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -110,6 +113,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://trivista.cloud",
     "https://www.trivista.cloud/",
 ]
+
+# allow all cors origins
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 ROOT_URLCONF = "TrivIFTA.urls"
 
@@ -252,4 +259,6 @@ LOGGING = {
     },
 }
 
-django_heroku.settings(locals())
+# Initialize the Django-Heroku settings
+if not DEBUG:
+    django_heroku.settings(locals())

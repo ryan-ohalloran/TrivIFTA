@@ -35,6 +35,7 @@ django-heroku==0.3.1
 django-timezone-field==6.1.0
 django-utils==0.0.2
 djangorestframework==3.14.0
+drf-spectacular
 et-xmlfile==1.1.0
 frozenlist==1.4.1
 fsspec==2023.12.2
