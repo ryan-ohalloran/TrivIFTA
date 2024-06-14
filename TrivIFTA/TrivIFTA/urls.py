@@ -19,13 +19,20 @@ from django.urls import path, re_path
 from daily_compliance_job.views import run_job, get_entries_by_date, get_config
 from django.views.generic import TemplateView
 from django.urls import include 
-from monthly_billing_job.views import get_company_bills
+from monthly_billing_job.views import ItemizedReceiptView, CompanyBillView, GetAllCompaniesView, CompanyBillsForMonthView
 
 urlpatterns = [
     path('api/config/', get_config),
     path("admin/", admin.site.urls),
     path('api/run-job/', run_job),
-    path('api/entries/<str:date>/', get_entries_by_date),
-    path('billing/', include('monthly_billing_job.urls')),
+    #TODO: fix this to route to the app-specific billing views
+    path('billing/companies/', GetAllCompaniesView.as_view(), name='companies'),
+    path('billing/itemized-receipt/<str:company_name>/<int:month>/<int:year>/', ItemizedReceiptView.as_view(), name='itemized-receipt'),
+    path('billing/company-bill/<str:company_name>/<int:month>/<int:year>/', CompanyBillView.as_view(), name='company-bill'),
+    path('billing/company-bills/<int:month>/<int:year>/', CompanyBillsForMonthView.as_view(), name='company-bills-for-month'),
+    # Include other app URL patterns here if necessary
+    # path('billing/', include('monthly_billing_job.urls')),
+
+    # Catch-all route for the React app
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]

@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand, CommandParser
 from monthly_billing_job.services.myadmin import MyAdminPublicAPI
 import datetime
 from monthly_billing_job.models import User
+from django.db import transaction
 
 
 class Command(BaseCommand):
@@ -22,6 +23,7 @@ class Command(BaseCommand):
             type=str,
             help='Year for which the report should be run (format YYYY)',)
     
+    @transaction.atomic
     def handle(self, *args: Any, **options: Any) -> str | None:
         month = int(options['month'])
         year = int(options['year'])

@@ -1,9 +1,8 @@
 from django.test import TestCase
 from monthly_billing_job.services.myadmin import MyAdminPublicAPI
-from monthly_billing_job.models import Reseller, Account, Pricing, Company, Contract, Order, Bill, BillItemBase, User, ContractBillItem, OrderBillItem
+from monthly_billing_job.models import Reseller, Account, Company, Contract, Order, Bill, BillItemBase, User, ContractBillItem, OrderBillItem
 from monthly_billing_job.dataclasses import ContractEntry, OrderEntry, CompanyBill
 from datetime import date
-from monthly_billing_job.utils import save_all_contracts, save_all_orders
 from pprint import pprint
 from django.conf import settings
 from rest_framework.test import APIClient
@@ -57,7 +56,12 @@ class MyAdminPublicAPITestCase(TestCase):
             for user in User.objects.all():
                 print(f"User: {user} | Reseller: {user.reseller}")
                 api = MyAdminPublicAPI(user=user)
-                api.ingest_billing_data(12, 2023)
+
+                api.populate_data(month=12, year=2023)
+                pprint(api._device_contracts)
+                # pprint(api._orders_by_company)
+                # api.ingest_billing_data(12, 2023)
+                # pprint(api._device_online_order_entries)
                 # destroy api object
                 del api
 

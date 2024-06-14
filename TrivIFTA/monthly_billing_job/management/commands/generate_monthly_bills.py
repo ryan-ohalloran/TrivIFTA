@@ -2,8 +2,10 @@
 from typing import Any
 from django.core.management.base import BaseCommand, CommandParser
 from monthly_billing_job.services.myadmin import MyAdminPublicAPI
+from django.db import transaction
 import datetime
 from monthly_billing_job.models import User
+from pprint import pprint
 
 class Command(BaseCommand):
     help = 'Run the monthly bill generation job'
@@ -21,7 +23,8 @@ class Command(BaseCommand):
             default=None,
             type=str,
             help='Year for which the report should be run (format YYYY)',)
-        
+    
+    @transaction.atomic
     def handle(self, *args: Any, **options: Any) -> str | None:
         month = int(options['month'])
         year = int(options['year'])
@@ -40,6 +43,7 @@ class Command(BaseCommand):
                 print(f"User: {user} | Reseller: {user.reseller}")
                 api = MyAdminPublicAPI(user=user)
                 api.generate_monthly_bills(month, year)
+
         except Exception as e:
             self.stdout.write(self.style.ERROR(f'generate_monthly_bills() raised an exception: {e}'))
             return
