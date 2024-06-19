@@ -1,4 +1,4 @@
-from .models import Reseller, Contract, Order, Company, Bill, OrderBillItem, ContractBillItem, ShipItem, OrderItem, Product, RatePlan
+from monthly_billing_job.models import Reseller, Contract, Order, Company, Bill, OrderBillItem, ContractBillItem, ShipItem, OrderItem, Product, RatePlan, Expense, OrderExpenseItem, ContractExpenseItem
 from datetime import date, datetime, timedelta
 from dataclasses import dataclass, field
 from typing import List, Optional, Set
@@ -71,10 +71,12 @@ class ContractEntry:
     year: int
     customer_cost: float
     total_customer_cost: float
+    start_time: datetime
+    end_time: datetime
     
     def save_to_db(self):
         # Check if the contract already exists to avoid duplicate entries
-        existing_contract = Contract.get_contract_by_serial_no_company_month_and_year(self.serial_no, self.company, self.month, self.year)
+        existing_contract = Contract.get_contract_by_serial_and_time(serial_no=self.serial_no, company=self.company, month=self.month, year=self.year, start_time=self.start_time, end_time=self.end_time)
         
         if existing_contract:
             # Update the existing contract
@@ -89,7 +91,8 @@ class ContractEntry:
             existing_contract.total_customer_cost = self.total_customer_cost
             existing_contract.month = self.month
             existing_contract.year = self.year
-            existing_contract.company = self.company
+            existing_contract.start_date = self.start_time
+            existing_contract.end_date = self.end_time
             existing_contract.save()
         else:
             # Create a new contract
@@ -106,7 +109,9 @@ class ContractEntry:
                 year=self.year,
                 customer_cost=self.customer_cost,
                 company=self.company,
-                total_customer_cost=self.total_customer_cost
+                total_customer_cost=self.total_customer_cost,
+                start_date=self.start_time,
+                end_date=self.end_time
             )
 
 @dataclass
@@ -200,77 +205,74 @@ class CompanyBill:
     display_name: str
     contracts: List[ContractEntry] = field(default_factory=list)
     orders: List[OrderEntry] = field(default_factory=list)
-    total_cost: float = 0.0
+    total_bill_cost: float = 0.0
+    total_expense_cost: float = 0.0
 
-    def calculate_total_cost(self):
-        unique_contracts = {contract.serial_no: contract for contract in self.contracts}.values()
-        unique_orders = {order.po_number: order for order in self.orders}.values()
-        
-        self.total_cost = sum(contract.total_customer_cost for contract in unique_contracts) + sum(order.customer_cost for order in unique_orders)
-        
     def save_to_db(self, period_from, period_to):
-        self.calculate_total_cost()
-        
-        bill, created = Bill.objects.get_or_create(
+        bill, bill_created = Bill.objects.get_or_create(
             company=self.company,
             period_from=period_from,
             period_to=period_to,
-            defaults={'total_cost': self.total_cost}
+            defaults={'total_cost': self.total_bill_cost}
         )
-        
-        if not created:
-            # If the bill already exists, update the total_cost
-            bill.total_cost = self.total_cost
+
+        expense, expense_created = Expense.objects.get_or_create(
+            company=self.company,
+            period_from=period_from,
+            period_to=period_to,
+            defaults={'total_cost': self.total_expense_cost} 
+        )
+
+        if not bill_created:
+            bill.total_cost = self.total_bill_cost
             bill.save()
-        
+
+        if not expense_created:
+            expense.total_cost = self.total_expense_cost
+            expense.save()
+
         # Clear existing bill items to avoid duplicates
         bill.contract_bill_items.all().delete()
         bill.order_bill_items.all().delete()
+        expense.contract_expense_items.all().delete()
+        expense.order_expense_items.all().delete()
 
         for contract in self.contracts:
-            contract_instance = Contract.get_contract_by_serial_no_company_month_and_year(contract.serial_no, self.company, contract.month, contract.year)
+            contract_instance = Contract.get_contract_by_serial_and_time(
+                serial_no=contract.serial_no, 
+                company=self.company, 
+                month=contract.month, 
+                year=contract.year, 
+                start_time=contract.start_time, 
+                end_time=contract.end_time
+            )
+
             ContractBillItem.objects.update_or_create(
                 bill=bill,
                 contract=contract_instance,
                 defaults={'item_cost': contract.customer_cost}
             )
+            ContractExpenseItem.objects.update_or_create(
+                expense=expense,
+                contract=contract_instance,
+                defaults={'item_cost': contract.total_cost}
+            )
+
         for order in self.orders:
-            order_instance = Order.get_order_by_po_order_and_date(order.po_number, order.order_number, order.order_date)
+            order_instance = Order.get_order_by_po_order_and_date(
+                order.po_number, 
+                order.order_number, 
+                order.order_date
+            )
             OrderBillItem.objects.update_or_create(
                 bill=bill,
                 order=order_instance,
                 defaults={'item_cost': order.customer_cost}
             )
-        return bill
+            OrderExpenseItem.objects.update_or_create(
+                expense=expense,
+                order=order_instance,
+                defaults={'item_cost': order.order_total}
+            )
 
-    def get_itemized_bill(self):
-        itemized_details = []
-        for contract in self.contracts:
-            itemized_details.append({
-                'type': 'contract',
-                'serial_no': contract.serial_no,
-                'customer_cost': contract.customer_cost
-            })
-        for order in self.orders:
-            itemized_details.append({
-                'type': 'order',
-                'order_number': order.order_number,
-                'customer_cost': order.customer_cost
-            })
-        return {
-            'company': self.company.name,
-            'display_name': self.display_name,
-            'period_from': self.period_from,
-            'period_to': self.period_to,
-            'total_cost': self.total_cost,
-            'itemized_details': itemized_details
-        }
-
-    def get_summary_bill(self):
-        return {
-            'company': self.company.name,
-            'display_name': self.display_name,
-            'period_from': self.period_from,
-            'period_to': self.period_to,
-            'total_cost': self.total_cost
-        }
+        return bill, expense

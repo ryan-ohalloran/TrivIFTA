@@ -4,7 +4,7 @@ from dateutil.parser import parse
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from rest_framework.authtoken.models import Token
 from django.core.exceptions import MultipleObjectsReturned
-from datetime import date
+from datetime import date, datetime
 import calendar
 
 class Reseller(models.Model):
@@ -31,6 +31,9 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+    
+    def get_reseller(self) -> Reseller:
+        return self.reseller
 
 class Account(models.Model):
     account_id = models.CharField(max_length=255, unique=True)
@@ -108,17 +111,19 @@ class Contract(models.Model):
     total_customer_cost = models.FloatField(default=0.0)
     month = models.IntegerField(null=True, blank=True)
     year = models.IntegerField(null=True, blank=True)
+    start_time = models.DateTimeField(null=True, blank=True)
+    end_time = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        unique_together = (('serial_no', 'company', 'month', 'year'),)
+        unique_together = (('serial_no', 'company', 'month', 'year', 'start_time', 'end_time'),)
 
     def __str__(self):
         return self.serial_no
     
     @classmethod
-    def get_contract_by_serial_no_company_month_and_year(cls, serial_no: str, company: Company, month: int, year: int) -> 'Contract':
+    def get_contract_by_serial_and_time(cls, serial_no: str, company: Company, month: int, year: int, start_time: datetime, end_time: datetime) -> 'Contract':
         try:
-            return cls.objects.get(serial_no=serial_no, company=company, month=month, year=year)
+            return cls.objects.get(serial_no=serial_no, company=company, month=month, year=year, start_time=start_time, end_time=end_time)
         except cls.DoesNotExist:
             return None
 
@@ -268,10 +273,10 @@ class Quote(models.Model):
     total_cost = models.FloatField()
 
     class Meta:
-        unique_together = (('reseller', 'customer_email', 'quote_date'),)
+        unique_together = (('id', 'reseller', 'customer_email', 'quote_date'),)
 
     def __str__(self):
-        return f'{self.quote_number} for {self.company.name}'
+        return f'id: {self.id} for {self.customer_name} @ {self.customer_email}'
     
 class QuoteItem(models.Model):
     quote = models.ForeignKey(Quote, related_name='items', on_delete=models.RESTRICT)
@@ -280,4 +285,33 @@ class QuoteItem(models.Model):
     price = models.FloatField()
 
     def __str__(self):
-        return f'{self.quantity} x {self.product or self.contract} for {self.quote}'
+        return f'{self.product or self.rate_plan} for {self.quote}'
+
+class Expense(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.RESTRICT, related_name='expenses')
+    period_from = models.DateField()
+    period_to = models.DateField()
+    total_cost = models.FloatField()
+
+    class Meta:
+        unique_together = (('company', 'period_from', 'period_to'),)
+
+    def __str__(self):
+        return f'Expense for {self.company.name} from {self.period_from} to {self.period_to}'
+
+class ExpenseItemBase(models.Model):
+    item_cost = models.FloatField()
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return f'ExpenseItem for {self.bill}'
+
+class ContractExpenseItem(ExpenseItemBase):
+    contract = models.ForeignKey(Contract, on_delete=models.CASCADE)
+    expense = models.ForeignKey(Expense, on_delete=models.CASCADE, related_name='contract_expense_items')
+
+class OrderExpenseItem(ExpenseItemBase):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    expense = models.ForeignKey(Expense, on_delete=models.CASCADE, related_name='order_expense_items')

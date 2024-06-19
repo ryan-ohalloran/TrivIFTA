@@ -1,7 +1,7 @@
 import requests
 import json
 from pprint import pprint
-from typing import List, Dict
+from typing import List, Dict, Set
 import datetime
 from dateutil.parser import parse
 from django.utils import timezone
@@ -11,7 +11,7 @@ from django.conf import settings
 from monthly_billing_job.models import Company, User, RatePlan, CompanyType
 from monthly_billing_job.dataclasses import OrderEntry, ContractEntry, CompanyBill, OrderItemEntry, ShipItemEntry, ProductEntry, RatePlanEntry
 from monthly_billing_job.utils import last_day_of_month
-from monthly_billing_job.billing import BillingManager
+from monthly_billing_job.services.billing import BillingManager
 
 
 class MyAdminBaseAPI:
@@ -265,11 +265,14 @@ class MyAdminBaseAPI:
                 if rate_plan is None:
                     raise Exception(f'Exception in MyAdminAPI._set_all_device_contracts\nRate Plan with name {device_contract_info["ratePlanName"]} does not exist for this contract: {contract}.')
                 
-                billing_manager = BillingManager(company)
+                billing_manager = BillingManager(company.company_type, self._reseller)
                 customer_cost = billing_manager.get_rate_plan_price(rate_plan)
 
                 days_in_month = last_day_of_month(year=year, month=month)
                 total_customer_cost = customer_cost * (contract.get("quantityInDays", 0) / days_in_month)
+
+                start_time = parse(contract["periodFrom"]) if "periodFrom" in contract else None
+                end_time = parse(contract["periodTo"]) if "periodTo" in contract else None
 
                 device_contract = ContractEntry(
                     serial_no=contract["serialNo"],
@@ -284,13 +287,12 @@ class MyAdminBaseAPI:
                     month=month,
                     year=year,
                     customer_cost=customer_cost,
-                    total_customer_cost=total_customer_cost
+                    total_customer_cost=total_customer_cost,
+                    start_time=start_time,
+                    end_time=end_time,
                 )
                 self._device_contract_list.append(device_contract)
-                
-                # Save to database
                 device_contract.save_to_db()
-
     
     def _set_orders_by_company(self, month: int, year: int):
         '''
@@ -306,7 +308,7 @@ class MyAdminBaseAPI:
                 if company is None:
                     raise Exception(f'Company with ID {company_id} does not exist for this order.')
 
-                billing_manager = BillingManager(company)
+                billing_manager = BillingManager(company.company_type, self._reseller)
 
                 # Initialize total customer cost
                 total_customer_cost = 0
@@ -461,16 +463,18 @@ class MyAdminPublicAPI(MyAdminBaseAPI):
         Compute total cost for each company for the given month and year and generates a bill for each company
             - Also performs the same operations as ingest_billing_data
         '''
-        self._prepare_billing_data(month, year)
         self._set_all_customer_costs(month, year)
 
         for company, company_bill in self.company_contracts.items():
-            total_cost = 0.0
+            total_bill_cost, total_expense_cost = 0.0, 0.0
             for contract in company_bill.contracts:
-                total_cost += contract.total_cost
+                total_bill_cost += contract.total_customer_cost
+                total_expense_cost += contract.total_cost
             for order in company_bill.orders:
-                total_cost += order.order_total
-            self.company_contracts[company].total_cost = total_cost
+                total_bill_cost += order.customer_cost
+                total_expense_cost += order.order_total
+            self.company_contracts[company].total_bill_cost = total_bill_cost
+            self.company_contracts[company].total_expense_cost = total_expense_cost
 
         # save all CompanyBill objects to the database
         period_from = datetime.date(year, month, 1)
@@ -480,4 +484,4 @@ class MyAdminPublicAPI(MyAdminBaseAPI):
 
         print("Company Total Costs:")
         for company, company_bill in self.company_contracts.items():
-            print(f"{company_bill.company.display_name}: ${company_bill.total_cost}")
+            print(f"{company_bill.company.display_name} - Bill: ${company_bill.total_bill_cost} | Expense: ${company_bill.total_expense_cost}")
