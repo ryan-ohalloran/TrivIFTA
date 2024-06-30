@@ -77,7 +77,7 @@ class IftaDataCollection(Dict[str, IftaData]):
 
         # Remove entries for vins where the odometer reading does not change
         if remove_nonmoving_vehicles:
-            self.remove_unchanged(df)
+            self.remove_unchanged(df, nonmoving_vehicles)
 
         # Return the dataframe
         return df
