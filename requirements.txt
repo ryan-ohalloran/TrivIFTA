@@ -70,6 +70,7 @@ openai==1.6.1
 openpyxl==3.1.2
 packaging==23.2
 pandas==2.1.4
+paramiko==3.4.0
 Pillow==10.1.0
 prompt-toolkit==3.0.43
 protobuf==4.25.1
@@ -82,6 +83,7 @@ pydantic==2.5.3
 pydantic_core==2.14.6
 pydeck==0.8.1b0
 Pygments==2.17.2
+PySocks==1.7.1
 python-crontab==3.0.0
 python-dateutil==2.8.2
 python-dotenv==1.0.0

@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from daily_compliance_job.models import IftaEntry
 from daily_compliance_job.services.geotab import MyGeotabAPI
-from daily_compliance_job.services.ftp import GeotabFTP
+from TrivIFTA.daily_compliance_job.services.sftp import GeotabSFTP
 from daily_compliance_job.services.email import EmailService
 from daily_compliance_job.services.ifta import IftaDataCollection
 import datetime
@@ -86,7 +86,7 @@ class Command(BaseCommand):
 
         # send the CSV to the FTP server
         if options['send_to_ftp']:
-            if not send_to_ftp(csv_data, file_name, from_date):
+            if not send_to_sftp(csv_data, file_name, from_date):
                 raise Exception('Failed to send data to FTP server')
 
         # send email to recipients
@@ -118,20 +118,20 @@ def test_mode(csv_data: str, file_name: str, date: datetime.date, send_email: bo
 
     return
 
-def send_to_ftp(full_csv_data: str, file_name: str, date: datetime.date) -> bool:
+def send_to_sftp(full_csv_data: str, file_name: str, date: datetime.date) -> bool:
     '''
-    Send the CSV to the FTP server
+    Send the CSV to the SFTP server
 
     Returns True if the CSV was sent successfully, False otherwise
     '''
-    ftp = GeotabFTP()
+    sftp = GeotabSFTP()
     try:
-        ftp.send_to_ftp(full_csv_data, file_name)
+        sftp.send_to_sftp(full_csv_data, file_name)
     except Exception as e:
-        # If FTP job fails, send an email to the recipients and return
-        logger.error(f'Failed to send {file_name} to FTP server.\n\t{e}')
+        # If SFTP job fails, send an email to the recipients and return
+        logger.error(f'Failed to send {file_name} to SFTP server.\n\t{e}')
         subject = f"IFTA Report Failure {file_name} --- {date.month}/{date.day}/{date.year}"
-        body = f'''Failed to send IFTA report for {date.month}/{date.day}/{date.year} to FTP.
+        body = f'''Failed to send IFTA report for {date.month}/{date.day}/{date.year} to SFTP.
                 \n\nPlease check the logs for more details.
                 \nThank you,
                 \nTrivista IFTA Compliance Team
@@ -141,7 +141,7 @@ def send_to_ftp(full_csv_data: str, file_name: str, date: datetime.date) -> bool
         email_service.send()
         return False
 
-    logger.info(f'Successfully sent {file_name} to FTP server🔥')
+    logger.info(f'Successfully sent {file_name} to SFTP server🔥')
     return True
 
 def send_success_email(full_csv_data: str, file_name: str, sent_to_ftp: bool, date: datetime.date, total_vehhicles: int, num_nonmoving_vehicles: int) -> bool:
