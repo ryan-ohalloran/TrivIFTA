@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from daily_compliance_job.models import IftaEntry
 from daily_compliance_job.services.geotab import MyGeotabAPI
-from TrivIFTA.daily_compliance_job.services.sftp import GeotabSFTP
+from daily_compliance_job.services.sftp import GeotabSFTP
 from daily_compliance_job.services.email import EmailService
 from daily_compliance_job.services.ifta import IftaDataCollection
 import datetime

@@ -22,9 +22,9 @@ load_dotenv()
 MYGEOTAB_USERNAME = os.environ.get('MYGEOTAB_USERNAME')
 MYGEOTAB_PASSWORD = os.environ.get('MYGEOTAB_PASSWORD')
 MYGEOTAB_DATABASE = os.environ.get('MYGEOTAB_DATABASE')
-FTP_HOST          = os.environ.get('FTP_HOST')
-FTP_USERNAME      = os.environ.get('FTP_USERNAME')
-FTP_KEY           = os.environ.get('FTP_KEY')
+SFTP_HOST          = os.environ.get('SFTP_HOST')
+SFTP_USERNAME      = os.environ.get('SFTP_USERNAME')
+SFTP_KEY           = os.environ.get('SFTP_KEY')
 FERNET_KEY        = os.environ.get('FERNET_KEY')
 GEOTAB_GROUP      = 'b279F' # Geotab group id for IFTA devices
 
